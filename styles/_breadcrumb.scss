@@ -1,0 +1,9 @@
+.breadcrumb{
+  margin-bottom: 2.5em;
+  &__link{
+    color: $black;
+  }
+  &__divider{
+    padding: 0 .25em;
+  }
+}

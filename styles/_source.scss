@@ -1,0 +1,58 @@
+.source{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 .5em;
+  font-size: 16px;
+
+  &__container{
+    max-width: 80em;
+    margin-top: .5em;
+    padding-left: .7em;
+
+    .single-country__header &{
+      padding-left: .15em;
+    }
+    // home page gets top border
+    .sources__home &{
+      margin: 2em 0 0 0;
+      padding-top: 1em;
+      border-top: 1px solid $lightGrey;
+    }
+  }
+
+  &__icon{
+    flex: 0 0 8px;
+    // width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-top: 10px;
+    background: $lightGrey;
+
+    &--error{
+      background: $error;
+    }
+    &--loaded{
+      background: $blue;
+    }
+  }
+
+  &__status{
+    @extend %small-lower-light;
+    // width: 4em;
+    flex: 0 0 4em;
+  }
+  &__link{
+    color: $black;
+    overflow-wrap: anywhere;
+  }
+  &__nolink{
+    overflow-wrap: anywhere;
+  }
+  &__errormessage{
+    color: $error;
+  }
+}
+
+.error-message{
+  color: $error;
+}

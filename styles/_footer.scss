@@ -1,0 +1,68 @@
+.site__footer{
+  margin-top: 5em;
+  background: $black;
+}
+
+.footer{
+
+  &__logo{
+    display: flex;
+    align-items: center;
+    margin: 0;
+    
+    .icon__logo{
+      width: 45px;
+      height: 36px;
+      margin-right: .75em;
+    }
+  }
+  &__title{
+    @extend %mono-font;
+    color: $white;
+    font-size: 1.15em;
+    font-weight: 700;
+    text-transform: capitalize;
+  }
+  &__text{
+    color: $lightGrey;
+    margin: 0;
+  }
+  &__section{
+    display: flex;
+    flex-direction: column;
+    a{
+      color: $blue;
+      margin-bottom: .5em;
+    }
+  }
+  &__subtitle{
+    @extend %small-lower-bold;
+    color: $lightGrey;
+    margin: 0 0 .5em 0;
+  }
+  &__footer{
+    color: $lightGrey;
+  }
+  &__contact-link{
+    color: $lightGrey;
+    margin-right: .5em;
+  }
+}
+
+// color the logo in the footer
+.footer__logo{
+  .logo-globe{
+    &__meridians{
+      stroke: $black;
+    }
+    &__parallels{
+      fill: $black;
+    }
+  }
+  .logo__divider{
+    fill: $lightGrey;
+  }
+  .logo__graph{
+    fill: #444;
+  }
+}

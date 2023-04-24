@@ -1,0 +1,11 @@
+body{
+  font: 400 100%/1.5em 'Quicksand', sans-serif;
+  color: $black;
+  background: $white;
+}
+
+@media screen and (min-width: 40em){
+  body{
+    font-size: 1.125em;
+  }
+}

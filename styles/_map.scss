@@ -1,0 +1,43 @@
+.map-controles{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: .25em 0;
+  margin: .75em 0;
+
+  &__label{
+    @extend %small-lower-light;
+    font-size: 16px;
+    margin-right: .5em;
+  }
+  
+  &__button-container{
+    display: flex;
+    align-items: center;
+  }
+  &__button{
+    @extend %reset-button;
+    text-decoration: underline;
+  }
+
+}
+
+@media screen and (min-width: 40em){
+  .map-controles{
+    flex-direction: row;
+    gap: 0 .5em;
+  }
+}
+
+.icon__pan{
+  margin-right: 3px;;
+  fill: $lightGrey;
+  &--active{
+    fill: $blue;
+  }
+}
+
+.placeholder-map{
+  width: 100%;
+  height: auto;
+}

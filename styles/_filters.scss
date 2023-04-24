@@ -1,0 +1,174 @@
+.site__filters{
+  margin-bottom: 2em;
+}
+@media screen and (min-width: 64em){
+  .site__filters{
+    margin-bottom: 0;
+  }
+}
+
+.filters{
+  padding: 1em 0;
+  margin-bottom: 4em;
+  border-top: 1px solid $lightGrey;
+  border-bottom: 1px solid $lightGrey;
+
+  &--closed{
+    display: none;
+  }
+  &--open{
+    display: block;
+  }
+  &__title{
+    display: none; // we hide title but show toggle button on mobile
+  }
+  &__toggle-button{
+    @extend %reset-button;
+    display: flex;
+    align-items: center;
+    text-decoration: underline;
+    &--active{
+      margin-bottom: .5em;
+    }
+  }
+}
+
+@media screen and (min-width: 40em){
+  .filters{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(15em, 20em));
+    gap: 0 2em;
+
+    &--closed{
+      display: none;
+    }
+    &--open{
+      display: grid;
+    }
+  }
+}
+
+@media screen and (min-width: 64em){
+  .filters{
+    display: block; // one sidecolumn
+    border: none;
+    padding: 0;
+
+    &--closed{
+      display: block;
+    }
+
+    &__title{
+      display: flex; // we hide title but show toggle button on mobile
+      align-items: center;
+      margin-bottom: 40px;
+    }
+    &__toggle-button{
+      display: none;
+    }
+  }
+}
+
+.filter{
+  max-width: 22em;
+  margin-bottom: 1.5em;  
+
+  &--region{
+    padding-top: .5em;
+  }
+  &__block{
+    &__region{
+      padding-left: 1.25em;
+    }
+    &__subregion{
+      border: 1px solid $lightGrey;
+      padding: .25em 1.25em;
+      margin-top: .25em;
+      margin-bottom: .4em;
+    }
+    &__number{
+      padding-left: 1.25em;
+    }
+  }
+  &__row{
+    display: flex;
+    align-items: baseline;
+  }
+  &__clear-button{
+    @extend %reset-button;
+    margin-top: .75em;
+    margin-left: 1.25em;
+    background: $black;
+    color: #fff;
+    padding: 0 .5em;
+    border-radius: 3px;
+  }
+  &__number-input-fields{
+    display: flex;
+  }
+
+  .number-filter{
+    &__input-grid{
+      display: flex;
+      gap: .25em;
+    }
+    &__input-grid-item{
+      flex: 1 1 auto;
+    }
+    &__submit{
+      flex: 0 0 auto;
+      align-self: end;
+      @extend %reset-button;
+      font-size: 16px;
+      background: $blue;
+      color: #fff;
+      font-weight: 700;
+      padding: 0 .65em;
+      border-radius: 3px;
+    }
+    &__label{
+      font-size: 16px;
+      color: $lightText;
+    }
+    &__input{
+      width: 100%;
+      @extend %mono-font;
+      font-size: 16px;
+      border: 1px solid $lightGrey;
+      border-radius: 3px;
+      padding: .15em 0 .15em .5em;
+    }
+  }
+    
+}
+
+
+// filter checkboxes
+.filtercheckbox{
+  &__input{
+    margin-right: .5em;
+  }
+  &__count{
+    font-size: 14px;
+    margin-left: .5em;
+    color: $lightText;
+    &-inner{
+      @extend %mono-font;
+    }
+  }
+}
+
+// filter icon
+.icon__filters{
+  fill: $lightGrey;
+  transition: fill ease-in .125s;
+  margin-right: .5em;
+
+  .filters__toggle-button:hover &{
+    fill: $black;
+  }
+  .filters__toggle-button--active &{
+    fill: $black;
+  }
+}
+

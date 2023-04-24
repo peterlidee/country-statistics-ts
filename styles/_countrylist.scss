@@ -1,0 +1,39 @@
+// headers and legends
+.country-list{
+
+  &-legend{
+    font-size: 16px;
+    color: $lightText;
+    margin-top: -5px;
+
+    &--population, 
+    &--area, 
+    &--density{
+      text-align: right;
+      margin-bottom: .75em;
+    }
+  }
+}
+
+// data cells
+.country-cell{
+  &--index{
+    @extend %mono-font;
+    text-align: right;
+    margin-right: .5em;
+  }
+  &--population,
+  &--area,
+  &--density{
+    @extend %mono-font;
+    text-align: right;
+  }
+}
+
+@media screen and (min-width: 40em){
+  .country-cell{
+    &--index{
+      margin-right: 0;
+    }
+  }
+}

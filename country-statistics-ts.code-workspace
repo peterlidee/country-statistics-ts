@@ -6,8 +6,14 @@
   ],
   "settings": {
     "files.exclude": {
+      ".next": true,
       "node_modules": true
     },
-    "editor.tabSize": 2
+    "editor.tabSize": 2,
+    "workbench.colorCustomizations": {
+      "titleBar.activeBackground": "#548bf4",
+      "titleBar.activeForeground": "#d4ddec",
+      "titleBar.inactiveBackground": "#355fad"
+    }
   }
 }

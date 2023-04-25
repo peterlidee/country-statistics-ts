@@ -1,8 +1,8 @@
-%mono-font{
+%mono-font {
   font-family: 'Inconsolata', monospace;
 }
 
-%reset-button{
+%reset-button {
   background: none;
   border: none;
   line-height: 1.5em;
@@ -10,17 +10,17 @@
   cursor: pointer;
 }
 
-%small-lower{
+%small-lower {
   font-variant: small-caps;
   text-transform: lowercase;
 }
 
-%small-lower-bold{
+%small-lower-bold {
   @extend %small-lower;
   font-weight: bold;
 }
 
-%small-lower-light{
+%small-lower-light {
   @extend %small-lower;
   color: $lightText;
 }

@@ -1,26 +1,26 @@
-.source{
+.source {
   display: flex;
   flex-wrap: wrap;
-  gap: 0 .5em;
+  gap: 0 0.5em;
   font-size: 16px;
 
-  &__container{
+  &__container {
     max-width: 80em;
-    margin-top: .5em;
-    padding-left: .7em;
+    margin-top: 0.5em;
+    padding-left: 0.7em;
 
-    .single-country__header &{
-      padding-left: .15em;
+    .single-country__header & {
+      padding-left: 0.15em;
     }
     // home page gets top border
-    .sources__home &{
+    .sources__home & {
       margin: 2em 0 0 0;
       padding-top: 1em;
       border-top: 1px solid $lightGrey;
     }
   }
 
-  &__icon{
+  &__icon {
     flex: 0 0 8px;
     // width: 8px;
     height: 8px;
@@ -28,31 +28,31 @@
     margin-top: 10px;
     background: $lightGrey;
 
-    &--error{
+    &--error {
       background: $error;
     }
-    &--loaded{
+    &--loaded {
       background: $blue;
     }
   }
 
-  &__status{
+  &__status {
     @extend %small-lower-light;
     // width: 4em;
     flex: 0 0 4em;
   }
-  &__link{
+  &__link {
     color: $black;
     overflow-wrap: anywhere;
   }
-  &__nolink{
+  &__nolink {
     overflow-wrap: anywhere;
   }
-  &__errormessage{
+  &__errormessage {
     color: $error;
   }
 }
 
-.error-message{
+.error-message {
   color: $error;
 }

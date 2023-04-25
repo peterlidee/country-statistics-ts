@@ -1,144 +1,200 @@
-.single-country__weather{
+.single-country__weather {
   display: flex;
   flex-direction: column;
-  .single-country__box{
+  .single-country__box {
     // we want the box to take the full available height
-    flex: 1 1 auto; 
+    flex: 1 1 auto;
   }
 }
 
-
-.fullHeight{
+.fullHeight {
   height: 100%;
 }
 
-.weather{
-
-  &__grid{
-    padding: .5em;
+.weather {
+  &__grid {
+    padding: 0.5em;
     width: 100%;
     display: grid;
-    grid-template-columns: minmax(80px, 120px) minmax(60px, 90px) minmax(80px, 120px);
+    grid-template-columns: minmax(80px, 120px) minmax(60px, 90px) minmax(
+        80px,
+        120px
+      );
     grid-template-rows: 1.5em minmax(100px, 200px) 1.5em;
-    grid-gap: .5em;
+    grid-gap: 0.5em;
     align-items: center;
     justify-items: center;
     justify-content: center;
     align-content: center;
   }
 
-  &__description{
+  &__description {
     grid-column: 1/-1;
   }
 }
 
-.weather__component{
-  &__header{
+.weather__component {
+  &__header {
     @extend %small-lower;
     border-bottom: 1px solid $black;
     text-align: center;
   }
-  &__footer{
+  &__footer {
     @extend %small-lower;
     text-align: center;
   }
-  &__body{
+  &__body {
     padding: 1em 0;
   }
 }
 
-.weather__temp{
-  &--max{
+.weather__temp {
+  &--max {
     display: inline-block;
     font-size: 45px;
-    margin-right: .1em;
+    margin-right: 0.1em;
   }
-  &--min{
+  &--min {
     display: inline-block;
     font-size: 20px;
     transform: translateY(-5px);
   }
 }
-.icon__weather{
+.icon__weather {
   width: 100%;
 }
-.weather__wind{
-  &-direction{
+.weather__wind {
+  &-direction {
     display: inline-block;
   }
-  &-speed{
+  &-speed {
     display: inline-block;
     font-size: 45px;
-    margin-left: .2em;
+    margin-left: 0.2em;
   }
 }
-.winddirection__pointer { fill: $black;}
+.winddirection__pointer {
+  fill: $black;
+}
 
 // the night versions
-.night, .clear{
+.night,
+.clear {
   color: $white;
-  .weather__component__header{
+  .weather__component__header {
     border-bottom: 1px solid $white;
   }
-  .winddirection__pointer { fill: $white;}
+  .winddirection__pointer {
+    fill: $white;
+  }
 }
 
-$day-grey : #e2e2e2;
-$night-grey : #191919;
+$day-grey: #e2e2e2;
+$night-grey: #191919;
 
-.day{
+.day {
   background: $blue;
   // .clear   { }
-  .few     { background: transparentize($day-grey, 0.5); }
-  .scat    { background: transparentize($day-grey, 0.2); }
-  .broken  { background: transparentize($day-grey, 0.1); }
+  .few {
+    background: transparentize($day-grey, 0.5);
+  }
+  .scat {
+    background: transparentize($day-grey, 0.2);
+  }
+  .broken {
+    background: transparentize($day-grey, 0.1);
+  }
   .shower,
   .rain,
   .thunder,
   .snow,
-  .mist    { background: $day-grey;  }
-  .nodata  { background: $day-grey;  }
+  .mist {
+    background: $day-grey;
+  }
+  .nodata {
+    background: $day-grey;
+  }
 }
 
-.night{
+.night {
   background: #0a0b3a;
   // .clear   { }
-  .few     { background: transparentize($night-grey, 0.8); }
-  .scat    { background: transparentize($night-grey, 0.4); }
-  .broken  { background: transparentize($night-grey, 0.1); }
-  .shower  { background: $night-grey; }
-  .rain    { background: $night-grey; }
-  .thunder { background: $night-grey; }
-  .snow    { background: $night-grey; }
-  .mist    { background: $night-grey;  }
+  .few {
+    background: transparentize($night-grey, 0.8);
+  }
+  .scat {
+    background: transparentize($night-grey, 0.4);
+  }
+  .broken {
+    background: transparentize($night-grey, 0.1);
+  }
+  .shower {
+    background: $night-grey;
+  }
+  .rain {
+    background: $night-grey;
+  }
+  .thunder {
+    background: $night-grey;
+  }
+  .snow {
+    background: $night-grey;
+  }
+  .mist {
+    background: $night-grey;
+  }
 }
 
 // styling the icons
 
-.cloud1   { fill: $white; }
-.cloud2   { fill: #ccc; }
+.cloud1 {
+  fill: $white;
+}
+.cloud2 {
+  fill: #ccc;
+}
 .shower,
-.rain{
-  .cloud1 { fill: #bbb; }
+.rain {
+  .cloud1 {
+    fill: #bbb;
+  }
 }
-.thunder{
-  .cloud1 { fill: #bbb; }
-  .cloud2 { fill: #888; }
+.thunder {
+  .cloud1 {
+    fill: #bbb;
+  }
+  .cloud2 {
+    fill: #888;
+  }
 }
-.raindrops line{ stroke: $blue; }
-.lightning{ fill: #e2c400; }
-.snow     { fill: $white; }
-.mist line{ stroke: $white; }
+.raindrops line {
+  stroke: $blue;
+}
+.lightning {
+  fill: #e2c400;
+}
+.snow {
+  fill: $white;
+}
+.mist line {
+  stroke: $white;
+}
 
-.day{
-  .sun      { fill: #fedf00; }
+.day {
+  .sun {
+    fill: #fedf00;
+  }
 }
 
-.night{
-  .sun      { fill: none; }
+.night {
+  .sun {
+    fill: none;
+  }
   .shower,
-  .rain{
-    .cloud1 { fill: #888; }
+  .rain {
+    .cloud1 {
+      fill: #888;
+    }
   }
   // .raindrops line{ stroke: $white; }
 }

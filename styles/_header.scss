@@ -1,17 +1,17 @@
-.site{
-  &__header{
+.site {
+  &__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 3em;
     max-width: 90em;
   }
-  &__logo{
+  &__logo {
     display: flex;
     align-items: center;
     text-decoration: none;
   }
-  &__title{
+  &__title {
     @extend %mono-font;
     font-size: 1.25em;
     font-weight: 700;
@@ -20,19 +20,19 @@
     color: $black;
   }
 }
-.icon__logo{
-  margin-right: .75em;
+.icon__logo {
+  margin-right: 0.75em;
   width: 40px;
   height: 32px;
 }
 
-@media screen and (min-width: 30em){
-  .icon__logo{
+@media screen and (min-width: 30em) {
+  .icon__logo {
     margin-right: 1em;
     width: 50px;
     height: 40px;
   }
-  .site__title{
+  .site__title {
     font-size: 1.5em;
   }
 }
@@ -41,20 +41,20 @@
   settings
 */
 
-.settings{
+.settings {
   position: relative;
 
-  &__button{
+  &__button {
     @extend %reset-button;
     display: flex;
-    gap: .5em;
+    gap: 0.5em;
     align-items: center;
     text-decoration: underline;
   }
-  &__button__innertext{
+  &__button__innertext {
     display: none;
   }
-  &__collapse{
+  &__collapse {
     position: absolute;
     background: #fff;
     box-shadow: 0 4px 8px #aaa;
@@ -63,49 +63,48 @@
     right: 0;
     top: 2.5em;
   }
-  &__title{
+  &__title {
     font-weight: 700;
-    margin-bottom: .5em;
+    margin-bottom: 0.5em;
   }
-  &__checkbox{
-    margin-right: .5em;
+  &__checkbox {
+    margin-right: 0.5em;
   }
 }
 
 // settings icon
-.icon__settings{
+.icon__settings {
   fill: $lightGrey;
-  transition: fill ease-in .125s, transform ease-in .25s;
-  .settings__button:hover &{
+  transition: fill ease-in 0.125s, transform ease-in 0.25s;
+  .settings__button:hover & {
     fill: $black;
   }
-  .settings__button--active &{
+  .settings__button--active & {
     fill: $black;
     transform: rotate(100deg);
   }
 }
 
-@media screen and (min-width: 30em){
-  .settings{
-    &__button__innertext{
+@media screen and (min-width: 30em) {
+  .settings {
+    &__button__innertext {
       display: inline;
     }
   }
 }
 
-
-.country-count{
+.country-count {
   margin-bottom: 1em;
-  &__number{
+  &__number {
     @extend %mono-font;
     background: $blue;
     color: #fff;
-    padding: .1em .25em;
+    padding: 0.1em 0.25em;
   }
 }
 
-@media screen and (min-width: 64em){
-  .country-count{
+@media screen and (min-width: 64em) {
+  .country-count {
     margin-bottom: 0;
   }
 }

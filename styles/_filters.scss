@@ -1,121 +1,121 @@
-.site__filters{
+.site__filters {
   margin-bottom: 2em;
 }
-@media screen and (min-width: 64em){
-  .site__filters{
+@media screen and (min-width: 64em) {
+  .site__filters {
     margin-bottom: 0;
   }
 }
 
-.filters{
+.filters {
   padding: 1em 0;
   margin-bottom: 4em;
   border-top: 1px solid $lightGrey;
   border-bottom: 1px solid $lightGrey;
 
-  &--closed{
+  &--closed {
     display: none;
   }
-  &--open{
+  &--open {
     display: block;
   }
-  &__title{
+  &__title {
     display: none; // we hide title but show toggle button on mobile
   }
-  &__toggle-button{
+  &__toggle-button {
     @extend %reset-button;
     display: flex;
     align-items: center;
     text-decoration: underline;
-    &--active{
-      margin-bottom: .5em;
+    &--active {
+      margin-bottom: 0.5em;
     }
   }
 }
 
-@media screen and (min-width: 40em){
-  .filters{
+@media screen and (min-width: 40em) {
+  .filters {
     display: grid;
     grid-template-columns: repeat(2, minmax(15em, 20em));
     gap: 0 2em;
 
-    &--closed{
+    &--closed {
       display: none;
     }
-    &--open{
+    &--open {
       display: grid;
     }
   }
 }
 
-@media screen and (min-width: 64em){
-  .filters{
+@media screen and (min-width: 64em) {
+  .filters {
     display: block; // one sidecolumn
     border: none;
     padding: 0;
 
-    &--closed{
+    &--closed {
       display: block;
     }
 
-    &__title{
+    &__title {
       display: flex; // we hide title but show toggle button on mobile
       align-items: center;
       margin-bottom: 40px;
     }
-    &__toggle-button{
+    &__toggle-button {
       display: none;
     }
   }
 }
 
-.filter{
+.filter {
   max-width: 22em;
-  margin-bottom: 1.5em;  
+  margin-bottom: 1.5em;
 
-  &--region{
-    padding-top: .5em;
+  &--region {
+    padding-top: 0.5em;
   }
-  &__block{
-    &__region{
+  &__block {
+    &__region {
       padding-left: 1.25em;
     }
-    &__subregion{
+    &__subregion {
       border: 1px solid $lightGrey;
-      padding: .25em 1.25em;
-      margin-top: .25em;
-      margin-bottom: .4em;
+      padding: 0.25em 1.25em;
+      margin-top: 0.25em;
+      margin-bottom: 0.4em;
     }
-    &__number{
+    &__number {
       padding-left: 1.25em;
     }
   }
-  &__row{
+  &__row {
     display: flex;
     align-items: baseline;
   }
-  &__clear-button{
+  &__clear-button {
     @extend %reset-button;
-    margin-top: .75em;
+    margin-top: 0.75em;
     margin-left: 1.25em;
     background: $black;
     color: #fff;
-    padding: 0 .5em;
+    padding: 0 0.5em;
     border-radius: 3px;
   }
-  &__number-input-fields{
+  &__number-input-fields {
     display: flex;
   }
 
-  .number-filter{
-    &__input-grid{
+  .number-filter {
+    &__input-grid {
       display: flex;
-      gap: .25em;
+      gap: 0.25em;
     }
-    &__input-grid-item{
+    &__input-grid-item {
       flex: 1 1 auto;
     }
-    &__submit{
+    &__submit {
       flex: 0 0 auto;
       align-self: end;
       @extend %reset-button;
@@ -123,52 +123,49 @@
       background: $blue;
       color: #fff;
       font-weight: 700;
-      padding: 0 .65em;
+      padding: 0 0.65em;
       border-radius: 3px;
     }
-    &__label{
+    &__label {
       font-size: 16px;
       color: $lightText;
     }
-    &__input{
+    &__input {
       width: 100%;
       @extend %mono-font;
       font-size: 16px;
       border: 1px solid $lightGrey;
       border-radius: 3px;
-      padding: .15em 0 .15em .5em;
+      padding: 0.15em 0 0.15em 0.5em;
     }
   }
-    
 }
 
-
 // filter checkboxes
-.filtercheckbox{
-  &__input{
-    margin-right: .5em;
+.filtercheckbox {
+  &__input {
+    margin-right: 0.5em;
   }
-  &__count{
+  &__count {
     font-size: 14px;
-    margin-left: .5em;
+    margin-left: 0.5em;
     color: $lightText;
-    &-inner{
+    &-inner {
       @extend %mono-font;
     }
   }
 }
 
 // filter icon
-.icon__filters{
+.icon__filters {
   fill: $lightGrey;
-  transition: fill ease-in .125s;
-  margin-right: .5em;
+  transition: fill ease-in 0.125s;
+  margin-right: 0.5em;
 
-  .filters__toggle-button:hover &{
+  .filters__toggle-button:hover & {
     fill: $black;
   }
-  .filters__toggle-button--active &{
+  .filters__toggle-button--active & {
     fill: $black;
   }
 }
-

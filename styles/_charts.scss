@@ -1,31 +1,31 @@
-.single-country__population-chart .single-country__box{
+.single-country__population-chart .single-country__box {
   // we need to give the chart as much space as possible on smallest screens
   // this gets reset on bigger screens
-  padding: 1em .25em; 
+  padding: 1em 0.25em;
 }
-.chart-container{
+.chart-container {
   // use 99% instead of 100%, weird bug
   // the chart responsive mode needs this to calculate with of canvas element
-  width: 99%; 
+  width: 99%;
   height: 350px;
   overflow-x: auto;
 }
-.chart__title{
+.chart__title {
   @extend %small-lower-bold;
   margin: 0 0 1em 1.25em; // extra left margin on title to compensate nearly 0
 }
 
-@media screen and (min-width: 30em){
-  .single-country__population-chart .single-country__box{
+@media screen and (min-width: 30em) {
+  .single-country__population-chart .single-country__box {
     padding: 1em 1.5em;
   }
-  .chart__title{
+  .chart__title {
     margin: 0 0 1em 0;
   }
 }
 
-@media screen and (min-width: 45em){
-  .chart-container{
+@media screen and (min-width: 45em) {
+  .chart-container {
     height: 450px;
   }
 }

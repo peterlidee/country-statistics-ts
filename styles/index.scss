@@ -1,24 +1,24 @@
-*{
+* {
   box-sizing: border-box;
 }
 
-@import "variables";
-@import "placeholders";
-@import "typography";
-@import "grids";
-@import "header";
+@import 'variables';
+@import 'placeholders';
+@import 'typography';
+@import 'grids';
+@import 'header';
 
-@import "countrylist";
-@import "sorting";
-@import "collapse";
-@import "filters";
-@import "source";
+@import 'countrylist';
+@import 'sorting';
+@import 'collapse';
+@import 'filters';
+@import 'source';
 
 // single country
-@import "breadcrumb";
-@import "singlecountry";
-@import "weather";
-@import "map";
-@import "charts";
+@import 'breadcrumb';
+@import 'singlecountry';
+@import 'weather';
+@import 'map';
+@import 'charts';
 
-@import "footer";
+@import 'footer';

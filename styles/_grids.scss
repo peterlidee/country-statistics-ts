@@ -1,31 +1,31 @@
 // the 'body' padding
 
-body{
+body {
   padding-top: 1em;
 }
-.site__container{
-  padding: 0 .75em;
+.site__container {
+  padding: 0 0.75em;
 }
-.site__footer{
-  padding: 3em .75em 2em .75em;
+.site__footer {
+  padding: 3em 0.75em 2em 0.75em;
 }
-@media screen and (min-width: 40em){
-  .site__container{
+@media screen and (min-width: 40em) {
+  .site__container {
     padding: 0 1em;
   }
-  .site__footer{
+  .site__footer {
     padding-left: 1em;
     padding-right: 1em;
   }
 }
-@media screen and (min-width: 70em){
-  body{
+@media screen and (min-width: 70em) {
+  body {
     padding-top: 2em;
   }
-  .site__container{
+  .site__container {
     padding: 0 2em;
   }
-  .site__footer{
+  .site__footer {
     padding-left: 2em;
     padding-right: 2em;
   }
@@ -35,27 +35,28 @@ body{
   home grid
 */
 
-@media screen and (min-width: 64em){
-  .site__grid--home{
+@media screen and (min-width: 64em) {
+  .site__grid--home {
     display: grid;
     grid-template-columns: 18em 1fr;
     gap: 2em 3em;
   }
-  .faux-site__grid--home{ // displays error message on home page
+  .faux-site__grid--home {
+    // displays error message on home page
     margin-left: 21em;
   }
 }
 
-@media screen and (min-width: 70em){
-  .site__grid--home{
+@media screen and (min-width: 70em) {
+  .site__grid--home {
     grid-template-columns: 20em 1fr;
   }
-  .faux-site__grid--home{
+  .faux-site__grid--home {
     margin-left: 23em;
   }
 }
 
-.country-count{
+.country-count {
   grid-column: 1 / -1;
 }
 
@@ -64,153 +65,153 @@ body{
 */
 
 // grid
-.country-list{
+.country-list {
   display: grid;
-  grid-gap: .25em 1em;
+  grid-gap: 0.25em 1em;
   justify-content: start; // stack columns to the left
   align-items: baseline;
   align-content: start; // don't stretch row but stack them from the top
   width: 100%;
   overflow-x: auto;
 
-  &-header{
-    &--population, 
-    &--area, 
-    &--density{
+  &-header {
+    &--population,
+    &--area,
+    &--density {
       justify-self: end;
     }
   }
 }
 
-@media screen and (min-width: 40em){
-  .country-list{
-    grid-gap: .25em 1.5em;
+@media screen and (min-width: 40em) {
+  .country-list {
+    grid-gap: 0.25em 1.5em;
   }
 }
-
 
 /* 
   single country grid
 */
 
-.single-country{
+.single-country {
   display: grid;
   gap: 3em;
 }
 
-@media screen and (min-width: 64em){
-  .single-country{
+@media screen and (min-width: 64em) {
+  .single-country {
     grid-template-columns: repeat(6, 1fr);
     max-width: 1500px;
     gap: 3em 2em;
 
-    &__header{
+    &__header {
       grid-column: 1 / -1;
     }
-    &__basic-stats, &__flags, &__weather, &__region{
+    &__basic-stats,
+    &__flags,
+    &__weather,
+    &__region {
       grid-column: span 2;
     }
-    &__placeholder{
+    &__placeholder {
       grid-column: span 2;
     }
-    &__map{
+    &__map {
       grid-column: span 4;
     }
-    &__population-chart{
+    &__population-chart {
       grid-column: span 4;
     }
   }
 }
 
-@media screen and (min-width: 70em){
-  .single-country{
+@media screen and (min-width: 70em) {
+  .single-country {
     gap: 3em;
   }
 }
-
 
 /* 
   footer grid
 */
 
-.footer__inner{
+.footer__inner {
   display: grid;
   max-width: 1500px;
   grid-template-columns: repeat(2, 1fr);
   gap: 2em;
-  grid-template-areas: 
-  "header header"
-  "about about"
-  "data data"
-  "framework framework"
-  "packages packages"
-  "testing testing"
-  "deployment sourcecode"
-  "footer footer";
+  grid-template-areas:
+    'header header'
+    'about about'
+    'data data'
+    'framework framework'
+    'packages packages'
+    'testing testing'
+    'deployment sourcecode'
+    'footer footer';
 }
 
-@media screen and (min-width: 30em){
-
-  .footer__inner{
-    grid-template-areas: 
-    "header header"
-    "about about"
-    "data packages"
-    "framework sourcecode"
-    "testing deployment"
-    "footer footer";
+@media screen and (min-width: 30em) {
+  .footer__inner {
+    grid-template-areas:
+      'header header'
+      'about about'
+      'data packages'
+      'framework sourcecode'
+      'testing deployment'
+      'footer footer';
   }
 }
 
-@media screen and (min-width: 64em){
-  .footer__inner{
+@media screen and (min-width: 64em) {
+  .footer__inner {
     grid-template-columns: repeat(3, 1fr);
-    grid-template-areas: 
-    "header header header"
-    "about about about"
-    "data framework deployment"
-    "data packages testing"
-    "data packages sourcecode"
-    "footer footer footer";
+    grid-template-areas:
+      'header header header'
+      'about about about'
+      'data framework deployment'
+      'data packages testing'
+      'data packages sourcecode'
+      'footer footer footer';
   }
 }
 
-@media screen and (min-width: 70em){
-  .footer__inner{
+@media screen and (min-width: 70em) {
+  .footer__inner {
     gap: 2em 3em;
   }
 }
 
 // place the items on the grid
-.footer__header{
+.footer__header {
   grid-area: header;
 }
-.footer__footer{
+.footer__footer {
   grid-area: footer;
 }
-.footer__section{
-  &--about{
+.footer__section {
+  &--about {
     grid-area: about;
   }
-  &--data{
+  &--data {
     grid-area: data;
   }
-  &--framework{
+  &--framework {
     grid-area: framework;
   }
-  &--deployment{
+  &--deployment {
     grid-area: deployment;
   }
-  &--packages{
+  &--packages {
     grid-area: packages;
   }
-  &--testing{
+  &--testing {
     grid-area: testing;
   }
-  &--sourcecode{
+  &--sourcecode {
     grid-area: sourcecode;
   }
-  &--contact{
+  &--contact {
     grid-area: contact;
   }
 }

@@ -1,38 +1,37 @@
 // headers and legends
-.country-list{
-
-  &-legend{
+.country-list {
+  &-legend {
     font-size: 16px;
     color: $lightText;
     margin-top: -5px;
 
-    &--population, 
-    &--area, 
-    &--density{
+    &--population,
+    &--area,
+    &--density {
       text-align: right;
-      margin-bottom: .75em;
+      margin-bottom: 0.75em;
     }
   }
 }
 
 // data cells
-.country-cell{
-  &--index{
+.country-cell {
+  &--index {
     @extend %mono-font;
     text-align: right;
-    margin-right: .5em;
+    margin-right: 0.5em;
   }
   &--population,
   &--area,
-  &--density{
+  &--density {
     @extend %mono-font;
     text-align: right;
   }
 }
 
-@media screen and (min-width: 40em){
-  .country-cell{
-    &--index{
+@media screen and (min-width: 40em) {
+  .country-cell {
+    &--index {
       margin-right: 0;
     }
   }

@@ -1,24 +1,25 @@
 // styling of sort links, icons
 
-.link__sort{
+.link__sort {
   color: var(--black);
   font-weight: 500;
   display: flex;
   gap: 3px;
   align-items: center;
 
-  &--country{
+  &--country {
     margin-left: -20px;
   }
 }
 
 // svg icon
-.icon__sort{
+.icon__sort {
   width: 18px;
-  
-  &--upper, &--lower{
+
+  &--upper,
+  &--lower {
     fill: $lightGrey;
-    &--active{
+    &--active {
       fill: $blue;
     }
   }

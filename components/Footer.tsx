@@ -79,7 +79,7 @@ const Footer = () => (
         <a href='mailto:peter@lidee.be' className='footer__contact-link'>
           peter@lidee.be
         </a>
-        <span className='footer__copy'>&copy; 2022</span>
+        <span className='footer__copy'>&copy; 2023</span>
       </div>
     </div>
   </footer>

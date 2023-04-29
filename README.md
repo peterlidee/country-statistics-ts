@@ -1,38 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Country Statistics
 
-## Getting Started
+Country statistics is a portfolio project to show my React knowledge. It is built in Next and gets the data from open source API's.
 
-First, run the development server:
+country-statistics-ts is the `Typescript` version of [country-statistics-2](https://github.com/peterlidee/country-statistics-2).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Data API's
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[restcountries.com](https://restcountries.com/)  
+[Google Maps Javascript Api](https://developers.google.com/maps/documentation/javascript/tutorial)  
+[Google GeoCode Api](https://developers.google.com/maps/documentation/geocoding/overview)  
+[Worldbank Api](https://databank.worldbank.org/source/health-nutrition-and-population-statistics)  
+[openweathermap.org](https://openweathermap.org/current)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Framework
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+[next.js](https://nextjs.org/)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Extra Packages
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+[@react-google-maps/api](https://www.npmjs.com/package/@react-google-maps/api)  
+[react-chartjs-2](https://www.npmjs.com/package/react-chartjs-2)  
+[react-range](https://www.npmjs.com/package/react-range)
 
-## Learn More
+## Testing
 
-To learn more about Next.js, take a look at the following resources:
+[jest](https://jestjs.io/)  
+[react testing library](https://testing-library.com/docs/react-testing-library/intro/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+[vercel](https://vercel.com/home)
 
-## Deploy on Vercel
+## Live url
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+// Todo: update live url
+[country statistics](https://country-statistics-2.vercel.app/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Contact
+
+<peter@lidee.be>

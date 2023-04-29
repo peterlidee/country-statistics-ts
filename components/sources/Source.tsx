@@ -12,7 +12,10 @@ type SourceProps = {
 /**
  * constructs a source in three possible states: error, loading or loaded
  * a source can have a link or just a label
- * @param { loading, error, endpoint? ,label }
+ * @param props.loading - boolean, is the @endpoint still loading
+ * @param props.error - Error or undefined, @endpoint fetch error
+ * @param props.endpoint - string, optional, the url we are fetching
+ * @param props.label - string, a label for the @endpoint
  * @returns - JSX. Element
  */
 

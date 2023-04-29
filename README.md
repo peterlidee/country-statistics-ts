@@ -1,4 +1,4 @@
-# Country Statistics
+# Country Statistics Ts
 
 Country statistics is a portfolio project to show my React knowledge. It is built in Next and gets the data from open source API's.
 

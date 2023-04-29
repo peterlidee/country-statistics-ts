@@ -1,8 +1,8 @@
 /**
  * Wraps {children} in div.base.base--modifier
- * @param base - the base class
- * @param modifier - modifier of base class: base--modifier
- * @param children
+ * @param props.base - the base class
+ * @param props.modifier - modifier of base class: base--modifier
+ * @param props.children
  * @returns JSX.Element <div class="{base} {base}--{modifier}">{props.children}</div>
  */
 

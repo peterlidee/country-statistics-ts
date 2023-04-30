@@ -7,20 +7,18 @@ import { FilterDataType } from '@/types/filterData'
 
 // todo change any
 
-type HomePageProps = {
+export type HomeProps = {
   countries: Country[]
   filterData: FilterDataType
   endpoint: string
 }
 
-const HomePage: NextPage<HomePageProps> = ({
-  countries,
-  filterData,
-  endpoint,
-}) => <Home countries={countries} endpoint={endpoint} filterData={filterData} />
+const HomePage: NextPage<HomeProps> = ({ countries, filterData, endpoint }) => (
+  <Home countries={countries} endpoint={endpoint} filterData={filterData} />
+)
 
 // all of this happens at build time
-export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const endpoint =
     'https://restcountries.com/v3.1/all?fields=cca3,area,name,population,subregion,region'
 

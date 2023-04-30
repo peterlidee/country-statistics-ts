@@ -6,11 +6,11 @@
  * @returns string[]
  */
 
-import { FilterDataType } from '@/types/filterData'
+import { RegionIndexesType } from '@/types/filterData'
 
 export default function validateRegionsQuery(
   values: string[],
-  regionIndexes: FilterDataType['regionIndexes'],
+  regionIndexes: RegionIndexesType,
 ): string[] {
   if (values.length === 0) return values
   return values.filter((value) => regionIndexes.hasOwnProperty(value))

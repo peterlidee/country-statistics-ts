@@ -8,7 +8,7 @@ type FieldsDataType = {
 export type TextFieldSlug = 'country'
 export type NumberFieldSlug = 'area' | 'population' | 'density'
 
-export type TextFieldDataType = FieldsDataType & {
+export type TextFieldsDataType = FieldsDataType & {
   slug: TextFieldSlug
   label: Capitalize<TextFieldSlug>
   displayToggle: false
@@ -23,17 +23,17 @@ export type NumberFieldDataType = FieldsDataType & {
 }
 
 export type FieldsDataType = [
-  TextFieldDataType,
+  TextFielsdDataType,
   NumberFieldDataType,
-  NumberFieldDataType,
-  NumberFieldDataType,
+  NumberFieldsDataType,
+  NumberFieldsDataType,
 ]
 
 // type predicates
-export const isNumberFieldData = (
-  fieldData: NumberFieldDataType | TextFieldDataType,
-): fieldData is NumberFieldDataType => fieldData.sortType === 'number'
+export const isNumberFieldsData = (
+  fieldData: NumberFieldsDataType | TextFieldsDataType,
+): fieldData is NumberFieldsDataType => fieldData.sortType === 'number'
 
-export const isTextFieldData = (
-  fieldData: NumberFieldDataType | TextFieldDataType,
-): fieldData is TextFieldDataType => fieldData.sortType === 'text'
+export const isTextFieldsData = (
+  fieldData: NumberFieldsDataType | TextFieldsDataType,
+): fieldData is TextFieldsDataType => fieldData.sortType === 'text'

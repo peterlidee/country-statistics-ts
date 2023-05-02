@@ -1,4 +1,6 @@
-const fieldsData = [
+import { FieldsDataType } from '@/types/fieldData'
+
+const fieldsData: FieldsDataType = [
   {
     slug: 'country',
     label: 'Country',

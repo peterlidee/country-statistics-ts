@@ -1,4 +1,4 @@
-type FieldDataType = {
+type FieldsDataType = {
   sortAscDefault: boolean
   sortKey: string
   legend: string
@@ -8,14 +8,14 @@ type FieldDataType = {
 export type TextFieldSlug = 'country'
 export type NumberFieldSlug = 'area' | 'population' | 'density'
 
-export type TextFieldDataType = FieldDataType & {
+export type TextFieldDataType = FieldsDataType & {
   slug: TextFieldSlug
   label: Capitalize<TextFieldSlug>
   displayToggle: false
   sortType: 'text'
 }
 
-export type NumberFieldDataType = FieldDataType & {
+export type NumberFieldDataType = FieldsDataType & {
   slug: NumberFieldSlug
   label: Capitalize<NumberFieldSlug>
   displayToggle: true

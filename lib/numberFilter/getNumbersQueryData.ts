@@ -29,7 +29,11 @@ export default function getNumberQueryData(
 
   // 4. for each visibleNumberFieldsSlugs, get the value from query and validate it (or set to default)
   // mapped type definition [slug in NumberFieldSlug]
-  const currentSelections: { [slug in NumberFieldSlug]?: [number, number] } = {}
+  const currentSelections: { [slug in NumberFieldSlug]: [number, number] } = {
+    area: [0, 0],
+    population: [0, 0],
+    density: [0, 0],
+  }
 
   visibleNumberFieldsSlugs.map((visibleNumberFieldsSlug) => {
     const currentSelection = validateNumbersQuery(
@@ -50,7 +54,7 @@ export default function getNumberQueryData(
   const activeNumberFilters = visibleNumberFieldsSlugs.filter(
     (visibleNumberFieldsSlug) =>
       // we can assert it's not undefined or null because we just made the same loop above, hence !
-      isNumberFilterActive(currentSelections[visibleNumberFieldsSlug]!, [
+      isNumberFilterActive(currentSelections[visibleNumberFieldsSlug], [
         filterData[visibleNumberFieldsSlug].sliderStart,
         filterData[visibleNumberFieldsSlug].sliderEnd,
       ]),

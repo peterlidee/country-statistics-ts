@@ -1,4 +1,4 @@
-import { FieldsDataType } from '@/types/fieldData'
+import { FieldsDataType } from '@/types/fieldsData'
 
 const fieldsData: FieldsDataType = [
   {

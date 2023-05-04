@@ -1,7 +1,6 @@
 type FieldDataType = {
   sortAscDefault: boolean
   legend: string
-  key: string
 }
 
 export type TextFieldSlug = 'country'
@@ -15,6 +14,7 @@ export type TextFieldDataType = FieldDataType & {
   sortKey: TextFieldSortKey
   displayToggle: false
   sortType: 'text'
+  key: TextFieldSortKey
 }
 
 export type NumberFieldDataType = FieldDataType & {
@@ -23,6 +23,7 @@ export type NumberFieldDataType = FieldDataType & {
   sortKey: NumberFieldSortKey
   displayToggle: true
   sortType: 'number'
+  key: `${NumberFieldSlug}PrettyFormat`
 }
 
 export type FieldsDataType = [

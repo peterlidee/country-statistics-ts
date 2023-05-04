@@ -7,8 +7,8 @@ const fieldsData: FieldsDataType = [
     sortAscDefault: true,
     sortKey: 'countryName',
     sortType: 'text',
-    displayToggle: false,
     legend: '',
+    displayToggle: false,
     key: 'countryName',
   },
   {

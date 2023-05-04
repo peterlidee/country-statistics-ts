@@ -1,16 +1,18 @@
 type FieldDataType = {
   sortAscDefault: boolean
-  sortKey: string
   legend: string
   key: string
 }
 
 export type TextFieldSlug = 'country'
+export type TextFieldSortKey = 'countryName'
 export type NumberFieldSlug = 'area' | 'population' | 'density'
+export type NumberFieldSortKey = NumberFieldSlug
 
 export type TextFieldDataType = FieldDataType & {
   slug: TextFieldSlug
   label: Capitalize<TextFieldSlug>
+  sortKey: TextFieldSortKey
   displayToggle: false
   sortType: 'text'
 }
@@ -18,6 +20,7 @@ export type TextFieldDataType = FieldDataType & {
 export type NumberFieldDataType = FieldDataType & {
   slug: NumberFieldSlug
   label: Capitalize<NumberFieldSlug>
+  sortKey: NumberFieldSortKey
   displayToggle: true
   sortType: 'number'
 }

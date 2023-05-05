@@ -7,7 +7,7 @@ type FieldSettingsProps = {
 
 /**
  * wraps children in toggle component
- * @param props - { children }
+ * @param props.children - takes component SettingsOptions
  * @returns - JSX.Element
  */
 

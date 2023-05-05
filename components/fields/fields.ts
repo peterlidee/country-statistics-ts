@@ -1,6 +1,6 @@
-import { FieldsDataType } from '@/types/fieldsData'
+import { Fields } from './types/fields'
 
-const fieldsData: FieldsDataType = [
+const fields: Fields = [
   {
     slug: 'country',
     label: 'Country',
@@ -43,4 +43,4 @@ const fieldsData: FieldsDataType = [
   },
 ]
 
-export default fieldsData
+export default fields

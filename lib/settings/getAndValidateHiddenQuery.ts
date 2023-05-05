@@ -26,11 +26,11 @@ export default function getAndValidateHiddenQuery(
 
   // predicate
   // this will infer numberFieldData as NumberFieldDataType
-  const numberFieldData = fieldsData.filter(isNumberFieldData)
+  const numberFieldsData = fieldsData.filter(isNumberFieldData)
 
   // 3. get the slugs from numberFieldData
   // we will match these against the values from query
-  const validNumberSlugs = numberFieldData.map(
+  const validNumberSlugs = numberFieldsData.map(
     (numberField) => numberField.slug,
   )
 

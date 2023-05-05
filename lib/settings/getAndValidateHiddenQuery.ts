@@ -1,7 +1,7 @@
 import getParameterFromQuery from '../query/getParameterFromQuery'
 import fieldsData from '@/components/fields/fieldsData'
+import { NumberFieldSlug, isNumberFieldData } from '@/types/fieldsData'
 import { ParsedUrlQuery } from 'querystring'
-import { NumberFieldSlug, isNumberFieldData } from '@/types/fieldData'
 
 /**
  * gets query['hide'] and validates the value against allowed options

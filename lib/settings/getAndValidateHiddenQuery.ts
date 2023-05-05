@@ -19,13 +19,11 @@ export default function getAndValidateHiddenQuery(
   // 2. get all numberFieldData from FieldData
   // we don't assert type but use a type predicate
   // https://www.skovy.dev/blog/typescript-filter-array-with-type-guard?seed=q26nzp
-  const numberFieldsData = fields.filter(isNumberField)
+  const numberFields = fields.filter(isNumberField)
 
   // 3. get the slugs from numberFieldData
   // we will match these against the values from query
-  const validNumberSlugs = numberFieldsData.map(
-    (numberField) => numberField.slug,
-  )
+  const validNumberSlugs = numberFields.map((numberField) => numberField.slug)
 
   // 4. validate the values against validFilters
   // you can't compare type string with type NumberFieldSlug using .includes

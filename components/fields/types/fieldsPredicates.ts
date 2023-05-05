@@ -1,6 +1,6 @@
 // type predicates
 
-import { NumberField, TextField } from './fieldsData'
+import { NumberField, TextField } from './fields'
 
 // check if field is NumberFieldDataType
 export const isNumberFieldData = (

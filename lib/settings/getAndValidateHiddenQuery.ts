@@ -1,7 +1,8 @@
-import getParameterFromQuery from '../query/getParameterFromQuery'
-import fieldsData from '@/components/fields/fieldsData'
-import { NumberFieldSlug, isNumberFieldData } from '@/types/fieldsData'
 import { ParsedUrlQuery } from 'querystring'
+import getParameterFromQuery from '../query/getParameterFromQuery'
+import fields from '@/components/fields/fields'
+import { isNumberField } from '@/components/fields/types/fieldsPredicates'
+import { NumberFieldSlug } from '@/components/fields/types/fields'
 
 /**
  * gets query['hide'] and validates the value against allowed options
@@ -18,15 +19,7 @@ export default function getAndValidateHiddenQuery(
   // 2. get all numberFieldData from FieldData
   // we don't assert type but use a type predicate
   // https://www.skovy.dev/blog/typescript-filter-array-with-type-guard?seed=q26nzp
-
-  // assertion
-  // const numberFieldData: NumberFieldDataType[] = fieldsData.filter(
-  //   (field) => field.displayToggle,
-  // ) as NumberFieldDataType[]
-
-  // predicate
-  // this will infer numberFieldData as NumberFieldDataType
-  const numberFieldsData = fieldsData.filter(isNumberFieldData)
+  const numberFieldsData = fields.filter(isNumberField)
 
   // 3. get the slugs from numberFieldData
   // we will match these against the values from query

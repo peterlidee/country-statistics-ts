@@ -1,10 +1,13 @@
 /**
  * displays input checkboxes for each fieldsData (population, arae, density) and controls visibility (toggle)
+ * @returns list of NumberField toggles
  */
 
 import { useRouter } from 'next/router'
 import getAndValidateHiddenQuery from '../../lib/settings/getAndValidateHiddenQuery'
-import fieldsData from '../fields/fieldsData'
+import fields from '../fields/fields'
+import { isNumberField } from '../fields/types/fieldsPredicates'
+import { NumberFieldSlug } from '../fields/types/fields'
 
 function FieldSettings() {
   // we won't wait for router.isReady because this component is inside settingsToggle and will be collapsed on first pageload
@@ -12,11 +15,11 @@ function FieldSettings() {
   const activeHidden = getAndValidateHiddenQuery(router.query)
 
   // handle inputclick
-  const handleChange = (fieldSlug: string): void => {
+  const handleChange = (numberFieldSlug: NumberFieldSlug): void => {
     // if the fieldSlug is in activeHidden, remove it, else add it
-    const newFieldsHidden = activeHidden.includes(fieldSlug)
-      ? activeHidden.filter((field) => field !== fieldSlug)
-      : [...activeHidden, fieldSlug]
+    const newFieldsHidden = activeHidden.includes(numberFieldSlug)
+      ? activeHidden.filter((field) => field !== numberFieldSlug)
+      : [...activeHidden, numberFieldSlug]
 
     // make shallow push with new hidden array
     router.push(
@@ -29,22 +32,26 @@ function FieldSettings() {
     )
   }
 
+  // only loop over NumberFieldDataType, TextFieldDataType is not hiddable
+  const numberFields = fields.filter(isNumberField)
+
   return (
     <>
       <div className='settings__title'>display columns:</div>
-      {fieldsData.map((field) => {
-        if (!field.displayToggle) return null
+      {numberFields.map((numberField) => {
         return (
-          <div key={`fieldsetting-${field.slug}`}>
+          <div key={`fieldsetting-${numberField.slug}`}>
             <input
               type='checkbox'
-              value={field.slug}
-              checked={!activeHidden.includes(field.slug)}
-              onChange={() => handleChange(field.slug)}
-              id={`fieldsetting-${field.slug}`}
+              value={numberField.slug}
+              checked={!activeHidden.includes(numberField.slug)}
+              onChange={() => handleChange(numberField.slug)}
+              id={`fieldsetting-${numberField.slug}`}
               className='settings__checkbox'
             />
-            <label htmlFor={`fieldsetting-${field.slug}`}>{field.label}</label>
+            <label htmlFor={`fieldsetting-${numberField.slug}`}>
+              {numberField.label}
+            </label>
           </div>
         )
       })}

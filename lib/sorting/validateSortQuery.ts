@@ -3,12 +3,14 @@ import {
   isTextFieldSlug,
 } from '@/components/fields/types/fieldsPredicates'
 import { ValidSortData } from './applySorting'
+import fields from '@/components/fields/fields'
 
 /**
  * validates if values[0] is of type NumberFieldSlug or TextFieldSlug
+ * returns sortBy (type SORTKEY) and sortAsc (boolean)
  * @param values - string[], non empty query.sort string
  * @param defaultSortData - { sortBy: default, sortAsc: default }
- * @returns either @defaultSortData when not valid or a valid { sortBy, sortAsc }
+ * @returns either @defaultSortData when not valid or a valid { sortBy (TextFieldSORTKEY | NumberFieldSORTKEY), sortAsc }
  */
 
 function validateSortQuery(
@@ -25,10 +27,14 @@ function validateSortQuery(
 
   if (isNumberFieldSlug(strippedValue) || isTextFieldSlug(strippedValue)) {
     // value is valid
-    // strippedValue become type NumberFieldSlug | TextFieldSlug
+    // strippedValue becomes type NumberFieldSlug | TextFieldSlug
     // console.log(strippedValue)
+
+    // but, we need the sortKey, not the slug, so, we look it up
+    const currField = fields.filter((field) => field.slug === strippedValue)
+
     const sortValueData: ValidSortData = {
-      sortBy: strippedValue,
+      sortBy: currField[0].sortKey,
       sortAsc: valueIsNegated,
     }
     return sortValueData

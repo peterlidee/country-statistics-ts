@@ -30,7 +30,7 @@ function CountryRow({ country, index, activeHidden }: Props) {
         {index + 1}
       </Wrapper>
       <Wrapper base={'country-cell'} modifier={fields[0].slug}>
-        <Link href={`/country/${country.cca3}`}>{country[fields[0].key]}</Link>
+        <Link href={`/country/${country.cca3}`}>{country[fields[0].slug]}</Link>
       </Wrapper>
       {numberFields.map((numberField) => {
         return (
@@ -40,7 +40,7 @@ function CountryRow({ country, index, activeHidden }: Props) {
               base={'country-cell'}
               modifier={numberField.slug}
             >
-              {country[numberField.key]}
+              {country[`${numberField.slug}PrettyFormat`]}
             </Wrapper>
           )
         )

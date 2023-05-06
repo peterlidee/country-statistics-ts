@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest --watchAll",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "ts": "tsc --noEmit --incremental",
+    "ts:watch": "ts --watch"
   },
   "dependencies": {
     "@types/node": "18.16.0",

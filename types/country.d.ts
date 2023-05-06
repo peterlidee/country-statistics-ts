@@ -1,5 +1,5 @@
 export type Country = {
-  countryName: string
+  country: string
   cca3: string
   region: string
   subregion: string

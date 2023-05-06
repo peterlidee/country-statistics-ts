@@ -19,7 +19,7 @@ export default function compileData(arr: any): Country[] {
   return arr.map((item: any) => {
     // purely copy some props
     const itemCopy: Country = {
-      countryName: item?.name?.common || '',
+      country: item?.name?.common || '',
       cca3: item.cca3,
       region: item.region,
       subregion: item.subregion,
@@ -58,7 +58,7 @@ export default function compileData(arr: any): Country[] {
     // 5. faulty data
     // Åland Islands get sorted incorrrectly!! so flip Å with A
     if (itemCopy.cca3 == 'ALA') {
-      itemCopy.countryName = 'Aland Islands'
+      itemCopy.country = 'Aland Islands'
     }
     return itemCopy
   })

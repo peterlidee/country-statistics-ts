@@ -36,7 +36,7 @@ export default function applySorting(
   countries: Country[],
 ) {
   // when router not ready, return original countries
-  if (!routerReady) return defaultSortData
+  if (!routerReady) return { countries, ...defaultSortData }
 
   // get the sort value from query (returns [])
   const queryValues = getParameterFromQuery('sort', query)

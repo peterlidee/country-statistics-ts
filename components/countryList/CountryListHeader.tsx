@@ -8,20 +8,18 @@
 
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-
 import Wrapper from '../general/Wrapper'
 import IconSort from '../svgSnippets/IconSort'
-
 import {
-  NumberFieldDataType,
-  NumberFieldSlug,
-  TextFieldDataType,
-  TextFieldSlug,
-} from '@/types/fieldsData'
+  NumberField,
+  NumberFieldSortKey,
+  TextField,
+  TextFieldSortKey,
+} from '../fields/types/fields'
 
 type Props = {
-  field: NumberFieldDataType | TextFieldDataType
-  sortBy: string
+  field: NumberField | TextField
+  sortBy: NumberFieldSortKey | TextFieldSortKey
   sortAsc: boolean
 }
 
@@ -36,6 +34,8 @@ function CountryListHeader({ field, sortBy, sortAsc }: Props) {
   const sortParameter = sortActive
     ? `${sortAsc ? '-' : ''}${field.slug}`
     : `${field.sortAscDefault ? '' : '-'}${field.slug}`
+
+  console.log(router.query)
 
   return (
     <Wrapper base={'country-list-header'} modifier={field.slug}>

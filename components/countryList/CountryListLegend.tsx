@@ -3,11 +3,11 @@
  * @param props.field - fieldsData field
  */
 
+import { NumberField, TextField } from '../fields/types/fields'
 import Wrapper from '../general/Wrapper'
-import { NumberFieldDataType, TextFieldDataType } from '@/types/fieldsData'
 
 type Props = {
-  field: NumberFieldDataType | TextFieldDataType
+  field: NumberField | TextField
 }
 
 // a single legend field for countries list

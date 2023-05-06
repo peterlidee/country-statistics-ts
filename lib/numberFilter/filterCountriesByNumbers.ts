@@ -1,5 +1,5 @@
+import { NumberFieldSlug } from '@/components/fields/types/fields'
 import { Country } from '@/types/country'
-import { NumberFieldSlug } from '@/types/fieldsData'
 
 /**
  * filter Country[] by numberfilters

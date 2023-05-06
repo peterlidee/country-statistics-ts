@@ -1,20 +1,17 @@
-// sort an array
-// key to sort by
-// by text or number
-// asc or desc
-
+import {
+  NumberFieldSortKey,
+  TextFieldSortKey,
+} from '@/components/fields/types/fields'
+import { isNumberFieldSortKey } from '@/components/fields/types/fieldsPredicates'
 import { Country } from '@/types/country'
-import { NumberFieldSortKey, TextFieldSortKey } from '@/types/fieldsData'
 
-// type predicate
-// if we sort numbers, we use (number - number)
-// it won't work with strings
-// so we need to let typescript know that we are dealing with NumberFieldSortKey
-function isNumberFieldSortKey(
-  sortKey: NumberFieldSortKey | TextFieldSortKey,
-): sortKey is NumberFieldSortKey {
-  return sortKey !== 'countryName'
-}
+/**
+ * sort countries array by sortKey in sortAsc order
+ * @param countries - Country[]
+ * @param sortKey - NumberFieldSortKey | TextFieldSortKey
+ * @param sortAsc - boolean
+ * @returns sorted Country[]
+ */
 
 export default function sortCountries(
   countries: Country[],

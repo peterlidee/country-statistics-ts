@@ -8,7 +8,7 @@ import { ParsedUrlQuery } from 'querystring'
  */
 
 export default function getParameterFromQuery(
-  parameter: 'hide' | 'regions',
+  parameter: 'hide' | 'regions' | 'sort',
   query: ParsedUrlQuery,
 ) {
   if (!query.hasOwnProperty(parameter) || query[parameter] === '') {

@@ -10,7 +10,7 @@ import roundNumber from '../helpers/roundNumber'
 // 1. density and densityPrettyFormat if area && population
 // 2. areaPrettyFormat if area
 // 3. populationPrettyFormat if population
-// 4. countryName added as extra field (makes it easier to sort)
+// 4. country added as extra field (makes it easier to sort)
 // 5. replace some faulty data
 
 export default function compileData(arr: any): Country[] {

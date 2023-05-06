@@ -32,10 +32,8 @@ function CountryListHeader({ field, sortBy, sortAsc }: Props) {
   // if current field is NOT the active field, use the defaults
   const sortActive = sortBy.includes(field.slug)
   const sortParameter = sortActive
-    ? `${sortAsc ? '-' : ''}${field.slug}`
-    : `${field.sortAscDefault ? '' : '-'}${field.slug}`
-
-  console.log(router.query)
+    ? `${sortAsc ? '' : '-'}${field.slug}`
+    : `${field.sortAscDefault ? '-' : ''}${field.slug}`
 
   return (
     <Wrapper base={'country-list-header'} modifier={field.slug}>

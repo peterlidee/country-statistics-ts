@@ -1,7 +1,7 @@
 /**
  * displays header row with all (non hidden) fields for CountryList
  * @param props.activeHidden - list of hidden fields (NumberField)
- * @param props.sortBy - NumberFieldSortKey | TextFieldSortKey
+ * @param props.sortBy - NumberFieldSlug| TextFieldSlug
  * @param props.sortAsc - boolean
  * @returns JSX.Element (all the fields that will form a row)
  */

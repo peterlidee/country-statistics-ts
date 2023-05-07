@@ -3,10 +3,10 @@
 import {
   NumberField,
   NumberFieldSlug,
-  NumberFieldSortKey,
+  // NumberFieldSortKey,
   TextField,
   TextFieldSlug,
-  TextFieldSortKey,
+  // TextFieldSortKey,
 } from './fields'
 
 // check if field is NumberField
@@ -39,10 +39,10 @@ export const isFieldSlug = (slug: string) => {
 }
 
 // check if sortKey is NumberFieldSortKey or not
-export function isNumberFieldSortKey(
-  sortKey: NumberFieldSortKey | TextFieldSortKey,
-): sortKey is NumberFieldSortKey {
-  const textFieldSortKey: TextFieldSortKey = 'country'
-  const textFieldSortKeyString = textFieldSortKey as string
-  return sortKey !== textFieldSortKeyString
-}
+// export function isNumberFieldSortKey(
+//   sortKey: NumberFieldSortKey | TextFieldSortKey,
+// ): sortKey is NumberFieldSortKey {
+//   const textFieldSortKey: TextFieldSortKey = 'country'
+//   const textFieldSortKeyString = textFieldSortKey as string
+//   return sortKey !== textFieldSortKeyString
+// }

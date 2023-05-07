@@ -4,9 +4,7 @@ import { Country } from '@/types/country'
 import fields from '@/components/fields/fields'
 import {
   NumberFieldSlug,
-  NumberFieldSortKey,
   TextFieldSlug,
-  TextFieldSortKey,
 } from '@/components/fields/types/fields'
 import getParameterFromQuery from '../query/getParameterFromQuery'
 import validateSortQuery from './validateSortQuery'

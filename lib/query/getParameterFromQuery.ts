@@ -2,7 +2,7 @@ import { ParsedUrlQuery } from 'querystring'
 
 /**
  * check if @query has @parameter and it's value is not empty
- * @param parameter literal //todo
+ * @param parameter literal union
  * @param query router.query
  * @returns - string[]
  */

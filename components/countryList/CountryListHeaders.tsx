@@ -10,9 +10,10 @@ import fields from '../fields/fields'
 import {
   NumberField,
   NumberFieldSlug,
-  NumberFieldSortKey,
+  // NumberFieldSortKey,
   TextField,
-  TextFieldSortKey,
+  TextFieldSlug,
+  // TextFieldSortKey,
 } from '../fields/types/fields'
 import Wrapper from '../general/Wrapper'
 import CountryListHeader from './CountryListHeader'
@@ -20,7 +21,7 @@ import CountryListLegend from './CountryListLegend'
 
 type Props = {
   activeHidden: NumberFieldSlug[]
-  sortBy: NumberFieldSortKey | TextFieldSortKey
+  sortBy: NumberFieldSlug | TextFieldSlug
   sortAsc: boolean
 }
 
@@ -33,8 +34,7 @@ function CountryListHeaders({ activeHidden, sortBy, sortAsc }: Props) {
       {fields.map((field: NumberField | TextField) => {
         // check if the field is to be displayed or not
         // only NumberFieldDataType can be hidden, activeHidden is of type NumberFieldSlug[]
-        // so we have to type narrow in order to compare
-        // activeHidden with field(NumberField).slug(NumberFieldSlug)
+        // so we have to type narrow in order to compare activeHidden with field(NumberField).slug(NumberFieldSlug)
         // in other words, if we don't narrow type, includes will try to compare type NumberFieldSlug from activeHidden with TextFieldSlug from fields[0] (= country with slug = TextFieldSlug)
         if (field.slug !== 'country' && activeHidden.includes(field.slug))
           return null

@@ -12,14 +12,14 @@ import Wrapper from '../general/Wrapper'
 import IconSort from '../svgSnippets/IconSort'
 import {
   NumberField,
-  NumberFieldSortKey,
+  NumberFieldSlug,
   TextField,
-  TextFieldSortKey,
+  TextFieldSlug,
 } from '../fields/types/fields'
 
 type Props = {
   field: NumberField | TextField
-  sortBy: NumberFieldSortKey | TextFieldSortKey
+  sortBy: NumberFieldSlug | TextFieldSlug
   sortAsc: boolean
 }
 

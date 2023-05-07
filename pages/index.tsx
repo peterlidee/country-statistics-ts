@@ -5,8 +5,6 @@ import getFilterData from '../lib/data/getFilterData'
 import { Country } from '@/types/country'
 import { FilterDataType } from '@/types/filterData'
 
-// todo change any
-
 export type HomeProps = {
   countries: Country[]
   filterData: FilterDataType

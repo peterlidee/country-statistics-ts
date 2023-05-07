@@ -3,7 +3,6 @@ import {
   isTextFieldSlug,
 } from '@/components/fields/types/fieldsPredicates'
 import { ValidSortData } from './applySorting'
-// import fields from '@/components/fields/fields'
 
 /**
  * validates if values[0] is of type NumberFieldSlug or TextFieldSlug
@@ -29,13 +28,7 @@ function validateSortQuery(
     // value is valid
     // strippedValue becomes type NumberFieldSlug | TextFieldSlug
     // console.log(strippedValue)
-
-    // but, we need the sortKey, not the slug, so, we look it up
-    // TODO: remove
-    // const currField = fields.filter((field) => field.slug === strippedValue)
-
     const sortValueData: ValidSortData = {
-      // sortBy: currField[0].slug,
       sortBy: strippedValue,
       sortAsc: valueIsNegated,
     }

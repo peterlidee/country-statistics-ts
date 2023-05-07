@@ -9,10 +9,6 @@ import {
 import getParameterFromQuery from '../query/getParameterFromQuery'
 import validateSortQuery from './validateSortQuery'
 
-// TODO: use getParameters from query and remove sortKey from fields, use slug instead
-// rework Country into country.country instead of countryName
-// TODO: remove sortAscDefault from fields???
-
 export type ValidSortData = {
   sortBy: TextFieldSlug | NumberFieldSlug
   sortAsc: boolean

@@ -10,10 +10,8 @@ import fields from '../fields/fields'
 import {
   NumberField,
   NumberFieldSlug,
-  // NumberFieldSortKey,
   TextField,
   TextFieldSlug,
-  // TextFieldSortKey,
 } from '../fields/types/fields'
 import Wrapper from '../general/Wrapper'
 import CountryListHeader from './CountryListHeader'

@@ -5,11 +5,11 @@ const fields: Fields = [
     slug: 'country',
     label: 'Country',
     sortAscDefault: true,
-    sortKey: 'countryName',
+    sortKey: 'country',
     sortType: 'text',
     legend: '',
     displayToggle: false,
-    key: 'countryName',
+    // key: 'countryName',
   },
   {
     slug: 'population',
@@ -19,7 +19,7 @@ const fields: Fields = [
     sortType: 'number',
     legend: 'Inhabitants',
     displayToggle: true,
-    key: 'populationPrettyFormat',
+    // key: 'populationPrettyFormat',
   },
   {
     slug: 'area',
@@ -29,7 +29,7 @@ const fields: Fields = [
     sortType: 'number',
     legend: 'Km²',
     displayToggle: true,
-    key: 'areaPrettyFormat',
+    // key: 'areaPrettyFormat',
   },
   {
     slug: 'density',
@@ -39,7 +39,7 @@ const fields: Fields = [
     sortType: 'number',
     legend: 'Inh./km²',
     displayToggle: true,
-    key: 'densityPrettyFormat',
+    // key: 'densityPrettyFormat',
   },
 ]
 

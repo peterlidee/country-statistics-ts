@@ -3,7 +3,9 @@ import sortCountries from './sortCountries'
 import { Country } from '@/types/country'
 import fields from '@/components/fields/fields'
 import {
+  NumberFieldSlug,
   NumberFieldSortKey,
+  TextFieldSlug,
   TextFieldSortKey,
 } from '@/components/fields/types/fields'
 import getParameterFromQuery from '../query/getParameterFromQuery'
@@ -11,14 +13,15 @@ import validateSortQuery from './validateSortQuery'
 
 // TODO: use getParameters from query and remove sortKey from fields, use slug instead
 // rework Country into country.country instead of countryName
+// TODO: remove sortAscDefault from fields???
 
 export type ValidSortData = {
-  sortBy: TextFieldSortKey | NumberFieldSortKey
+  sortBy: TextFieldSlug | NumberFieldSlug
   sortAsc: boolean
 }
 
 const defaultSortData: ValidSortData = {
-  sortBy: fields[0].sortKey,
+  sortBy: fields[0].slug,
   sortAsc: fields[0].sortAscDefault,
 }
 

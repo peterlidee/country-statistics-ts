@@ -42,7 +42,7 @@ export const isFieldSlug = (slug: string) => {
 export function isNumberFieldSortKey(
   sortKey: NumberFieldSortKey | TextFieldSortKey,
 ): sortKey is NumberFieldSortKey {
-  const textFieldSortKey: TextFieldSortKey = 'countryName'
+  const textFieldSortKey: TextFieldSortKey = 'country'
   const textFieldSortKeyString = textFieldSortKey as string
   return sortKey !== textFieldSortKeyString
 }

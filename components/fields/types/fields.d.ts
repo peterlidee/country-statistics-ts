@@ -4,7 +4,7 @@ type Field = {
 }
 
 export type TextFieldSlug = 'country'
-export type TextFieldSortKey = 'countryName'
+export type TextFieldSortKey = 'country'
 export type NumberFieldSlug = 'area' | 'population' | 'density'
 export type NumberFieldSortKey = NumberFieldSlug
 
@@ -14,7 +14,7 @@ export type TextField = Field & {
   sortKey: TextFieldSortKey
   displayToggle: false
   sortType: 'text'
-  key: TextFieldSortKey
+  // key: TextFieldSortKey
 }
 
 export type NumberField = Field & {
@@ -23,7 +23,7 @@ export type NumberField = Field & {
   sortKey: NumberFieldSortKey
   displayToggle: true
   sortType: 'number'
-  key: `${NumberFieldSlug}PrettyFormat`
+  // key: `${NumberFieldSlug}PrettyFormat`
 }
 
 export type Fields = [TextField, NumberField, NumberField, NumberField]

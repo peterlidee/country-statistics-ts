@@ -1,7 +1,7 @@
 import validateNumbersAgainstDefaults from './validateNumbersAgainstDefaults'
 
 /**
- * validate url query value
+ * validate url query value, not empty and contains ','
  * @param queryValue router.query[key]
  * @param defaults filterData[key].sliderStart, filterData[key].sliderEnd
  * @returns [number, number] either the values from query or defaults

@@ -2,16 +2,13 @@ import { Country } from '@/types/country'
 import formatNumber from '../helpers/formatNumber'
 import roundNumber from '../helpers/roundNumber'
 
-// this function compiles the data from the raw data
-// [A] it copies all required data to (simpler) props
-// [B] it add some extra data
-// [A] copy required data to simpler props
-// [B] takes arr of object, for each object add properties: 1,2,3
-// 1. density and densityPrettyFormat if area && population
-// 2. areaPrettyFormat if area
-// 3. populationPrettyFormat if population
-// 4. country added as extra field (makes it easier to sort)
-// 5. replace some faulty data
+// this function compiles the data from the raw api data
+// A. it copies some basic data to simpler props:
+// country, cca3, region, subregion
+// B. it initiates some defaults:
+// area, population, density + -PrettyFormat
+// C. it then overwrites these defaults when there is data and it's valid
+// D. replace some faulty data
 
 export default function compileData(arr: any): Country[] {
   // console.log('addExtraData called',)

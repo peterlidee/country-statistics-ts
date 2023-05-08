@@ -6,9 +6,15 @@ import fields from '@/components/fields/fields'
 import { NumberFieldSlug } from '@/components/fields/types/fields'
 import { isNumberField } from '@/components/fields/types/fieldsPredicates'
 
-// this function returns
-// - activeNumberFilters: array of string
-// - currentSelections: object with all numberFilters as keys and either the current selection or defaults as values
+/**
+ * retreives validated values
+ * @param hiddenFields - fields that are hidden (validated query.hide)
+ * @param routerQuery - router.query
+ * @param filterData - FilterDataType
+ * @returns { activeNumberFilters, currentSelections }
+ * @returns activeNumberFilters - NumberFilterSlugs[] that will filter data
+ * @returns currentSelections - for each NumberFilterSlug: a current and valid selection or the defaults
+ */
 
 export default function getNumberQueryData(
   hiddenFields: NumberFieldSlug[],
@@ -18,9 +24,9 @@ export default function getNumberQueryData(
   // 1. get NumberFieldsData
   const numberFields = fields.filter(isNumberField)
 
-  // 2. filter our the hidden fields (we know what's hidden from hide router.query)
-  const visibleNumberFields = numberFields.filter((numberField) =>
-    hiddenFields.includes(numberField.slug),
+  // 2. filter our the hidden fields (we know what's hidden from hiddenfields)
+  const visibleNumberFields = numberFields.filter(
+    (numberField) => !hiddenFields.includes(numberField.slug),
   )
 
   // 3. get the slugs of visible NumberFields

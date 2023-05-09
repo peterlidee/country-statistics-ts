@@ -9,10 +9,14 @@ jest.mock('../../general/Wrapper', () => {
 
 describe('components/countrylist/CountryListLegend.js', () => {
   test('It renders', () => {
-    render(<CountryListLegend field={{
-      slug: 'field',
-      legend: 'legend',
-    }} />)
+    render(
+      <CountryListLegend
+        field={{
+          slug: 'field',
+          legend: 'legend',
+        }}
+      />,
+    )
     expect(Wrapper).toHaveBeenCalled()
     expect(screen.getByText('legend')).toBeInTheDocument()
   })

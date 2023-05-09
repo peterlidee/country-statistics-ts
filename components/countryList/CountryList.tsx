@@ -109,6 +109,7 @@ function CountryList({ countries, filterData }: Props) {
             activeRegions={activeRegions}
             activeNumbers={activeNumbers}
           /> */}
+          {/* // TODO: remove aside */}
           <aside className='site__filters'></aside>
           <main className='country-list' style={gridTemplateColumnsStyle}>
             <CountryListHeaders

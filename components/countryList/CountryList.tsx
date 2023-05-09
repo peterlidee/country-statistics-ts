@@ -4,8 +4,8 @@ import { useRouter } from 'next/router'
 // hidden
 import getAndValidateHiddenQuery from '../../lib/settings/getAndValidateHiddenQuery'
 // region
+import getParameterFromQuery from '@/lib/query/getParameterFromQuery'
 import validateRegionsQuery from '../../lib/regionFilter/validateRegionsQuery'
-import getRegionsQuery from '../../lib/regionFilter/getRegionsQuery'
 import filterCountriesByRegion from '../../lib/regionFilter/filterCountriesByRegion'
 // numbers
 import getNumbersQueryData from '../../lib/numberFilter/getNumbersQueryData'
@@ -67,7 +67,7 @@ function CountryList({ countries, filterData }: Props) {
   // 2.A. apply region filters
   // check if there are active regionFilters or not
   const activeRegions = validateRegionsQuery(
-    getRegionsQuery(router.query),
+    getParameterFromQuery('regions', router.query),
     filterData.regionIndexes,
   )
   // run filter by region

@@ -13,7 +13,7 @@ describe('svgSnippets/IconLogo.js', () => {
 
   test('It receives the correct colors', () => {
     const { container } = render(<IconLogo />)
-    const svg = container.querySelector('svg')
+    const svg: SVGSVGElement = container.querySelector('svg') as SVGSVGElement
     expect(svg.querySelector('.logo-globe__earth')).toHaveAttribute(
       'fill',
       colors.blue,

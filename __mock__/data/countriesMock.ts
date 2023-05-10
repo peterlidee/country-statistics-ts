@@ -2,6 +2,8 @@
 // rawCountries mocks api call
 // extraDataCountries mocks addExtraData(rawCountries)
 
+import { Country } from '@/types/country'
+
 const rawCountries = [
   {
     name: { common: 'Austria' },
@@ -53,7 +55,7 @@ const rawCountries = [
   },
 ]
 // mocks addExtraData(rawCountries)
-const extraDataCountries = [
+const extraDataCountries: Country[] = [
   {
     country: 'Austria',
     cca3: 'AUT',
@@ -62,7 +64,7 @@ const extraDataCountries = [
     area: 83871,
     population: 8917205,
     density: 106,
-    densityPrettyFormat: 106,
+    densityPrettyFormat: '106',
     areaPrettyFormat: '83.871',
     populationPrettyFormat: '8.917.205',
   },
@@ -74,31 +76,31 @@ const extraDataCountries = [
     area: 43094,
     population: 5831404,
     density: 135,
-    densityPrettyFormat: 135,
+    densityPrettyFormat: '135',
     areaPrettyFormat: '43.094',
     populationPrettyFormat: '5.831.404',
   },
   {
-    countryName: 'Belgium',
+    country: 'Belgium',
     cca3: 'BEL',
     region: 'Europe',
     subregion: 'Western Europe',
     area: 30528,
     population: 11555997,
     density: 379,
-    densityPrettyFormat: 379,
+    densityPrettyFormat: '379',
     areaPrettyFormat: '30.528',
     populationPrettyFormat: '11.555.997',
   },
   {
-    countryName: 'Morocco',
+    country: 'Morocco',
     cca3: 'MAR',
     region: 'Africa',
     subregion: 'Northern Africa',
     area: 446550,
     population: 36910558,
     density: 83,
-    densityPrettyFormat: 83,
+    densityPrettyFormat: '83',
     areaPrettyFormat: '446.550',
     populationPrettyFormat: '36.910.558',
   },
@@ -110,7 +112,7 @@ const extraDataCountries = [
     area: 8870,
     population: 3194034,
     density: 360,
-    densityPrettyFormat: 360,
+    densityPrettyFormat: '360',
     areaPrettyFormat: '8.870',
     populationPrettyFormat: '3.194.034',
   },
@@ -122,9 +124,9 @@ const extraDataCountries = [
     area: 3903,
     population: 30,
     density: 0,
-    densityPrettyFormat: 0,
+    densityPrettyFormat: '0',
     areaPrettyFormat: '3.903',
-    populationPrettyFormat: 30,
+    populationPrettyFormat: '30',
   },
 ]
 

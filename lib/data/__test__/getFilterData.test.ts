@@ -74,7 +74,7 @@ describe('function getFilterData', () => {
     })
 
     test('It calls getNumberFilterData correctly for area', () => {
-      const filterData = getFilterData(extraDataCountries)
+      getFilterData(extraDataCountries)
       expect(getNumberFilterData).toHaveBeenNthCalledWith(
         1,
         [83871, 43094, 30528, 446550, 8870, 3903],

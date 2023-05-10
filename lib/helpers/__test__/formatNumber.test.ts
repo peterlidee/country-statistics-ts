@@ -2,7 +2,7 @@ import formatNumber from '../formatNumber'
 
 describe('function formatNumber', () => {
   test('It returns empty string when given empty string', () => {
-    expect(formatNumber('')).toBe('')
+    expect(formatNumber('' as unknown as number)).toBe('')
   })
   test('It return the input when the input < 1000', () => {
     expect(formatNumber(1)).toBe('1')

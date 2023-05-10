@@ -1,5 +1,5 @@
 export function calculateTriangleClass(
-  triangle: 'upper' | 'lower',
+  triangle: IconSortProps['triangle'],
   sortActive: IconSortProps['sortActive'],
   sortAsc: IconSortProps['sortAsc'],
 ): string {
@@ -17,9 +17,10 @@ export function calculateTriangleClass(
 type IconSortProps = {
   sortActive: boolean
   sortAsc: boolean
+  triangle: 'upper' | 'lower'
 }
 
-function IconSort({ sortActive, sortAsc }: IconSortProps) {
+function IconSort({ sortActive, sortAsc, triangle }: IconSortProps) {
   const upperTriangleClass = calculateTriangleClass(
     'upper',
     sortActive,

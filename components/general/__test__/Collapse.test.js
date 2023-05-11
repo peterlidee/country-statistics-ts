@@ -11,9 +11,9 @@ const ChildMock = jest.fn()
 
 const setupRender = () => {
   const { container } = render(
-    <Collapse label="label" extraClass="extraClass">
+    <Collapse label='label' extraClass='extraClass'>
       <ChildMock />
-    </Collapse>
+    </Collapse>,
   )
   const button = screen.getByRole('button')
   // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
@@ -23,7 +23,6 @@ const setupRender = () => {
 }
 
 describe('components/general/Collapse', () => {
-
   test('It renders', () => {
     const { button, content } = setupRender()
 
@@ -39,14 +38,13 @@ describe('components/general/Collapse', () => {
     setupRender()
     expect(Wrapper).toHaveBeenCalledWith(
       expect.objectContaining({
-        modifier: 'extraClass'
+        modifier: 'extraClass',
       }),
-      expect.anything()
+      expect.anything(),
     )
   })
 
   describe('Testing boldLabel', () => {
-
     test('It does not print a bold label when no boldLabel prop', () => {
       const { label } = setupRender()
       expect(label).not.toHaveStyle('fontWeight:700')
@@ -54,18 +52,16 @@ describe('components/general/Collapse', () => {
 
     test('It has a bold label when boldLabel prop is true', () => {
       render(
-        <Collapse label="label" boldLabel={true}>
+        <Collapse label='label' boldLabel={true}>
           <ChildMock />
-        </Collapse>
+        </Collapse>,
       )
       const label = screen.getByText(/label/i)
-      expect(label).toHaveStyle("fontWeight:700")
+      expect(label).toHaveStyle('fontWeight:700')
     })
-  
   })
-    
-  describe('It collapses', () => {
 
+  describe('It collapses', () => {
     test('It has the correct initial values', () => {
       const { button, content } = setupRender()
 
@@ -95,6 +91,5 @@ describe('components/general/Collapse', () => {
       expect(button).toHaveTextContent(/\+/)
       expect(content).toHaveStyle('display: none')
     })
-
   })
 })

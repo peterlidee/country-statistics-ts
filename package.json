@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest --watchAll",
+    "test": "jest --watch",
     "coverage": "jest --coverage",
     "ts": "tsc --noEmit --incremental",
     "ts:watch": "ts --watch"

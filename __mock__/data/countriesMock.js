@@ -2,8 +2,6 @@
 // rawCountries mocks api call
 // extraDataCountries mocks addExtraData(rawCountries)
 
-import { Country } from '@/types/country'
-
 const rawCountries = [
   {
     name: { common: 'Austria' },
@@ -55,7 +53,7 @@ const rawCountries = [
   },
 ]
 // mocks addExtraData(rawCountries)
-const extraDataCountries: Country[] = [
+const extraDataCountries = [
   {
     country: 'Austria',
     cca3: 'AUT',

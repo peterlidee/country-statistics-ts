@@ -1,5 +1,6 @@
 import { NumberFieldSlug } from '@/components/fields/types/fields'
 import { Country } from '@/types/country'
+import { CurrentSelectionsType } from '@/types/filterData'
 
 /**
  * filter Country[] by numberfilters
@@ -12,7 +13,7 @@ import { Country } from '@/types/country'
 function filterCountriesByNumbers(
   countries: Country[],
   activeNumberFilters: NumberFieldSlug[],
-  selections: { [slug in NumberFieldSlug]: [number, number] },
+  selections: CurrentSelectionsType,
 ) {
   // don't calculate anything if there are no filters
   if (activeNumberFilters.length == 0) return countries

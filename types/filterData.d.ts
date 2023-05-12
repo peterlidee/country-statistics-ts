@@ -20,3 +20,7 @@ export type FilterDataType = {
   density: NumberFilterDataType
   population: NumberFilterDataType
 }
+
+export type CurrentSelectionsType = {
+  [slug in NumberFieldSlug]: [number, number]
+}

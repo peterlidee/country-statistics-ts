@@ -7,9 +7,8 @@ import RegionFilter from './region/RegionFilter'
 import NumberFilter from './number/NumberFilter'
 
 import PropTypes from 'prop-types'
-import { FilterDataType } from '@/types/filterData'
+import { CurrentSelectionsType, FilterDataType } from '@/types/filterData'
 import { NumberFieldSlug } from '../fields/types/fields'
-import { CurrentSelectionsType } from '@/types/filters'
 import { isNumberFieldSlug } from '../fields/types/fieldsPredicates'
 
 type Props = {

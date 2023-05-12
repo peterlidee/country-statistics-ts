@@ -1,11 +1,10 @@
 import validateNumbersQuery from './validateNumbersQuery'
 import isNumberFilterActive from './isNumberFilterActive'
 import { ParsedUrlQuery } from 'querystring'
-import { FilterDataType } from '@/types/filterData'
+import { CurrentSelectionsType, FilterDataType } from '@/types/filterData'
 import fields from '@/components/fields/fields'
 import { NumberFieldSlug } from '@/components/fields/types/fields'
 import { isNumberField } from '@/components/fields/types/fieldsPredicates'
-import { CurrentSelectionsType } from '@/types/filters'
 
 /**
  * retreives validated values

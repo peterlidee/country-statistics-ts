@@ -5,6 +5,7 @@ import { FilterDataType } from '@/types/filterData'
 import fields from '@/components/fields/fields'
 import { NumberFieldSlug } from '@/components/fields/types/fields'
 import { isNumberField } from '@/components/fields/types/fieldsPredicates'
+import { CurrentSelectionsType } from '@/types/filters'
 
 /**
  * retreives validated values
@@ -34,7 +35,7 @@ export default function getNumberQueryData(
 
   // 4. for each visibleNumberFieldSlug, get the value from query and validate it (or set to default)
   // mapped type definition [slug in NumberFieldSlug]
-  const currentSelections: { [slug in NumberFieldSlug]: [number, number] } = {
+  const currentSelections: CurrentSelectionsType = {
     area: [0, 0],
     population: [0, 0],
     density: [0, 0],

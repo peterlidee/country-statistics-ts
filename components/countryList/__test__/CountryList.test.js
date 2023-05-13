@@ -14,7 +14,7 @@ import applySorting from '../../../lib/sorting/applySorting'
 // components
 import CountryList from '../CountryList'
 import CountryCount from '../../header/CountryCount'
-// import Filters from '../../filters/Filters'
+import Filters from '../../filters/Filters'
 import CountryListHeaders from '../CountryListHeaders'
 import CountryRow from '../CountryRow'
 
@@ -33,7 +33,7 @@ jest.mock('../../../lib/numberFilter/getNumbersQueryData')
 jest.mock('../../../lib/numberFilter/filterCountriesByNumbers')
 jest.mock('../../../lib/sorting/applySorting')
 jest.mock('../../header/CountryCount')
-// jest.mock('../../filters/Filters')
+jest.mock('../../filters/Filters')
 jest.mock('../CountryListHeaders')
 jest.mock('../CountryRow')
 
@@ -82,7 +82,7 @@ describe('components/countryList/CountryList', () => {
   test('It renders', () => {
     setup()
     expect(CountryCount).toHaveBeenCalled()
-    // expect(Filters).toHaveBeenCalled()
+    expect(Filters).toHaveBeenCalled()
     expect(screen.getByRole('main')).toBeInTheDocument()
     expect(CountryListHeaders).toHaveBeenCalled()
     expect(CountryRow).toHaveBeenCalledTimes(6)
@@ -146,59 +146,59 @@ describe('components/countryList/CountryList', () => {
       )
     })
 
-    // describe('Filters mock', () => {
-    //   test('Filters mock was called with correct props', () => {
-    //     setup()
-    //     expect(Filters).toHaveBeenCalledWith(
-    //       expect.objectContaining({
-    //         activeHidden: [],
-    //         activeRegions: [],
-    //         activeNumbers: expect.objectContaining({
-    //           activeNumberFilters: [],
-    //         }),
-    //       }),
-    //       expect.anything(),
-    //     )
-    //   })
+    describe('Filters mock', () => {
+      test('Filters mock was called with correct props', () => {
+        setup()
+        expect(Filters).toHaveBeenCalledWith(
+          expect.objectContaining({
+            activeHidden: [],
+            activeRegions: [],
+            activeNumbers: expect.objectContaining({
+              activeNumberFilters: [],
+            }),
+          }),
+          expect.anything(),
+        )
+      })
 
-    //   test('Filters mock was called with correct props when activeHidden population', () => {
-    //     getAndValidateHiddenQuery.mockReturnValue(['population'])
-    //     setup()
-    //     expect(Filters).toHaveBeenCalledWith(
-    //       expect.objectContaining({
-    //         activeHidden: ['population'],
-    //       }),
-    //       expect.anything(),
-    //     )
-    //   })
+      test('Filters mock was called with correct props when activeHidden population', () => {
+        getAndValidateHiddenQuery.mockReturnValue(['population'])
+        setup()
+        expect(Filters).toHaveBeenCalledWith(
+          expect.objectContaining({
+            activeHidden: ['population'],
+          }),
+          expect.anything(),
+        )
+      })
 
-    //   test('Filters mock was called with correct props when activeRegions Europe', () => {
-    //     validateRegionsQuery.mockReturnValue(['Europe'])
-    //     setup()
-    //     expect(Filters).toHaveBeenCalledWith(
-    //       expect.objectContaining({
-    //         activeRegions: ['Europe'],
-    //       }),
-    //       expect.anything(),
-    //     )
-    //   })
+      test('Filters mock was called with correct props when activeRegions Europe', () => {
+        validateRegionsQuery.mockReturnValue(['Europe'])
+        setup()
+        expect(Filters).toHaveBeenCalledWith(
+          expect.objectContaining({
+            activeRegions: ['Europe'],
+          }),
+          expect.anything(),
+        )
+      })
 
-    //   test('Filters mock was called with correct props when activeNumbers', () => {
-    //     getNumberQueryData.mockReturnValue({
-    //       activeNumberFilters: ['area'],
-    //       currentSelection: {},
-    //     })
-    //     setup()
-    //     expect(Filters).toHaveBeenCalledWith(
-    //       expect.objectContaining({
-    //         activeNumbers: expect.objectContaining({
-    //           activeNumberFilters: ['area'],
-    //         }),
-    //       }),
-    //       expect.anything(),
-    //     )
-    //   })
-    // })
+      test('Filters mock was called with correct props when activeNumbers', () => {
+        getNumberQueryData.mockReturnValue({
+          activeNumberFilters: ['area'],
+          currentSelection: {},
+        })
+        setup()
+        expect(Filters).toHaveBeenCalledWith(
+          expect.objectContaining({
+            activeNumbers: expect.objectContaining({
+              activeNumberFilters: ['area'],
+            }),
+          }),
+          expect.anything(),
+        )
+      })
+    })
 
     describe('CountryListHeaders', () => {
       test('It was called with the correct hidden props', () => {

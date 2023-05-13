@@ -20,8 +20,8 @@ describe('components/header/Header', () => {
       screen.getByRole('link', { name: /country statistics/i }),
     ).toBeInTheDocument()
     expect(IconLogo).toHaveBeenCalled()
-    expect(SettingsToggle).toHaveBeenCalled()
-    expect(SettingsOptions).toHaveBeenCalled()
+    expect(SettingsToggle).not.toHaveBeenCalled()
+    expect(SettingsOptions).not.toHaveBeenCalled()
   })
 
   test('It does not render settings mocks when home prop false', () => {

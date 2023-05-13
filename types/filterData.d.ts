@@ -1,3 +1,5 @@
+import { NumberFieldSlug } from '@/components/fields/types/fields'
+
 export type NumberFilterDataType = {
   sliderStart: number
   sliderEnd: number
@@ -23,4 +25,9 @@ export type FilterDataType = {
 
 export type CurrentSelectionsType = {
   [slug in NumberFieldSlug]: [number, number]
+}
+
+export type ActiveNumbersType = {
+  activeNumberFilters: NumberFieldSlug[]
+  currentSelections: CurrentSelectionsType
 }

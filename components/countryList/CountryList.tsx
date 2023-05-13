@@ -15,7 +15,7 @@ import applySorting from '../../lib/sorting/applySorting'
 
 // components
 import CountryCount from '../header/CountryCount'
-// import Filters from '../filters/Filters'
+import Filters from '../filters/Filters'
 import CountryListHeaders from './CountryListHeaders'
 import CountryRow from './CountryRow'
 
@@ -103,14 +103,12 @@ function CountryList({ countries, filterData }: Props) {
       {routerReady && (
         <>
           <CountryCount count={sortedCountries.length} />
-          {/* <Filters
+          <Filters
             filterData={filterData}
             activeHidden={activeHidden}
             activeRegions={activeRegions}
             activeNumbers={activeNumbers}
-          /> */}
-          {/* // TODO: remove aside */}
-          <aside className='site__filters'></aside>
+          />
           <main className='country-list' style={gridTemplateColumnsStyle}>
             <CountryListHeaders
               activeHidden={activeHidden}

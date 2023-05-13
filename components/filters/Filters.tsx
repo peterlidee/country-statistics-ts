@@ -7,7 +7,7 @@ import RegionFilter from './region/RegionFilter'
 import NumberFilter from './number/NumberFilter'
 
 import PropTypes from 'prop-types'
-import { CurrentSelectionsType, FilterDataType } from '@/types/filterData'
+import { ActiveNumbersType, FilterDataType } from '@/types/filterData'
 import { NumberFieldSlug } from '../fields/types/fields'
 import { isNumberFieldSlug } from '../fields/types/fieldsPredicates'
 
@@ -15,10 +15,7 @@ type Props = {
   filterData: FilterDataType
   activeHidden: NumberFieldSlug[]
   activeRegions: string[]
-  activeNumbers: {
-    activeNumberFilters: NumberFieldSlug[]
-    currentSelections: CurrentSelectionsType
-  }
+  activeNumbers: ActiveNumbersType
 }
 
 /**
@@ -57,7 +54,11 @@ function Filters({
           <Collapse
             key={`collapse-${filter}`}
             label={filter}
-            boldLabel={isFilterActive(filter, activeRegions, activeNumbers)}
+            boldLabel={isFilterActive(
+              filter,
+              activeRegions,
+              activeNumbers.activeNumberFilters,
+            )}
             extraClass='filter'
           >
             {filter == 'regions' && (

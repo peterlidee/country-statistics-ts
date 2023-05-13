@@ -27,11 +27,11 @@ describe('components/header/CountryCount', () => {
 
   test('It displays country singular', () => {
     render(<CountryCount count={1} />)
-    expect(screen.getByText('country')).toBeInTheDocument()
+    expect(screen.getByText(/country/i)).toBeInTheDocument()
   })
 
   test('It displays countries plural', () => {
     render(<CountryCount count={100} />)
-    expect(screen.getByText('countries')).toBeInTheDocument()
+    expect(screen.getByText(/countries/i)).toBeInTheDocument()
   })
 })

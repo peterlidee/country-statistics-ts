@@ -27,6 +27,7 @@ export function compileSingleCountry(rawCountry: any): SingleCountry {
     rawCountry?.coatOfArms?.svg || rawCountry?.coatOfArms?.png || ''
   return {
     countryName: rawCountry?.name?.common || '',
+    cca2: extractStringValueFromProp(rawCountry, 'cca2'),
     cca3: extractStringValueFromProp(rawCountry, 'cca3'),
     capital: extractStringValueFromProp(rawCountry, 'capital'),
     region: extractStringValueFromProp(rawCountry, 'region'),

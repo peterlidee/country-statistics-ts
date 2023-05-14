@@ -1,5 +1,6 @@
 export type SingleCountry = {
   countryName: string
+  cca2: string
   cca3: string
   capital: string
   region: string

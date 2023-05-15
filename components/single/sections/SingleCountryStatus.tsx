@@ -13,6 +13,16 @@ type Props = {
   children: React.ReactNode
 }
 
+/**
+ * Checks for error or returns child
+ * @param props.countryCode - string
+ * @param props.loading
+ * @param props.error - update to Error is needed, now boolean
+ * @param props.data - SingleCountry
+ * @param props.children
+ * @returns ReactNode
+ */
+
 function SingleCountryStatus({
   countryCode,
   loading,

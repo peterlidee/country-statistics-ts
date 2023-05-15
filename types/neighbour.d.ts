@@ -1,4 +1,4 @@
 export type Neighbour = {
-  name: string
+  countryName: string
   cca3: string
 }

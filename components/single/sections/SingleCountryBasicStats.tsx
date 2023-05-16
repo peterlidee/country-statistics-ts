@@ -7,6 +7,13 @@ type Props = {
   area: number
 }
 
+/**
+ * Displays formatted population, area and density
+ * @param props.population
+ * @param props.area
+ * @returns ReactNode
+ */
+
 function SingleCountryBasisStats({ population, area }: Props) {
   const populationPrettyFormat = formatNumber(roundNumber(population))
   const areaPrettyFormat = formatNumber(roundNumber(area))

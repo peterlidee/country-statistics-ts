@@ -20,7 +20,8 @@ function NeighbouringCountries({ borders }: Props) {
 
   // construct a simpler array of type Neighbour
   // if there is data and data is an array
-  let neighbouringCountries: Neighbour[]
+  let neighbouringCountries: Neighbour[] = []
+
   if (data && Array.isArray(data)) {
     neighbouringCountries = data.map((country) => {
       const countryName: string = country?.name?.common || ''

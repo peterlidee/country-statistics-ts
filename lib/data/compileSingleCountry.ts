@@ -1,6 +1,6 @@
 /**
  * cleans up rawCountry into structured singleCountry
- * @param rawCountry - a prased json fetch object
+ * @param rawCountry - a parsed json fetch object
  * @returns type SingleCountry
  */
 
@@ -27,6 +27,7 @@ export function compileSingleCountry(rawCountry: any): SingleCountry {
     rawCountry?.coatOfArms?.svg || rawCountry?.coatOfArms?.png || ''
   return {
     countryName: rawCountry?.name?.common || '',
+    tld: rawCountry?.tld?.[0] || '',
     cca2: extractStringValueFromProp(rawCountry, 'cca2'),
     cca3: extractStringValueFromProp(rawCountry, 'cca3'),
     capital: extractStringValueFromProp(rawCountry, 'capital'),

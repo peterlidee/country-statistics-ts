@@ -2,14 +2,14 @@
 // however, if we ever use fallback true on ssg, it might prove usefull again
 // so, we're leaving it in for now
 
-import { SingleCountry } from '@/types/singleCountry'
+import { SingleCountryType } from '@/types/singleCountry'
 import React from 'react'
 
 type Props = {
   countryCode: string
   loading: boolean
   error: boolean
-  data: SingleCountry
+  data: SingleCountryType
   children: React.ReactNode
 }
 
@@ -18,7 +18,7 @@ type Props = {
  * @param props.countryCode - string
  * @param props.loading
  * @param props.error - update to Error is needed, now boolean
- * @param props.data - SingleCountry
+ * @param props.data - SingleCountryType
  * @param props.children
  * @returns ReactNode
  */

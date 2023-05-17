@@ -1,4 +1,4 @@
-export type SingleCountry = {
+export type SingleCountryType = {
   countryName: string
   tld: string
   cca2: string

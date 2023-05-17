@@ -1,17 +1,17 @@
 import RenderLabelValue from '../region/RenderLabelValue'
 import ValidateNeighbouringCountries from '../neighbours/ValidateNeighbouringCountries'
-import { SingleCountry } from '@/types/singleCountry'
+import { SingleCountryType } from '@/types/singleCountry'
 
 /**
  * display 2 boxes: region and neighbours
  * @param loading
  * @param error
- * @param data: SingleCountry
+ * @param data: SingleCountryType
  * @returns ReactNode
  */
 
 type Props = {
-  data: SingleCountry
+  data: SingleCountryType
   error: boolean | undefined
   loading: boolean
 }

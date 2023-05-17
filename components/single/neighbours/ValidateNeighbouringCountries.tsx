@@ -1,11 +1,11 @@
-import { SingleCountry } from '@/types/singleCountry'
+import { SingleCountryType } from '@/types/singleCountry'
 import NeighbourComponent from './NeighbourComponent'
 import NeighbouringCountries from './NeighbouringCountries'
 
 type Props = {
   error: boolean | undefined
   loading: boolean
-  data: SingleCountry
+  data: SingleCountryType
 }
 
 function ValidateNeighbouringCountries({ loading, error, data }: Props) {

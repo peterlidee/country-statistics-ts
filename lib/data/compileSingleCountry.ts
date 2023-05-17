@@ -1,10 +1,10 @@
 /**
  * cleans up rawCountry into structured singleCountry
  * @param rawCountry - a parsed json fetch object
- * @returns type SingleCountry
+ * @returns SingleCountryType
  */
 
-import { SingleCountry } from '@/types/singleCountry'
+import { SingleCountryType } from '@/types/singleCountry'
 
 export function extractStringValueFromProp(
   obj: { [key: string]: string },
@@ -20,7 +20,7 @@ export function extractNumberValueFromProp(
   return obj?.[prop] ?? 0
 }
 
-export function compileSingleCountry(rawCountry: any): SingleCountry {
+export function compileSingleCountry(rawCountry: any): SingleCountryType {
   const borders: string[] = rawCountry?.borders || []
   const flag: string = rawCountry?.flags?.svg || rawCountry?.flags?.png || ''
   const coatOfArms: string =

@@ -1,3 +1,7 @@
+import {
+  CountryLatLng,
+  RegionOrSubregionCountries,
+} from '@/types/regionOrSubregionCountries'
 import useFetch from 'react-fetch-hook'
 
 /**
@@ -20,12 +24,7 @@ import useFetch from 'react-fetch-hook'
 type Props = {
   type: string
   label: string
-  children: (key: {
-    isLoading: boolean
-    error: undefined | useFetch.UseFetchError
-    data: unknown
-    endpoint: string
-  }) => JSX.Element
+  children: (key: RegionOrSubregionCountries) => JSX.Element
 }
 
 function FetchRegionCountries({ type, label, children }: Props) {
@@ -33,7 +32,9 @@ function FetchRegionCountries({ type, label, children }: Props) {
     label,
   )}?fields=latlng`
   const { isLoading, error, data } = useFetch(endpoint)
-  return children({ isLoading, error, data, endpoint })
+  // verify data
+  const verifiedData = Array.isArray(data) ? (data as CountryLatLng[]) : []
+  return children({ isLoading, error, data: verifiedData, endpoint })
 }
 
 export default FetchRegionCountries

@@ -20,6 +20,7 @@ const singleCountryMocks = [
     cca2: 'DZ',
     cca3: 'DZA',
     capital: 'Algiers',
+    subregion: '',
     region: 'Africa',
     borders: ['TUN', 'LBY', 'NER', 'ESH', 'MRT', 'MLI', 'MAR'],
     area: 2381741,
@@ -30,6 +31,7 @@ const singleCountryMocks = [
   // same country with no capital
   {
     countryName: 'Algeria',
+    capital: '',
     tld: '.dz',
     cca2: 'DZ',
     cca3: 'DZA',

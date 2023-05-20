@@ -2,12 +2,8 @@ import IconPan from '../../svgSnippets/IconPan'
 import { Active } from './MapControles'
 import { SingleCountryType } from '@/types/singleCountry'
 
-// the function renders a button that centers the map on the current country's capital
-// it makes a geocode request to get the capital bounds and saves it to state
-// if the bounds are in state, no request is made
-
 /**
- * render button for capital, on click, zooms and centers map on capital
+ * render button for capital, on click, make geocode request, zooms and centers map on capital bounds
  * @param props.singleCountry
  * @param props.active - what is map currently zoomed in on, state in MapControles
  * @param props.setActive - setState active
@@ -43,7 +39,7 @@ function MapCapitalButton({
     // set loading true
     setGeoCodeLoading(true)
     // calculate the bounds
-    const geoCoder = new window.google.maps.Geocoder()
+    const geoCoder = new google.maps.Geocoder()
     geoCoder.geocode(
       {
         address: `${singleCountry.capital} ${singleCountry.countryName}`,
@@ -52,7 +48,7 @@ function MapCapitalButton({
           : singleCountry.region,
       },
       function (results, status) {
-        if (status == 'OK') {
+        if (status === 'OK') {
           // we have a result
           const bounds = new google.maps.LatLngBounds()
           const viewport = results![0].geometry.viewport

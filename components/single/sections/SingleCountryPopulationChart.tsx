@@ -2,11 +2,15 @@ import SingleCountryFetch from '../SingleCountryFetch'
 import PopulationChartWidget from '../chart/PopulationChartWidget'
 import extractPopulationChartData from '../../../lib/single/extractPopulationChartData'
 
-import PropTypes from 'prop-types'
-
 type Props = {
   countryCode: string
 }
+
+/**
+ * Make api fetch, validates data and render PopulationChartWidget
+ * @param props.countryCode - cca3
+ * @returns PopulationChartWidget
+ */
 
 function SingleCountryPopulationChart({ countryCode }: Props) {
   // data endpoint info
@@ -67,10 +71,6 @@ function SingleCountryPopulationChart({ countryCode }: Props) {
       }}
     </SingleCountryFetch>
   )
-}
-
-SingleCountryPopulationChart.propTypes = {
-  countryCode: PropTypes.string.isRequired,
 }
 
 export default SingleCountryPopulationChart

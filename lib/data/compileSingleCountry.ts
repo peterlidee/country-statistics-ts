@@ -25,12 +25,16 @@ export function compileSingleCountry(rawCountry: any): SingleCountryType {
   const flag: string = rawCountry?.flags?.svg || rawCountry?.flags?.png || ''
   const coatOfArms: string =
     rawCountry?.coatOfArms?.svg || rawCountry?.coatOfArms?.png || ''
+  const capital: string =
+    rawCountry?.capital && Array.isArray(rawCountry.capital)
+      ? rawCountry.capital[0]
+      : ''
   return {
     countryName: rawCountry?.name?.common || '',
     tld: rawCountry?.tld?.[0] || '',
     cca2: extractStringValueFromProp(rawCountry, 'cca2'),
     cca3: extractStringValueFromProp(rawCountry, 'cca3'),
-    capital: extractStringValueFromProp(rawCountry, 'capital'),
+    capital,
     region: extractStringValueFromProp(rawCountry, 'region'),
     subregion: extractStringValueFromProp(rawCountry, 'subregion'),
     borders,

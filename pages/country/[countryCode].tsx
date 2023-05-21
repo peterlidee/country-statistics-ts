@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import SingleCountry from '../../components/single/SingleCountry'
-import { compileSingleCountry } from '@/lib/data/compileSingleCountry'
+import { compileSingleCountry } from '@/lib/single/compileSingleCountry'
 
 type Props = {
   countryCode: string

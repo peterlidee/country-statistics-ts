@@ -8,8 +8,8 @@ import NumberFilter from './number/NumberFilter'
 
 import PropTypes from 'prop-types'
 import { ActiveNumbersType, FilterDataType } from '@/types/filterData'
-import { NumberFieldSlug } from '../fields/types/fields'
-import { isNumberFieldSlug } from '../fields/types/fieldsPredicates'
+import { NumberFieldSlug } from '@/types/fields'
+import { isNumberFieldSlug } from '@/types/fieldsPredicates'
 
 type Props = {
   filterData: FilterDataType

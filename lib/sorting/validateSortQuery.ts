@@ -1,7 +1,4 @@
-import {
-  isNumberFieldSlug,
-  isTextFieldSlug,
-} from '@/components/fields/types/fieldsPredicates'
+import { isNumberFieldSlug, isTextFieldSlug } from '@/types/fieldsPredicates'
 import { ValidSortData } from './applySorting'
 
 /**

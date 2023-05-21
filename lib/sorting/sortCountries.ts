@@ -1,8 +1,5 @@
-import {
-  NumberFieldSlug,
-  TextFieldSlug,
-} from '@/components/fields/types/fields'
-import { isNumberFieldSlug } from '../../components/fields/types/fieldsPredicates'
+import { NumberFieldSlug, TextFieldSlug } from '@/types/fields'
+import { isNumberFieldSlug } from '@/types/fieldsPredicates'
 import { Country } from '@/types/country'
 
 /**

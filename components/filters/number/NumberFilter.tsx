@@ -5,7 +5,7 @@ import validateNumbersAgainstDefaults from '../../../lib/numberFilter/validateNu
 import FilterRange from './FilterRange'
 
 import PropTypes from 'prop-types'
-import { NumberFieldSlug } from '@/components/fields/types/fields'
+import { NumberFieldSlug } from '@/types/fields'
 import { ActiveNumbersType, NumberFilterDataType } from '@/types/filterData'
 
 type Props = {

@@ -1,9 +1,8 @@
 import { ParsedUrlQuery } from 'querystring'
 import getParameterFromQuery from '../query/getParameterFromQuery'
 import fields from '@/components/fields/fields'
-import { isNumberField } from '@/components/fields/types/fieldsPredicates'
-import { NumberFieldSlug } from '@/components/fields/types/fields'
-
+import { NumberFieldSlug } from '@/types/fields'
+import { isNumberField } from '@/types/fieldsPredicates'
 /**
  * gets query['hide'] and validates the value against allowed options
  * @param routerQuery - router.query

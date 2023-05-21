@@ -15,7 +15,7 @@ import {
   NumberFieldSlug,
   TextField,
   TextFieldSlug,
-} from '../fields/types/fields'
+} from '@/types/fields'
 
 type Props = {
   field: NumberField | TextField

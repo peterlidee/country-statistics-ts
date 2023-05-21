@@ -3,8 +3,8 @@ import isNumberFilterActive from './isNumberFilterActive'
 import { ParsedUrlQuery } from 'querystring'
 import { CurrentSelectionsType, FilterDataType } from '@/types/filterData'
 import fields from '@/components/fields/fields'
-import { NumberFieldSlug } from '@/components/fields/types/fields'
-import { isNumberField } from '@/components/fields/types/fieldsPredicates'
+import { NumberFieldSlug } from '@/types/fields'
+import { isNumberField } from '@/types/fieldsPredicates'
 
 /**
  * retreives validated values

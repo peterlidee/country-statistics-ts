@@ -1,5 +1,5 @@
-import { NumberFieldSlug } from '@/components/fields/types/fields'
-import { isNumberFieldSlug } from '@/components/fields/types/fieldsPredicates'
+import { NumberFieldSlug } from '@/types/fields'
+import { isNumberFieldSlug } from '@/types/fieldsPredicates'
 
 /**
  * checks if @filter is active

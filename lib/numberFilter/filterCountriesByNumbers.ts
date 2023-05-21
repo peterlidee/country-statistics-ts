@@ -1,4 +1,4 @@
-import { NumberFieldSlug } from '@/components/fields/types/fields'
+import { NumberFieldSlug } from '@/types/fields'
 import { Country } from '@/types/country'
 import { CurrentSelectionsType } from '@/types/filterData'
 

@@ -6,8 +6,8 @@
 import { useRouter } from 'next/router'
 import getAndValidateHiddenQuery from '../../lib/settings/getAndValidateHiddenQuery'
 import fields from '../fields/fields'
-import { isNumberField } from '../fields/types/fieldsPredicates'
-import { NumberFieldSlug } from '../fields/types/fields'
+import { NumberFieldSlug } from '@/types/fields'
+import { isNumberField } from '@/types/fieldsPredicates'
 
 function FieldSettings() {
   // we won't wait for router.isReady because this component is inside settingsToggle and will be collapsed on first pageload

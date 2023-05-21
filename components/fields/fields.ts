@@ -1,4 +1,4 @@
-import { Fields } from './types/fields'
+import { Fields } from '@/types/fields'
 
 const fields: Fields = [
   {

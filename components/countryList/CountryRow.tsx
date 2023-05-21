@@ -9,9 +9,9 @@
 import Link from 'next/link'
 import Wrapper from '../general/Wrapper'
 import { Country } from '@/types/country'
-import { NumberFieldSlug } from '../fields/types/fields'
+import { NumberFieldSlug } from '@/types/fields'
 import fields from '../fields/fields'
-import { isNumberField } from '../fields/types/fieldsPredicates'
+import { isNumberField } from '@/types/fieldsPredicates'
 
 type Props = {
   country: Country

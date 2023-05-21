@@ -2,10 +2,7 @@ import { ParsedUrlQuery } from 'querystring'
 import sortCountries from './sortCountries'
 import { Country } from '@/types/country'
 import fields from '@/components/fields/fields'
-import {
-  NumberFieldSlug,
-  TextFieldSlug,
-} from '@/components/fields/types/fields'
+import { NumberFieldSlug, TextFieldSlug } from '@/types/fields'
 import getParameterFromQuery from '../query/getParameterFromQuery'
 import validateSortQuery from './validateSortQuery'
 

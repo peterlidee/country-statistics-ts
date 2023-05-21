@@ -12,7 +12,7 @@ import {
   NumberFieldSlug,
   TextField,
   TextFieldSlug,
-} from '../fields/types/fields'
+} from '@/types/fields'
 import Wrapper from '../general/Wrapper'
 import CountryListHeader from './CountryListHeader'
 import CountryListLegend from './CountryListLegend'

@@ -60,8 +60,10 @@ export default function compileWeatherData(data: unknown, countryCode: string) {
         typeof data.main === 'object'
       ) {
         const temp = data.main
-        if ('temp_min' in temp) forecast.tempMin = temp.temp_min as number
-        if ('temp_max' in temp) forecast.tempMax = temp.temp_max as number
+        if ('temp_min' in temp)
+          forecast.tempMin = Math.ceil(temp.temp_min as number)
+        if ('temp_max' in temp)
+          forecast.tempMax = Math.ceil(temp.temp_max as number)
       }
       // get the wind
       if (
@@ -70,7 +72,9 @@ export default function compileWeatherData(data: unknown, countryCode: string) {
         typeof data.wind === 'object'
       ) {
         const wind = data.wind
-        if ('speed' in wind) forecast.windSpeed = wind.speed as number
+        // convert to kmph and round
+        if ('speed' in wind)
+          forecast.windSpeed = Math.round((wind.speed as number) * 3.6)
         if ('deg' in wind) forecast.windDeg = wind.deg as number
       }
     }

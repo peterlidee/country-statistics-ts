@@ -40,9 +40,11 @@ export default function compileWeatherData(data: unknown, countryCode: string) {
       if (
         'weather' in data &&
         data.weather !== null &&
-        typeof data.weather === 'object'
+        Array.isArray(data.weather) &&
+        data.weather[0] !== null &&
+        typeof data.weather[0] === 'object'
       ) {
-        const weatherObj = data.weather
+        const weatherObj = data.weather[0]
         if ('description' in weatherObj) {
           forecast.description = weatherObj.description as string
         }

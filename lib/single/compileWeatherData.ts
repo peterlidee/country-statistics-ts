@@ -7,7 +7,6 @@ type Forecast = {
   capitalName: string
   description: string
   dayNight: 'day' | 'night'
-  code: WeatherCode
   weather: WeatherString
   tempMin: number | '__'
   tempMax: number | '__'
@@ -21,7 +20,6 @@ export default function compileWeatherData(data: unknown, countryCode: string) {
     capitalName: countryCode,
     description: '',
     dayNight: 'day',
-    code: '404',
     weather: 'nodata',
     tempMin: '__',
     tempMax: '__',
@@ -52,7 +50,6 @@ export default function compileWeatherData(data: unknown, countryCode: string) {
           const icon = weatherObj.icon as string
           forecast.dayNight = icon[2] == 'd' ? 'day' : 'night'
           const code = icon.slice(0, 2) as WeatherCode
-          forecast.code = code
           forecast.weather = weatherCodes[code]
         }
       }

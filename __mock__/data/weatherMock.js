@@ -1,27 +1,35 @@
-const weatherMock = {
-  "weather":[
-    {
-      "id":800,
-      "main":"Clear",
-      "description":"clear sky",
-      "icon":"01d"
-    }
-  ],
-  "main":{
-    "temp":38.9,
-    "temp_min":35.9,
-    "temp_max":38.9,
+const weatherMocks = [
+  {
+    coord: { lon: 4.3488, lat: 50.8504 },
+    weather: [
+      { id: 803, main: 'Clouds', description: 'broken clouds', icon: '04d' },
+    ],
+    base: 'stations',
+    main: {
+      temp: 18.55,
+      feels_like: 18.47,
+      temp_min: 15.99,
+      temp_max: 21.51,
+      pressure: 1017,
+      humidity: 77,
+    },
+    visibility: 6000,
+    wind: { speed: 3.6, deg: 300 },
+    clouds: { all: 75 },
+    dt: 1684761485,
+    sys: {
+      type: 1,
+      id: 1227,
+      country: 'BE',
+      sunrise: 1684727088,
+      sunset: 1684784038,
+    },
+    timezone: 7200,
+    id: 2800866,
+    name: 'Brussels',
+    cod: 200,
   },
-  "visibility":10000,
-  "wind":{
-    "speed":4.12,
-    "deg":360
-  },
-  "clouds":{
-    "all":0
-  },
-  "id":2507480,
-  "name":"Algiers",
-}
+  { cod: '404', message: 'city not found' },
+]
 
-export default weatherMock;
+export { weatherMocks }

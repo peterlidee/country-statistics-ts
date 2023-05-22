@@ -11,7 +11,7 @@ type Forecast = {
   weather: WeatherString
   tempMin: number | '__'
   tempMax: number | '__'
-  windDeg: number | '__'
+  windDeg: number
   windSpeed: number | '__'
 }
 
@@ -25,7 +25,7 @@ export default function compileWeatherData(data: unknown, countryCode: string) {
     weather: 'nodata',
     tempMin: '__',
     tempMax: '__',
-    windDeg: '__',
+    windDeg: 90,
     windSpeed: '__',
   }
   // first check if data is object

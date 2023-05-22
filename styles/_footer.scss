@@ -1,6 +1,6 @@
 .site__footer {
   margin-top: 5em;
-  background: $black;
+  background: var(--cs-black);
 }
 
 .footer {
@@ -17,33 +17,33 @@
   }
   &__title {
     @extend %mono-font;
-    color: $white;
+    color: var(--cs-white);
     font-size: 1.15em;
     font-weight: 700;
     text-transform: capitalize;
   }
   &__text {
-    color: $lightGrey;
+    color: var(--cs-lightGrey);
     margin: 0;
   }
   &__section {
     display: flex;
     flex-direction: column;
     a {
-      color: $blue;
+      color: var(--cs-blue);
       margin-bottom: 0.5em;
     }
   }
   &__subtitle {
     @extend %small-lower-bold;
-    color: $lightGrey;
+    color: var(--cs-lightGrey);
     margin: 0 0 0.5em 0;
   }
   &__footer {
-    color: $lightGrey;
+    color: var(--cs-lightGrey);
   }
   &__contact-link {
-    color: $lightGrey;
+    color: var(--cs-lightGrey);
     margin-right: 0.5em;
   }
 }
@@ -52,14 +52,14 @@
 .footer__logo {
   .logo-globe {
     &__meridians {
-      stroke: $black;
+      stroke: var(--cs-black);
     }
     &__parallels {
-      fill: $black;
+      fill: var(--cs-black);
     }
   }
   .logo__divider {
-    fill: $lightGrey;
+    fill: var(--cs-lightGrey);
   }
   .logo__graph {
     fill: #444;

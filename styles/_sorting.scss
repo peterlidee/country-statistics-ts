@@ -18,9 +18,9 @@
 
   &--upper,
   &--lower {
-    fill: $lightGrey;
+    fill: var(--cs-lightGrey);
     &--active {
-      fill: $blue;
+      fill: var(--cs-blue);
     }
   }
 }

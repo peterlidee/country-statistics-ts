@@ -16,7 +16,7 @@
     margin-right: 0.25em;
     &--subfilter {
       font-size: 16px;
-      background: $blue;
+      background: var(--cs-blue);
       color: #fff;
     }
   }

@@ -54,7 +54,7 @@
     @extend %small-lower-bold;
   }
   &__value {
-    color: $lightText;
+    color: var(--cs-lightText);
     margin-bottom: 0.75em;
   }
 }
@@ -108,7 +108,7 @@
     display: inline-block;
     width: 8px;
     height: 8px;
-    background: $lightGrey;
+    background: var(--cs-lightGrey);
     margin-right: 0.25em;
   }
   &:first-child {
@@ -116,12 +116,12 @@
   }
   &--active,
   &:hover {
-    color: $black;
+    color: var(--cs-black);
   }
   &--active {
     font-weight: 500;
     &:before {
-      background: $blue;
+      background: var(--cs-blue);
     }
   }
 }
@@ -136,10 +136,10 @@
   }
 }
 .neighbour-country {
-  color: $lightText;
+  color: var(--cs-lightText);
   transition: color ease-out 0.125s;
   &:hover {
-    color: $black;
+    color: var(--cs-black);
   }
 }
 

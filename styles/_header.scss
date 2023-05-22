@@ -17,7 +17,7 @@
     font-weight: 700;
     text-transform: capitalize;
     margin: 0;
-    color: $black;
+    color: var(--cs-black);
   }
 }
 .icon__logo {
@@ -74,13 +74,13 @@
 
 // settings icon
 .icon__settings {
-  fill: $lightGrey;
+  fill: var(--cs-lightGrey);
   transition: fill ease-in 0.125s, transform ease-in 0.25s;
   .settings__button:hover & {
-    fill: $black;
+    fill: var(--cs-black);
   }
   .settings__button--active & {
-    fill: $black;
+    fill: var(--cs-black);
     transform: rotate(100deg);
   }
 }
@@ -97,7 +97,7 @@
   margin-bottom: 1em;
   &__number {
     @extend %mono-font;
-    background: $blue;
+    background: var(--cs-blue);
     color: #fff;
     padding: 0.1em 0.25em;
   }

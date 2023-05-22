@@ -1,12 +1,10 @@
 // should correspond to config/color.js
-$white: #f9f9f9;
-$black: #222222;
-$lightText: #666666;
-$lightGrey: #cccccc;
-$blue: #548bf4;
-
-$error: #c00;
 
 :root {
-  --cs-black: #000;
+  --cs-white: #f9f9f9;
+  --cs-black: #222222;
+  --cs-lightText: #666666;
+  --cs-lightGrey: #cccccc;
+  --cs-blue: #548bf4;
+  --cs-error: #c00;
 }

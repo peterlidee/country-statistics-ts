@@ -36,7 +36,7 @@
 .weather__component {
   &__header {
     @extend %small-lower;
-    border-bottom: 1px solid $black;
+    border-bottom: 1px solid var(--cs-black);
     text-align: center;
   }
   &__footer {
@@ -74,18 +74,18 @@
   }
 }
 .winddirection__pointer {
-  fill: $black;
+  fill: var(--cs-black);
 }
 
 // the night versions
 .night,
 .clear {
-  color: $white;
+  color: var(--cs-white);
   .weather__component__header {
-    border-bottom: 1px solid $white;
+    border-bottom: 1px solid var(--cs-white);
   }
   .winddirection__pointer {
-    fill: $white;
+    fill: var(--cs-white);
   }
 }
 
@@ -93,7 +93,7 @@ $day-grey: #e2e2e2;
 $night-grey: #191919;
 
 .day {
-  background: $blue;
+  background: var(--cs-blue);
   // .clear   { }
   .few {
     background: transparentize($day-grey, 0.5);
@@ -148,7 +148,7 @@ $night-grey: #191919;
 // styling the icons
 
 .cloud1 {
-  fill: $white;
+  fill: var(--cs-white);
 }
 .cloud2 {
   fill: #ccc;
@@ -168,16 +168,16 @@ $night-grey: #191919;
   }
 }
 .raindrops line {
-  stroke: $blue;
+  stroke: var(--cs-blue);
 }
 .lightning {
   fill: #e2c400;
 }
 .snow {
-  fill: $white;
+  fill: var(--cs-white);
 }
 .mist line {
-  stroke: $white;
+  stroke: var(--cs-white);
 }
 
 .day {
@@ -196,5 +196,5 @@ $night-grey: #191919;
       fill: #888;
     }
   }
-  // .raindrops line{ stroke: $white; }
+  // .raindrops line{ stroke: var(--cs-white); }
 }

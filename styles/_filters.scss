@@ -10,8 +10,8 @@
 .filters {
   padding: 1em 0;
   margin-bottom: 4em;
-  border-top: 1px solid $lightGrey;
-  border-bottom: 1px solid $lightGrey;
+  border-top: 1px solid var(--cs-lightGrey);
+  border-bottom: 1px solid var(--cs-lightGrey);
 
   &--closed {
     display: none;
@@ -81,7 +81,7 @@
       padding-left: 1.25em;
     }
     &__subregion {
-      border: 1px solid $lightGrey;
+      border: 1px solid var(--cs-lightGrey);
       padding: 0.25em 1.25em;
       margin-top: 0.25em;
       margin-bottom: 0.4em;
@@ -98,7 +98,7 @@
     @extend %reset-button;
     margin-top: 0.75em;
     margin-left: 1.25em;
-    background: $black;
+    background: var(--cs-black);
     color: #fff;
     padding: 0 0.5em;
     border-radius: 3px;
@@ -120,7 +120,7 @@
       align-self: end;
       @extend %reset-button;
       font-size: 16px;
-      background: $blue;
+      background: var(--cs-blue);
       color: #fff;
       font-weight: 700;
       padding: 0 0.65em;
@@ -128,13 +128,13 @@
     }
     &__label {
       font-size: 16px;
-      color: $lightText;
+      color: var(--cs-lightText);
     }
     &__input {
       width: 100%;
       @extend %mono-font;
       font-size: 16px;
-      border: 1px solid $lightGrey;
+      border: 1px solid var(--cs-lightGrey);
       border-radius: 3px;
       padding: 0.15em 0 0.15em 0.5em;
     }
@@ -149,7 +149,7 @@
   &__count {
     font-size: 14px;
     margin-left: 0.5em;
-    color: $lightText;
+    color: var(--cs-lightText);
     &-inner {
       @extend %mono-font;
     }
@@ -158,14 +158,14 @@
 
 // filter icon
 .icon__filters {
-  fill: $lightGrey;
+  fill: var(--cs-lightGrey);
   transition: fill ease-in 0.125s;
   margin-right: 0.5em;
 
   .filters__toggle-button:hover & {
-    fill: $black;
+    fill: var(--cs-black);
   }
   .filters__toggle-button--active & {
-    fill: $black;
+    fill: var(--cs-black);
   }
 }

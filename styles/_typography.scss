@@ -1,7 +1,7 @@
 body {
   font: 400 100%/1.5em 'Quicksand', sans-serif;
-  color: $black;
-  background: $white;
+  color: var(--cs-black);
+  background: var(--cs-white);
 }
 
 @media screen and (min-width: 40em) {

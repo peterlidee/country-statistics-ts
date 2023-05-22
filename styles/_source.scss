@@ -16,7 +16,7 @@
     .sources__home & {
       margin: 2em 0 0 0;
       padding-top: 1em;
-      border-top: 1px solid $lightGrey;
+      border-top: 1px solid var(--cs-lightGrey);
     }
   }
 
@@ -26,13 +26,13 @@
     height: 8px;
     border-radius: 50%;
     margin-top: 10px;
-    background: $lightGrey;
+    background: var(--cs-lightGrey);
 
     &--error {
-      background: $error;
+      background: var(--cs-error);
     }
     &--loaded {
-      background: $blue;
+      background: var(--cs-blue);
     }
   }
 
@@ -42,17 +42,17 @@
     flex: 0 0 4em;
   }
   &__link {
-    color: $black;
+    color: var(--cs-black);
     overflow-wrap: anywhere;
   }
   &__nolink {
     overflow-wrap: anywhere;
   }
   &__errormessage {
-    color: $error;
+    color: var(--cs-error);
   }
 }
 
 .error-message {
-  color: $error;
+  color: var(--cs-error);
 }

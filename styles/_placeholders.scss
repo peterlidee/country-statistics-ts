@@ -22,5 +22,5 @@
 
 %small-lower-light {
   @extend %small-lower;
-  color: $lightText;
+  color: var(--cs-lightText);
 }

@@ -1,136 +1,113 @@
 import { screen, render } from '@testing-library/react'
 
-import weatherMock from '../../../../__mock__/data/weatherMock'
+import {
+  validForecast,
+  invalidForecast,
+} from '../../../../__mock__/data/weatherMock'
 import WeatherWidget from '../WeatherWidget'
+import compileWeatherData from '../../../../lib/single/compileWeatherData'
 import IconWindDirection from '../../../svgSnippets/IconWindDirection'
 import IconWeather from '../../../svgSnippets/IconWeather'
 
 jest.mock('../../../svgSnippets/IconWindDirection')
 jest.mock('../../../svgSnippets/IconWeather')
+jest.mock('../../../../lib/single/compileWeatherData')
 
 describe('components/single/weather/WeatherWidget', () => {
-
-  test('It renders with data', () => {
+  test('It renders all fixed text', () => {
+    compileWeatherData.mockReturnValue(validForecast)
     render(
-      <WeatherWidget 
-        loading={false} 
-        error={false} 
-        data={weatherMock} 
-        countryCode="DZA" />
+      <WeatherWidget
+        loading={false}
+        error={false}
+        data={{}}
+        countryCode='ABC'
+      />,
     )
-    expect(screen.getByText(/weather in algiers/i)).toBeInTheDocument()
-    expect(screen.getByText(/clear sky/i)).toBeInTheDocument()
-    expect(screen.getByText(/39/i)).toBeInTheDocument()
-    expect(screen.getByText(/36/i)).toBeInTheDocument()
-    expect(IconWeather).toHaveBeenCalledWith(
-      expect.objectContaining({
-        type: 'clear'
-      }),
-      expect.anything()
-    )
-    expect(IconWindDirection).toHaveBeenCalledWith(
-      expect.objectContaining({
-        deg: 360
-      }),
-      expect.anything()
-    )
-    expect(screen.getByText(/15/i)).toBeInTheDocument()
+    expect(screen.getByText(/weather in/i)).toBeInTheDocument()
+    expect(screen.getByText(/temp/i)).toBeInTheDocument()
+    expect(screen.getByText(/°C/i)).toBeInTheDocument()
+    expect(screen.getByText(/wind/i)).toBeInTheDocument()
+    expect(screen.getByText(/km\/h/i)).toBeInTheDocument()
   })
 
-  test('It renders with no data', () => {
+  test('It renders the data', () => {
+    compileWeatherData.mockReturnValue(validForecast)
     render(
-      <WeatherWidget 
-        loading={false} 
-        error={false} 
-        data={undefined} 
-        countryCode="DZA" />
+      <WeatherWidget
+        loading={false}
+        error={false}
+        data={{}}
+        countryCode='ABC'
+      />,
     )
-    expect(screen.getByText(/weather in DZA/i)).toBeInTheDocument()
-    expect(screen.getAllByText('__')).toHaveLength(3)
+    expect(compileWeatherData).toHaveBeenCalled()
+    expect(screen.getByText(/brussels/i)).toBeInTheDocument()
+    expect(screen.getByText(16)).toBeInTheDocument()
+    expect(screen.getByText(22)).toBeInTheDocument()
+    expect(screen.getByText(13)).toBeInTheDocument()
+    expect(screen.getByText(/broken clouds/i)).toBeInTheDocument()
+  })
+
+  test('It renders the icons', () => {
+    compileWeatherData.mockReturnValue(validForecast)
+    render(
+      <WeatherWidget
+        loading={false}
+        error={false}
+        data={{}}
+        countryCode='ABC'
+      />,
+    )
     expect(IconWeather).toHaveBeenCalledWith(
-      expect.objectContaining({
-        type: 'nodata'
-      }),
-      expect.anything()
+      { type: 'broken' },
+      expect.anything(),
     )
     expect(IconWindDirection).toHaveBeenCalledWith(
-      expect.objectContaining({
-        deg: 90
-      }),
-      expect.anything()
+      { deg: 300 },
+      expect.anything(),
     )
   })
 
-  test('It renders day correctly', () => {
-    const weatherMockDay = { weather :[
-      { icon: '01d' }
-    ]}
+  test('It renders the correct classes', () => {
+    compileWeatherData.mockReturnValue(validForecast)
     const { container } = render(
-      <WeatherWidget 
-        loading={false} 
-        error={false} 
-        data={weatherMockDay} 
-        countryCode="DZA" />
+      <WeatherWidget
+        loading={false}
+        error={false}
+        data={{}}
+        countryCode='ABC'
+      />,
     )
+
     // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
     expect(container.querySelector('.day')).toBeInTheDocument()
-  })
-
-  test('It renders night correctly', () => {
-    const weatherMockNight = { weather :[
-      { icon: '01n' }
-    ]}
-    const { container } = render(
-      <WeatherWidget 
-        loading={false} 
-        error={false} 
-        data={weatherMockNight} 
-        countryCode="DZA" />
-    )
     // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
-    expect(container.querySelector('.night')).toBeInTheDocument()
-  })
-
-  test('It uses the correct code 01', () => {
-    const weatherMockCode = { weather :[
-      { icon: '01d' }
-    ]}
-    const { container } = render(
-      <WeatherWidget 
-        loading={false} 
-        error={false} 
-        data={weatherMockCode} 
-        countryCode="DZA" />
-    )
+    expect(container.querySelector('.night')).not.toBeInTheDocument()
     // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
-    expect(container.querySelector('.clear')).toBeInTheDocument()
+    expect(container.querySelector('.broken')).toBeInTheDocument()
   })
 
-  test('It uses the correct code 10', () => {
-    const weatherMockCode = { weather :[
-      { icon: '10d' }
-    ]}
-    const { container } = render(
-      <WeatherWidget 
-        loading={false} 
-        error={false} 
-        data={weatherMockCode} 
-        countryCode="DZA" />
+  test('It renders with invalid data', () => {
+    compileWeatherData.mockReturnValue(invalidForecast)
+    render(
+      <WeatherWidget
+        loading={false}
+        error={false}
+        data={{}}
+        countryCode='ABC'
+      />,
     )
-    // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
-    expect(container.querySelector('.rain')).toBeInTheDocument()
-  })
-
-  test('It uses the correct no code', () => {
-    const { container } = render(
-      <WeatherWidget 
-        loading={false} 
-        error={false} 
-        data={undefined} 
-        countryCode="DZA" />
+    expect(screen.getByText(/ABC/i)).toBeInTheDocument()
+    expect(screen.getByText(/city not found/i)).toBeInTheDocument()
+    expect(screen.getAllByText('__')).toHaveLength(3)
+    expect(IconWeather).toHaveBeenCalledWith(
+      { type: 'nodata' },
+      expect.anything(),
     )
-    // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
-    expect(container.querySelector('.nodata')).toBeInTheDocument()
+    expect(IconWindDirection).toHaveBeenCalledWith(
+      { deg: 90 },
+      expect.anything(),
+    )
   })
-
 })

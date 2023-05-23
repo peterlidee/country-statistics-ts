@@ -14,7 +14,7 @@ import compileWeatherData from '@/lib/single/compileWeatherData'
 type Props = {
   loading: boolean
   error: undefined | Error
-  data: any
+  data: unknown
   countryCode: string
 }
 

@@ -1,26 +1,19 @@
 /**
- * renders label and value, with loading and no value options
- * value is garantueed but might be empty
- * @param props.loading
+ * renders label and value, with empty value option
  * @param props.value
  * @param props.label
  * @returns React.ReactNode
  */
 
 type Props = {
-  loading: boolean
   value: string
   label: string
 }
 
-const RenderLabelValue = ({ loading, value, label }: Props) => (
+const RenderLabelValue = ({ value, label }: Props) => (
   <>
     <div className='single-country__label'>{label}</div>
-    <div className='single-country__value'>
-      {loading && '...'}
-      {!loading && value === '' && 'No data'}
-      {!loading && value}
-    </div>
+    <div className='single-country__value'>{value === '' ? 'None' : value}</div>
   </>
 )
 

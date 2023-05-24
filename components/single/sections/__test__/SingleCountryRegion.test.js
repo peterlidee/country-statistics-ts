@@ -1,11 +1,11 @@
-import { screen, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
 
 import SingleCountryRegion from '../SingleCountryRegion'
 import RenderLabelValue from '../../region/RenderLabelValue'
-import ValidateNeighbouringCountries from '../../neighbours/ValidateNeighbouringCountries'
+import NeighbouringCountries from '../../neighbours/NeighbouringCountries'
 
 jest.mock('../../region/RenderLabelValue')
-jest.mock('../../neighbours/ValidateNeighbouringCountries')
+jest.mock('../../neighbours/NeighbouringCountries')
 
 const data = [
   {
@@ -23,54 +23,29 @@ const data = [
 describe('components/single/sections/SingleCountryRegion', () => {
   test('It renders with data', () => {
     render(
-      <SingleCountryRegion loading={false} error={undefined} data={data[0]} />,
+      <SingleCountryRegion
+        singleCountry={data[0]}
+        neighbours={[]}
+        neighboursEndpoint='neighbourEndpoint'
+      />,
     )
     expect(RenderLabelValue.mock.calls).toHaveLength(3)
     expect(RenderLabelValue.mock.calls[0][0]).toMatchObject({
-      loading: false,
       value: 'Region',
       label: 'region',
     })
     expect(RenderLabelValue.mock.calls[1][0]).toMatchObject({
-      loading: false,
       value: 'Subregion',
       label: 'subregion',
     })
     expect(RenderLabelValue.mock.calls[2][0]).toMatchObject({
-      loading: false,
       value: 'Capital',
       label: 'capital',
     })
-    expect(ValidateNeighbouringCountries).toHaveBeenCalledWith(
+    expect(NeighbouringCountries).toHaveBeenCalledWith(
       expect.objectContaining({
-        loading: false,
-        error: undefined,
-        data: data[0],
-      }),
-      expect.anything(),
-    )
-  })
-
-  test('It renders with loading', () => {
-    jest.resetAllMocks()
-    render(<SingleCountryRegion loading={true} error={undefined} data={{}} />)
-    expect(RenderLabelValue.mock.calls[0][0]).toMatchObject({
-      loading: true,
-      value: undefined,
-    })
-    expect(RenderLabelValue.mock.calls[1][0]).toMatchObject({
-      loading: true,
-      value: undefined,
-    })
-    expect(RenderLabelValue.mock.calls[2][0]).toMatchObject({
-      loading: true,
-      value: undefined,
-    })
-    expect(ValidateNeighbouringCountries).toHaveBeenCalledWith(
-      expect.objectContaining({
-        loading: true,
-        error: undefined,
-        data: {},
+        neighbours: [],
+        neighboursEndpoint: 'neighbourEndpoint',
       }),
       expect.anything(),
     )
@@ -78,7 +53,11 @@ describe('components/single/sections/SingleCountryRegion', () => {
 
   test('It rerenders correctly', () => {
     const { rerender } = render(
-      <SingleCountryRegion loading={false} error={undefined} data={data[0]} />,
+      <SingleCountryRegion
+        singleCountry={data[0]}
+        neighbours={[]}
+        neighboursEndpoint='neighbourEndpoint'
+      />,
     )
     expect(RenderLabelValue.mock.calls[0][0]).toMatchObject({ value: 'Region' })
     expect(RenderLabelValue.mock.calls[1][0]).toMatchObject({
@@ -89,7 +68,11 @@ describe('components/single/sections/SingleCountryRegion', () => {
     })
 
     rerender(
-      <SingleCountryRegion loading={false} error={undefined} data={data[1]} />,
+      <SingleCountryRegion
+        neighbours={[]}
+        neighboursEndpoint='neighbourEndpoint2'
+        singleCountry={data[1]}
+      />,
     )
     expect(RenderLabelValue.mock.calls[3][0]).toMatchObject({
       value: 'Region2',
@@ -100,12 +83,10 @@ describe('components/single/sections/SingleCountryRegion', () => {
     expect(RenderLabelValue.mock.calls[5][0]).toMatchObject({
       value: 'Capital2',
     })
-    expect(ValidateNeighbouringCountries).toHaveBeenNthCalledWith(
+    expect(NeighbouringCountries).toHaveBeenNthCalledWith(
       2,
       expect.objectContaining({
-        loading: false,
-        error: undefined,
-        data: data[1],
+        neighboursEndpoint: 'neighbourEndpoint2',
       }),
       expect.anything(),
     )

@@ -1,22 +1,31 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import SingleCountry from '../../components/single/SingleCountry'
 import { compileSingleCountry } from '@/lib/single/compileSingleCountry'
+import compileNeighbouringCountries from '@/lib/single/compileNeighbouringCountries'
+import { Neighbour } from '@/types/neighbour'
+import { SingleCountryType } from '@/types/singleCountry'
 
 type Props = {
   countryCode: string
   singleEndpoint: string
-  singleCountry: any
+  singleCountry: SingleCountryType
+  neighboursEndpoint: string
+  neighbours: Neighbour[]
 }
 
 const Country: NextPage<Props> = ({
   countryCode,
   singleEndpoint,
   singleCountry,
+  neighboursEndpoint,
+  neighbours,
 }) => (
   <SingleCountry
     countryCode={countryCode}
     singleEndpoint={singleEndpoint}
     singleCountry={singleCountry}
+    neighboursEndpoint={neighboursEndpoint}
+    neighbours={neighbours}
   />
 )
 
@@ -38,6 +47,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
+  // we make 2 fetches
+  // 1. singleCountry
+  // 2. neighbours
+
+  // 1. fetch singleCountry
   // get url param out of context
   const countryCode = context?.params?.countryCode
 
@@ -68,12 +82,31 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const singleCountry = compileSingleCountry(rawCountry)
 
+  // 2. fetch neighbours
+  // 2.1 only fetch border when singleCountry.borders is not empty ([].length === 0)
+  // 2.2 when there are borders, we need: name and cca3 from all the cca3's in singleCountry.borders
+
+  // 2.1
+  const neighboursEndpoint = `https://restcountries.com/v3.1/alpha/?fields=cca3,name;codes=${singleCountry.borders.join(
+    ',',
+  )}`
+  let neighbours: Neighbour[] = []
+
+  // 2.2 only fetch when there are borders
+  if (singleCountry.borders.length > 0) {
+    const neighbourRes = await fetch(neighboursEndpoint)
+    const rawNeighbours: unknown[] = await neighbourRes.json()
+    neighbours = compileNeighbouringCountries(rawNeighbours)
+  }
+
   // return props
   return {
     props: {
       countryCode,
       singleEndpoint,
       singleCountry,
+      neighboursEndpoint,
+      neighbours,
     },
   }
 }

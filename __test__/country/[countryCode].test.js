@@ -15,6 +15,8 @@ describe('pages/country/[countryCode]', () => {
         singleCountry='country'
         countryCode='countryCode'
         singleEndpoint='singleEndpoint'
+        neighboursEndpoint='neighbourEndpoint'
+        neighbours='neighbours'
       />,
     )
     expect(SingleCountry).toHaveBeenCalledWith(
@@ -22,6 +24,8 @@ describe('pages/country/[countryCode]', () => {
         singleCountry: 'country',
         countryCode: 'countryCode',
         singleEndpoint: 'singleEndpoint',
+        neighboursEndpoint: 'neighbourEndpoint',
+        neighbours: 'neighbours',
       }),
       expect.anything(),
     )

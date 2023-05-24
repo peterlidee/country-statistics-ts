@@ -14,14 +14,23 @@ import SingleCountryWeather from './sections/SingleCountryWeather'
 import SingleCountryMap from './sections/SingleCountryMap'
 import SingleCountryRegion from './sections/SingleCountryRegion'
 import SingleCountryPopulationChart from './sections/SingleCountryPopulationChart'
+import { Neighbour } from '@/types/neighbour'
 
 type Props = {
   countryCode: string
   singleEndpoint: string
   singleCountry: SingleCountryType
+  neighboursEndpoint: string
+  neighbours: Neighbour[]
 }
 
-function SingleCountry({ countryCode, singleEndpoint, singleCountry }: Props) {
+function SingleCountry({
+  countryCode,
+  singleEndpoint,
+  singleCountry,
+  neighboursEndpoint,
+  neighbours,
+}: Props) {
   return (
     <>
       <Head>
@@ -76,9 +85,9 @@ function SingleCountry({ countryCode, singleEndpoint, singleCountry }: Props) {
         <SingleCountryMap singleCountry={singleCountry} />
 
         <SingleCountryRegion
-          data={singleCountry}
-          error={undefined}
-          loading={false}
+          singleCountry={singleCountry}
+          neighboursEndpoint={neighboursEndpoint}
+          neighbours={neighbours}
         />
 
         <SingleCountryPopulationChart countryCode={countryCode} />

@@ -1,40 +1,36 @@
 import RenderLabelValue from '../region/RenderLabelValue'
-import ValidateNeighbouringCountries from '../neighbours/ValidateNeighbouringCountries'
+import NeighbouringCountries from '../neighbours/NeighbouringCountries'
 import { SingleCountryType } from '@/types/singleCountry'
+import { Neighbour } from '@/types/neighbour'
 
 /**
  * display 2 boxes: region and neighbours
- * @param loading
- * @param error
- * @param data: SingleCountryType
+ * @param props.data: SingleCountryType
+ * @param props.neighboursEndpoint - string
+ * @param props.neighbours - Neighbour[]
  * @returns ReactNode
  */
 
 type Props = {
-  data: SingleCountryType
-  error: boolean | undefined
-  loading: boolean
+  singleCountry: SingleCountryType
+  neighboursEndpoint: string
+  neighbours: Neighbour[]
 }
 
-const SingleCountryRegion = ({ data, error, loading }: Props) => (
+const SingleCountryRegion = ({
+  singleCountry,
+  neighboursEndpoint,
+  neighbours,
+}: Props) => (
   <div className='single-country__region'>
     <div className='single-country__box'>
-      <RenderLabelValue loading={loading} value={data.region} label='region' />
-      <RenderLabelValue
-        loading={loading}
-        value={data.subregion}
-        label='subregion'
-      />
-      <RenderLabelValue
-        loading={loading}
-        value={data.capital}
-        label='capital'
-      />
+      <RenderLabelValue value={singleCountry.region} label='region' />
+      <RenderLabelValue value={singleCountry.subregion} label='subregion' />
+      <RenderLabelValue value={singleCountry.capital} label='capital' />
     </div>
-    <ValidateNeighbouringCountries
-      loading={loading}
-      error={error}
-      data={data}
+    <NeighbouringCountries
+      neighboursEndpoint={neighboursEndpoint}
+      neighbours={neighbours}
     />
   </div>
 )

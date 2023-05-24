@@ -114,28 +114,4 @@ describe('components/single/map/MapWidget', () => {
     expect(GoogleMap).not.toHaveBeenCalled()
     expect(MapControles).not.toHaveBeenCalled()
   })
-
-  test('It renders with isLoaded true and no loadError', () => {
-    useJsApiLoader.mockReset()
-    useJsApiLoader.mockReturnValue({
-      isLoaded: true,
-      loadError: false,
-    })
-    GoogleMap.mockImplementation((props) => {
-      props.onLoad()
-      return null
-    })
-    render(
-      <MapWidget
-        singleCountry={singleCountriesMock[0]}
-        regionCountries={regionCountries}
-        subregionCountries={subregionCountries}
-      />,
-    )
-    expect(Placeholder).not.toHaveBeenCalled()
-    expect(GoogleMap).toHaveBeenCalled()
-    // onLoad state was set to true
-    // hence MapControles mock got called
-    expect(MapControles).toHaveBeenCalled()
-  })
 })

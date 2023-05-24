@@ -11,7 +11,7 @@ const Footer = () => (
       <div className='footer__header'>
         <h3 className='footer__logo'>
           <IconLogo />
-          <div className='footer__title'>Country Statistics</div>
+          <div className='footer__title'>Country Statistics TS</div>
         </h3>
       </div>
 
@@ -19,7 +19,8 @@ const Footer = () => (
         <h4 className='footer__subtitle'>about</h4>
         <p className='footer__text'>
           Country statistics is a portfolio project to show my React knowledge.
-          It is built in Next and gets the data from open source APIs.
+          It is built in Next / Typescript and gets the data from open source
+          APIs.
         </p>
       </Wrapper>
 
@@ -47,7 +48,7 @@ const Footer = () => (
           react-chartjs-2
         </a>
         <a href='https://www.npmjs.com/package/react-range'>react-range</a>
-        <a href='https://github.com/peterlidee/country-statistics-2/blob/main/package.json'>
+        <a href='https://github.com/peterlidee/country-statistics-ts/blob/main/package.json'>
           details in package.json
         </a>
       </Wrapper>
@@ -64,15 +65,17 @@ const Footer = () => (
 
       <Wrapper base='footer__section' modifier='testing'>
         <h4 className='footer__subtitle'>testing</h4>
+        <a href='https://www.typescriptlang.org/'>typescript</a>
         <a href='https://jestjs.io/'>jest</a>
         <a href='https://testing-library.com/docs/react-testing-library/intro/'>
           react testing library
         </a>
+        <a href='https://eslint.org/'>eslint</a>
       </Wrapper>
 
       <Wrapper base='footer__section' modifier='sourcecode'>
         <h4 className='footer__subtitle'>sourcecode</h4>
-        <a href='https://github.com/peterlidee/country-statistics-2'>gitHub</a>
+        <a href='https://github.com/peterlidee/country-statistics-ts'>gitHub</a>
       </Wrapper>
 
       <div className='footer__footer'>

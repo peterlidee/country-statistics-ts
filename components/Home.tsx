@@ -9,7 +9,7 @@ function Home({ countries, filterData, endpoint }: HomeProps) {
   return (
     <>
       <Head>
-        <title>Country Statistics - a portfolio project</title>
+        <title>Country Statistics TS - a portfolio project</title>
         <meta
           name='description'
           content="An overview of statistics per country, fed by different api's."

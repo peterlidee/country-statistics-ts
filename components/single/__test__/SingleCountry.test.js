@@ -43,6 +43,8 @@ describe('components/single/SingleCountry', () => {
         countryCode={'DZA'}
         singleEndpoint={'singleEndpoint'}
         singleCountry={singleCountryMocks[0]}
+        neighboursEndpoint='neighboursEndpoint'
+        neighbours='neighbours'
       />,
     )
     expect(Header).toHaveBeenCalled()
@@ -101,8 +103,9 @@ describe('components/single/SingleCountry', () => {
     expect(SingleCountryMap).toHaveBeenCalled()
     expect(SingleCountryRegion).toHaveBeenCalledWith(
       expect.objectContaining({
-        error: undefined,
-        loading: false,
+        singleCountry: expect.anything(),
+        neighboursEndpoint: 'neighboursEndpoint',
+        neighbours: 'neighbours',
       }),
       expect.anything(),
     )

@@ -88,14 +88,6 @@ describe('components/countryList/CountryList', () => {
     expect(CountryRow).toHaveBeenCalledTimes(6)
   })
 
-  test('It renders loading and stops', () => {
-    useRouter.mockReturnValue({ isReady: false })
-    setup()
-    expect(screen.getByText('...loading')).toBeInTheDocument()
-    // none of the mocked components were called (it 'stops')
-    expect(CountryCount).not.toHaveBeenCalled()
-  })
-
   describe('It renders the grid correctly', () => {
     test('Grid has the correct styles with none hidden', () => {
       setup()

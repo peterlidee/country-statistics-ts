@@ -1,4 +1,4 @@
-import { useState, useEffect, CSSProperties } from 'react'
+import { CSSProperties } from 'react'
 import { useRouter } from 'next/router'
 
 // hidden
@@ -30,17 +30,6 @@ type Props = {
 
 function CountryList({ countries, filterData }: Props) {
   const router = useRouter()
-  // since we are using SSG, the query object on the router will be empty, it needs to be hydrated first
-  // https://nextjs.org/docs/advanced-features/automatic-static-optimization#how-it-works
-  // but, this leads to the list of countries being default ordered first and then after hydration getting sorted
-  // it's like flash from sorted default to sorted along query sorting parameter
-  // we solve this by listening to router.isReady and setting state routerReady, we only render when state routerReady
-  const [routerReady, setRouterReady] = useState(false)
-  useEffect(() => {
-    if (router.isReady) {
-      setRouterReady(true)
-    }
-  }, [router.isReady])
 
   // 1. check the display options
 
@@ -95,40 +84,37 @@ function CountryList({ countries, filterData }: Props) {
     countries: sortedCountries,
     sortBy,
     sortAsc,
-  } = applySorting(routerReady, router.query, countriesFilteredByNumbers)
+  } = applySorting(router.isReady, router.query, countriesFilteredByNumbers)
 
   return (
     <div className='site__grid--home'>
-      {!routerReady && '...loading'}
-      {routerReady && (
-        <>
-          <CountryCount count={sortedCountries.length} />
-          <Filters
-            filterData={filterData}
+      <>
+        <CountryCount count={sortedCountries.length} />
+        <Filters
+          filterData={filterData}
+          activeHidden={activeHidden}
+          activeRegions={activeRegions}
+          activeNumbers={activeNumbers}
+        />
+        <main className='country-list' style={gridTemplateColumnsStyle}>
+          <CountryListHeaders
             activeHidden={activeHidden}
-            activeRegions={activeRegions}
-            activeNumbers={activeNumbers}
+            sortBy={sortBy}
+            sortAsc={sortAsc}
           />
-          <main className='country-list' style={gridTemplateColumnsStyle}>
-            <CountryListHeaders
+          {sortedCountries.length === 0 && (
+            <div style={{ gridColumn: '2/-1' }}>no results</div>
+          )}
+          {sortedCountries.map((country, i) => (
+            <CountryRow
+              country={country}
+              index={i}
+              key={country.cca3}
               activeHidden={activeHidden}
-              sortBy={sortBy}
-              sortAsc={sortAsc}
             />
-            {sortedCountries.length === 0 && (
-              <div style={{ gridColumn: '2/-1' }}>no results</div>
-            )}
-            {sortedCountries.map((country, i) => (
-              <CountryRow
-                country={country}
-                index={i}
-                key={country.cca3}
-                activeHidden={activeHidden}
-              />
-            ))}
-          </main>
-        </>
-      )}
+          ))}
+        </main>
+      </>
     </div>
   )
 }

@@ -84,7 +84,7 @@ function CountryList({ countries, filterData }: Props) {
     countries: sortedCountries,
     sortBy,
     sortAsc,
-  } = applySorting(router.isReady, router.query, countriesFilteredByNumbers)
+  } = applySorting(router.query, countriesFilteredByNumbers)
 
   return (
     <div className='site__grid--home'>

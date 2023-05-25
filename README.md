@@ -1,8 +1,8 @@
 # Country Statistics Ts
 
-Country statistics is a portfolio project to show my React knowledge. It is built in Next and gets the data from open source API's.
+Country statistics is a portfolio project to show my React knowledge. It is built in Next / Typescript and gets the data from open source API's.
 
-country-statistics-ts is the `Typescript` version of [country-statistics-2](https://github.com/peterlidee/country-statistics-2).
+Country-statistics-ts is the `Typescript` version of [country-statistics-2](https://github.com/peterlidee/country-statistics-2).
 
 ## Data API's
 
@@ -26,6 +26,8 @@ country-statistics-ts is the `Typescript` version of [country-statistics-2](http
 
 [jest](https://jestjs.io/)  
 [react testing library](https://testing-library.com/docs/react-testing-library/intro/)
+[typescript](https://www.typescriptlang.org/)
+[eslint](https://eslint.org/')
 
 ## Deployment
 
@@ -33,8 +35,7 @@ country-statistics-ts is the `Typescript` version of [country-statistics-2](http
 
 ## Live url
 
-// Todo: update live url
-[country statistics](https://country-statistics-2.vercel.app/)
+[country statistics](https://country-statistics-ts.vercel.app/)
 
 ## Contact
 

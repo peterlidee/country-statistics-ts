@@ -1,6 +1,6 @@
 # Country Statistics Ts
 
-Country statistics is a portfolio project to show my React knowledge. It is built in Next / Typescript and gets the data from open source API's.
+[Country statistics ts](https://country-statistics-ts.vercel.app/) is a portfolio project to show my React knowledge. It is built in Next / Typescript and gets the data from open source API's.
 
 ## Data API's
 

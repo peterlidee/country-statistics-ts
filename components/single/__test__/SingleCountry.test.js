@@ -10,7 +10,7 @@ import SingleCountryHeader from '../sections/SingleCountryHeader'
 import SingleCountryStatus from '../sections/SingleCountryStatus'
 import SingleCountryFlags from '../sections/SingleCountryFlags'
 import SingleCountryBasisStats from '../sections/SingleCountryBasicStats'
-import SingleCountryWeather from '../sections/SingleCountryWeather'
+import SingleCountryWeather2 from '../sections/SingleCountryWeather2'
 import SingleCountryMap from '../sections/SingleCountryMap'
 import SingleCountryRegion from '../sections/SingleCountryRegion'
 import SingleCountryPopulationChart from '../sections/SingleCountryPopulationChart'
@@ -31,7 +31,7 @@ jest.mock('../sections/SingleCountryStatus', () => {
 })
 jest.mock('../sections/SingleCountryFlags')
 jest.mock('../sections/SingleCountryBasicStats')
-jest.mock('../sections/SingleCountryWeather')
+jest.mock('../sections/SingleCountryWeather2')
 jest.mock('../sections/SingleCountryMap')
 jest.mock('../sections/SingleCountryRegion')
 jest.mock('../sections/SingleCountryPopulationChart')
@@ -90,13 +90,10 @@ describe('components/single/SingleCountry', () => {
       }),
       expect.anything(),
     )
-    expect(SingleCountryWeather).toHaveBeenCalledWith(
+    expect(SingleCountryWeather2).toHaveBeenCalledWith(
       expect.objectContaining({
-        loading: false,
-        error: undefined,
         cca2: 'DZ',
         capitalName: 'Algiers',
-        countryCode: 'DZA',
       }),
       expect.anything(),
     )

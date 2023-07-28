@@ -10,7 +10,7 @@ import SingleCountryHeader from './sections/SingleCountryHeader'
 import SingleCountryStatus from './sections/SingleCountryStatus'
 import SingleCountryFlags from './sections/SingleCountryFlags'
 import SingleCountryBasisStats from './sections/SingleCountryBasicStats'
-import SingleCountryWeather from './sections/SingleCountryWeather'
+import SingleCountryWeather2 from './sections/SingleCountryWeather2'
 import SingleCountryMap from './sections/SingleCountryMap'
 import SingleCountryRegion from './sections/SingleCountryRegion'
 import SingleCountryPopulationChart from './sections/SingleCountryPopulationChart'
@@ -74,12 +74,9 @@ function SingleCountry({
           area={singleCountry.area}
         />
 
-        <SingleCountryWeather
-          loading={false}
-          error={undefined}
+        <SingleCountryWeather2
           cca2={singleCountry.cca2}
           capitalName={singleCountry.capital}
-          countryCode={countryCode}
         />
 
         <SingleCountryMap singleCountry={singleCountry} />

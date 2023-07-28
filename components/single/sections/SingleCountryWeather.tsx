@@ -46,13 +46,8 @@ function SingleCountryWeather({
 
   return (
     <SingleCountryFetch endpoint={endpoint} extraClass='weather' label={label}>
-      {(isLoading, error, data) => (
-        <WeatherWidget
-          loading={isLoading}
-          error={error}
-          data={data}
-          countryCode={countryCode}
-        />
+      {(loading, error, data) => (
+        <WeatherWidget data={data} code={countryCode} />
       )}
     </SingleCountryFetch>
   )

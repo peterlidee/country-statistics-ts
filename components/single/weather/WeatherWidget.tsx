@@ -2,25 +2,14 @@ import IconWindDirection from '../../svgSnippets/IconWindDirection'
 import IconWeather from '../../svgSnippets/IconWeather'
 import compileWeatherData from '@/lib/single/compileWeatherData'
 
-/**
- * displays the weather widget
- * @param props.loading
- * @param props.error
- * @param props.data - data from data fetch
- * @param props.countryCode
- * @returns JSX.Element
- */
-
 type Props = {
-  loading: boolean
-  error: undefined | Error
   data: unknown
-  countryCode: string
+  code: string
 }
 
 // we don't use error or loading
 // we rely on !data
-const WeatherWidget = ({ loading, error, data, countryCode }: Props) => {
+const WeatherWidget = ({ data, code }: Props) => {
   const {
     capitalName,
     description,
@@ -30,7 +19,7 @@ const WeatherWidget = ({ loading, error, data, countryCode }: Props) => {
     tempMax,
     windDeg,
     windSpeed,
-  } = compileWeatherData(data, countryCode)
+  } = compileWeatherData(data, code)
 
   return (
     <div className='fullHeight weather'>

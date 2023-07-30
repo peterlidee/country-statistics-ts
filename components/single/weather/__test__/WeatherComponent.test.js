@@ -1,13 +1,22 @@
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
 import WeatherComponent from '../WeatherComponent'
 import SingleCountryComponent from '../../SingleCountryComponent'
 import { useWeatherData } from '../useWeatherData'
+import Source from '../../../sources/Source'
 import WeatherWidget from '../WeatherWidget'
 
 jest.mock('../useWeatherData')
 jest.mock('../../SingleCountryComponent')
-SingleCountryComponent.mockImplementation((props) => props.children)
+SingleCountryComponent.mockImplementation((props) => {
+  return (
+    <>
+      {props.children}
+      {props.sources.map((source) => source)}
+    </>
+  )
+})
+jest.mock('../../../sources/Source')
 jest.mock('../WeatherWidget')
 
 function setup(
@@ -30,6 +39,7 @@ describe('components/single/weather/WeatherComponent', () => {
     setup()
     expect(useWeatherData).toHaveBeenCalled()
     expect(SingleCountryComponent).toHaveBeenCalled()
+    expect(Source).toHaveBeenCalled()
     expect(WeatherWidget).toHaveBeenCalled()
   })
 
@@ -44,6 +54,17 @@ describe('components/single/weather/WeatherComponent', () => {
   test('SingleCountryComponent mock gets called with the correct props', () => {
     setup()
     expect(SingleCountryComponent).toHaveBeenCalledWith(
+      expect.objectContaining({
+        extraClass: 'weather',
+        sources: [expect.anything()],
+      }),
+      expect.anything(),
+    )
+  })
+
+  test('Source gets called with the correct props', () => {
+    setup()
+    expect(Source).toHaveBeenCalledWith(
       expect.objectContaining({
         error: undefined,
         loading: false,

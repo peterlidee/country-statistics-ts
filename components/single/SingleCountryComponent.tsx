@@ -1,34 +1,22 @@
-import Source from '../sources/Source'
 import Sources from '../sources/Sources'
 
 type Props = {
   extraClass?: string
   children: JSX.Element
-  error: undefined | Error
-  loading: boolean
-  endpoint: string
-  label: string
+  sources?: JSX.Element[]
 }
 
 export default function SingleCountryComponent({
   extraClass = '',
   children,
-  error,
-  loading,
-  endpoint,
-  label,
+  sources = [],
 }: Props) {
   return (
     <div className={`single-country__${extraClass}`}>
       <div className='single-country__box'>{children}</div>
-      <Sources>
-        <Source
-          error={error}
-          loading={loading}
-          endpoint={endpoint}
-          label={label}
-        />
-      </Sources>
+      {sources.length > 0 && (
+        <Sources>{sources.map((source) => source)}</Sources>
+      )}
     </div>
   )
 }

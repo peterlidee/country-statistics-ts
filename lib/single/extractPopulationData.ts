@@ -1,4 +1,4 @@
-export default function extractPopulationData(records: any[]) {
+export default function extractPopulationData(records: unknown[]) {
   // records is an array with 2 type of items
   // female and male population totals per year
   // the year should span from 2002-2021
@@ -16,21 +16,38 @@ export default function extractPopulationData(records: any[]) {
   const maleItems: { year: number; total: number }[] = []
   const femaleItems: { year: number; total: number }[] = []
 
-  for (let i = 0; i < records.length; i++) {
-    if (records[i].indicator.id == 'SP.POP.TOTL.MA.IN') {
-      // male
-      maleItems.push({
-        year: Number(records[i].date),
-        total: records[i].value,
-      })
-    } else {
-      // female
-      femaleItems.push({
-        year: Number(records[i].date),
-        total: records[i].value,
-      })
+  records.map((record) => {
+    if (
+      // is record object
+      typeof record === 'object' &&
+      record !== null &&
+      // does record have props: indicator (object), date (string), value (number)
+      'indicator' in record &&
+      typeof record.indicator === 'object' &&
+      record.indicator !== null &&
+      'date' in record &&
+      typeof record.date === 'string' &&
+      'value' in record &&
+      typeof record.value === 'number' &&
+      // does record.indicator have props id (string)
+      'id' in record.indicator &&
+      typeof record.indicator.id === 'string'
+    ) {
+      if (record.indicator.id == 'SP.POP.TOTL.MA.IN') {
+        // male
+        maleItems.push({
+          year: Number(record.date),
+          total: record.value,
+        })
+      } else {
+        // female
+        femaleItems.push({
+          year: Number(record.date),
+          total: record.value,
+        })
+      }
     }
-  }
+  })
 
   // 3. sort by year asc
   maleItems.sort((a, b) => a.year - b.year)

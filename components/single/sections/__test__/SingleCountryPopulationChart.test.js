@@ -3,11 +3,11 @@ import { render } from '@testing-library/react'
 import SingleCountryPopulationChart from '../SingleCountryPopulationChart'
 import SingleCountryFetch from '../../SingleCountryFetch'
 import PopulationChartWidget from '../../chart/PopulationChartWidget'
-import extractPopulationChartData from '../../../../lib/single/extractPopulationChartData'
+import extractPopulationData from '../../../../lib/single/extractPopulationData'
 
 jest.mock('../../chart/PopulationChartWidget')
 jest.mock('../../SingleCountryFetch')
-jest.mock('../../../../lib/single/extractPopulationChartData')
+jest.mock('../../../../lib/single/extractPopulationData')
 
 beforeEach(() => {
   jest.resetAllMocks()
@@ -34,7 +34,7 @@ describe('components/single/sections/SingleCountryPopulationChart', () => {
       }),
       expect.anything(),
     )
-    expect(extractPopulationChartData).not.toHaveBeenCalled()
+    expect(extractPopulationData).not.toHaveBeenCalled()
   })
 
   test('It renders empty with data !isArray', () => {
@@ -50,7 +50,7 @@ describe('components/single/sections/SingleCountryPopulationChart', () => {
       }),
       expect.anything(),
     )
-    expect(extractPopulationChartData).not.toHaveBeenCalled()
+    expect(extractPopulationData).not.toHaveBeenCalled()
   })
 
   test('It renders empty with isLoading && !data', () => {
@@ -66,7 +66,7 @@ describe('components/single/sections/SingleCountryPopulationChart', () => {
       }),
       expect.anything(),
     )
-    expect(extractPopulationChartData).not.toHaveBeenCalled()
+    expect(extractPopulationData).not.toHaveBeenCalled()
   })
 
   test('It renders empty with !data', () => {
@@ -82,7 +82,7 @@ describe('components/single/sections/SingleCountryPopulationChart', () => {
       }),
       expect.anything(),
     )
-    expect(extractPopulationChartData).not.toHaveBeenCalled()
+    expect(extractPopulationData).not.toHaveBeenCalled()
   })
 
   test('It renders empty with data[0] has a message prop', () => {
@@ -98,7 +98,7 @@ describe('components/single/sections/SingleCountryPopulationChart', () => {
       }),
       expect.anything(),
     )
-    expect(extractPopulationChartData).not.toHaveBeenCalled()
+    expect(extractPopulationData).not.toHaveBeenCalled()
   })
 
   test('It renders empty with data[0] has a total === 0 prop', () => {
@@ -114,11 +114,11 @@ describe('components/single/sections/SingleCountryPopulationChart', () => {
       }),
       expect.anything(),
     )
-    expect(extractPopulationChartData).not.toHaveBeenCalled()
+    expect(extractPopulationData).not.toHaveBeenCalled()
   })
 
   test('It renders with data when isLoading && data', () => {
-    extractPopulationChartData.mockReturnValue({
+    extractPopulationData.mockReturnValue({
       years: 1,
       femaleTotal: 2,
       maleTotal: 3,
@@ -126,7 +126,7 @@ describe('components/single/sections/SingleCountryPopulationChart', () => {
     })
     setup(true, undefined, [])
     expect(SingleCountryFetch).toHaveBeenCalled()
-    expect(extractPopulationChartData).toHaveBeenCalled()
+    expect(extractPopulationData).toHaveBeenCalled()
     expect(PopulationChartWidget).toHaveBeenCalledTimes(1)
     expect(PopulationChartWidget).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -140,7 +140,7 @@ describe('components/single/sections/SingleCountryPopulationChart', () => {
   })
 
   test('It renders with data when !isLoading !error && data', () => {
-    extractPopulationChartData.mockReturnValue({
+    extractPopulationData.mockReturnValue({
       years: 1,
       femaleTotal: 2,
       maleTotal: 3,
@@ -148,7 +148,7 @@ describe('components/single/sections/SingleCountryPopulationChart', () => {
     })
     setup(false, undefined, [])
     expect(SingleCountryFetch).toHaveBeenCalled()
-    expect(extractPopulationChartData).toHaveBeenCalled()
+    expect(extractPopulationData).toHaveBeenCalled()
     expect(PopulationChartWidget).toHaveBeenCalledTimes(1)
     expect(PopulationChartWidget).toHaveBeenCalledWith(
       expect.objectContaining({

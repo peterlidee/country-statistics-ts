@@ -1,4 +1,4 @@
-export default function extractPopulationChartData(records: any[]) {
+export default function extractPopulationData(records: any[]) {
   // records is an array with 2 type of items
   // female and male population totals per year
   // the year should span from 2002-2021

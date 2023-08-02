@@ -1,13 +1,13 @@
-import { screen, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
 
 import singleCountryMocks from '../../../../__mock__/data/singleCountryMocks'
 import SingleCountryMap from '../SingleCountryMap'
-import BoxWrapper from '../../../general/BoxWrapper'
+import SingleCountryComponent from '../../SingleCountryComponent'
 import FetchRegionCountries from '../../map/FetchRegionCountries'
 import MapWidget from '../../map/MapWidget'
 import Placeholder from '../../../svgSnippets/Placeholder'
 
-jest.mock('../../../general/BoxWrapper', () => {
+jest.mock('../../SingleCountryComponent', () => {
   return jest.fn((props) => <>{props.children}</>)
 })
 jest.mock('../../../svgSnippets/Placeholder')
@@ -28,8 +28,8 @@ jest.mock('../../map/MapWidget')
 describe('components/single/sections/SingleCountryMap', () => {
   test('It renders with no country', () => {
     render(<SingleCountryMap />)
-    expect(BoxWrapper).toHaveBeenCalledWith(
-      expect.objectContaining({ name: 'map' }),
+    expect(SingleCountryComponent).toHaveBeenCalledWith(
+      expect.objectContaining({ extraClass: 'map' }),
       expect.anything(),
     )
     expect(Placeholder).toHaveBeenCalled()

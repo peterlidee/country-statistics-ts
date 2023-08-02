@@ -4,6 +4,7 @@
  */
 
 import BoxWrapper from '../../general/BoxWrapper'
+import SingleCountryComponent from '../SingleCountryComponent'
 import FetchRegionCountries from '../map/FetchRegionCountries'
 import MapWidget from '../map/MapWidget'
 import Placeholder from '../../svgSnippets/Placeholder'
@@ -17,9 +18,9 @@ function SingleCountryMap({ singleCountry }: Props) {
   // wait for the parent query in SingleCountry to load
   if (!singleCountry)
     return (
-      <BoxWrapper name='map'>
+      <SingleCountryComponent extraClass='map'>
         <Placeholder />
-      </BoxWrapper>
+      </SingleCountryComponent>
     )
 
   if (singleCountry.subregion === '') {

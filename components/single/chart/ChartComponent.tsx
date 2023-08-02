@@ -1,4 +1,4 @@
-import { useChartData } from './useChartData'
+import { useData } from '@/hooks/useData'
 import compilePopulationData from '@/lib/single/compilePopulationData'
 import Source from '@/components/sources/Source'
 import SingleCountryComponent from '../SingleCountryComponent'
@@ -14,9 +14,14 @@ export default function ChartComponent({ countryCode }: Props) {
     'api.worldbank.org/{country} Health Nutrition and Population Statistics'
 
   // make fetch
-  const { data, isLoading, error, isError } = useChartData(
+  const { data, isLoading, error, isError } = useData(
+    'single-chart',
     countryCode,
     endpoint,
+    {
+      cacheTime: 60 * 60 * 1000, // one hour
+      staleTime: Infinity, // don't refetch data
+    },
   )
 
   // data -> calculate labels and values

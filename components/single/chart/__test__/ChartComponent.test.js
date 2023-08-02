@@ -1,19 +1,19 @@
 import { render } from '@testing-library/react'
 
 import ChartComponent from '../ChartComponent'
-import { useChartData } from '../useChartData'
+import { useData } from '../../../../hooks/useData'
 import compilePopulationData from '../../../../lib/single/compilePopulationData'
 import Source from '../../../sources/Source'
 import SingleCountryComponent from '../../SingleCountryComponent'
 import PopulationChartWidget from '../PopulationChartWidget'
 
-jest.mock('../useChartData')
+jest.mock('../../../../hooks/useData')
 jest.mock('../../../../lib/single/compilePopulationData')
 jest.mock('../../../sources/Source')
 jest.mock('../../SingleCountryComponent')
 jest.mock('../PopulationChartWidget')
 
-useChartData.mockReturnValue({
+useData.mockReturnValue({
   data: { data: 'foobar' },
   isLoading: false,
   error: undefined,
@@ -38,17 +38,19 @@ SingleCountryComponent.mockImplementation((props) => (
 describe('components/single/chart/ChartComponent', () => {
   test('It renders', () => {
     render(<ChartComponent countryCode='AAA' />)
-    expect(useChartData).toHaveBeenCalled()
+    expect(useData).toHaveBeenCalled()
     expect(compilePopulationData).toHaveBeenCalled()
     expect(Source).toHaveBeenCalled()
     expect(SingleCountryComponent).toHaveBeenCalled()
     expect(PopulationChartWidget).toHaveBeenCalled()
   })
-  test('It calls useChartData mock with the correct props', () => {
+  test('It calls useData mock with the correct props', () => {
     render(<ChartComponent countryCode='AAA' />)
-    expect(useChartData).toHaveBeenCalledWith(
+    expect(useData).toHaveBeenCalledWith(
+      'single-chart',
       'AAA',
       'https://api.worldbank.org/v2/country/aaa/indicator/SP.POP.TOTL.FE.IN;SP.POP.TOTL.MA.IN?format=json&source=2&date=2002:2021&per_page=100',
+      expect.anything(),
     )
   })
   test('It calls compilePopulationData mock with the correct props', () => {

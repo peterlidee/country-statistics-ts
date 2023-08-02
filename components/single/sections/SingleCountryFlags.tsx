@@ -27,51 +27,49 @@ function SingleCountryFlags({ countryName, flag, coatOfArms }: Props) {
 
   return (
     <SingleCountryComponent extraClass='flags'>
-      <>
-        {active == 'flag' && (
-          <img
-            src={flag}
-            alt={`flag of ${countryName}`}
-            className='single-country__flag'
-          />
-        )}
-        {active == 'coatOfArms' && coatOfArms !== '' && (
-          <img
-            src={coatOfArms}
-            alt={`coat of arms of ${countryName}`}
-            className='single-country__coatOfArms'
-          />
-        )}
-        {active == 'coatOfArms' && coatOfArms === '' && (
-          // if cOA is active but there is no coa, show the flag instead
-          <img
-            src={flag}
-            alt={`flag of ${countryName}`}
-            className='single-country__flag'
-          />
-        )}
+      {active == 'flag' && (
+        <img
+          src={flag}
+          alt={`flag of ${countryName}`}
+          className='single-country__flag'
+        />
+      )}
+      {active == 'coatOfArms' && coatOfArms !== '' && (
+        <img
+          src={coatOfArms}
+          alt={`coat of arms of ${countryName}`}
+          className='single-country__coatOfArms'
+        />
+      )}
+      {active == 'coatOfArms' && coatOfArms === '' && (
+        // if cOA is active but there is no coa, show the flag instead
+        <img
+          src={flag}
+          alt={`flag of ${countryName}`}
+          className='single-country__flag'
+        />
+      )}
 
-        {coatOfArms !== '' && (
-          <div className='flags__controles'>
-            <button
-              className={`flags__controle ${
-                active == 'flag' ? 'flags__controle--active' : ''
-              }`}
-              onClick={() => setActive('flag')}
-            >
-              flag
-            </button>
-            <button
-              className={`flags__controle ${
-                active == 'coatOfArms' ? 'flags__controle--active' : ''
-              }`}
-              onClick={() => setActive('coatOfArms')}
-            >
-              coat of arms
-            </button>
-          </div>
-        )}
-      </>
+      {coatOfArms !== '' && (
+        <div className='flags__controles'>
+          <button
+            className={`flags__controle ${
+              active == 'flag' ? 'flags__controle--active' : ''
+            }`}
+            onClick={() => setActive('flag')}
+          >
+            flag
+          </button>
+          <button
+            className={`flags__controle ${
+              active == 'coatOfArms' ? 'flags__controle--active' : ''
+            }`}
+            onClick={() => setActive('coatOfArms')}
+          >
+            coat of arms
+          </button>
+        </div>
+      )}
     </SingleCountryComponent>
   )
 }

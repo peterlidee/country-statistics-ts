@@ -1,12 +1,12 @@
-import { render, screen } from '@testing-library/react'
+import { render } from '@testing-library/react'
 
 import WeatherComponent from '../WeatherComponent'
 import SingleCountryComponent from '../../SingleCountryComponent'
-import { useWeatherData } from '../useWeatherData'
+import { useData } from '../../../../hooks/useData'
 import Source from '../../../sources/Source'
 import WeatherWidget from '../WeatherWidget'
 
-jest.mock('../useWeatherData')
+jest.mock('../../../../hooks/useData')
 jest.mock('../../SingleCountryComponent')
 SingleCountryComponent.mockImplementation((props) => {
   return (
@@ -26,7 +26,7 @@ function setup(
   error = undefined,
   isLoading = false,
 ) {
-  useWeatherData.mockReturnValue({
+  useData.mockReturnValue({
     data,
     error,
     isLoading,
@@ -37,15 +37,16 @@ function setup(
 describe('components/single/weather/WeatherComponent', () => {
   test('It renders', () => {
     setup()
-    expect(useWeatherData).toHaveBeenCalled()
+    expect(useData).toHaveBeenCalled()
     expect(SingleCountryComponent).toHaveBeenCalled()
     expect(Source).toHaveBeenCalled()
     expect(WeatherWidget).toHaveBeenCalled()
   })
 
-  test('useWeatherData mock gets called with the correct props', () => {
+  test('useData mock gets called with the correct props', () => {
     setup()
-    expect(useWeatherData).toHaveBeenCalledWith(
+    expect(useData).toHaveBeenCalledWith(
+      'single-weather',
       'aaa',
       'https://api.openweathermap.org/data/2.5/weather?q=BBBbbb,aaa&APPID=undefined&units=metric',
     )

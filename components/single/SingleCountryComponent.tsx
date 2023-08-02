@@ -1,3 +1,4 @@
+import SingleCountryBox from '../general/SingleCountryBox'
 import Sources from '../sources/Sources'
 
 type Props = {
@@ -13,7 +14,7 @@ export default function SingleCountryComponent({
 }: Props) {
   return (
     <div className={`single-country__${extraClass}`}>
-      <div className='single-country__box'>{children}</div>
+      <SingleCountryBox>{children}</SingleCountryBox>
       {sources.length > 0 && (
         <Sources>{sources.map((source) => source)}</Sources>
       )}

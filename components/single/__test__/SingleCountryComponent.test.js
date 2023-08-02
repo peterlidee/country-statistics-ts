@@ -1,8 +1,11 @@
 import { render } from '@testing-library/react'
 
 import SingleCountryComponent from '../SingleCountryComponent'
+import SingleCountryBox from '../../general/SingleCountryBox'
 import Sources from '../../sources/Sources'
 
+jest.mock('../../general/SingleCountryBox')
+SingleCountryBox.mockImplementation((props) => props.children)
 jest.mock('../../sources/Sources')
 Sources.mockImplementation((props) => (
   <>
@@ -25,6 +28,7 @@ function setup(extraClass = 'extraClass', sources = undefined) {
 describe('componentssingleSingleCountryComponent', () => {
   test('It renders', () => {
     setup('', [<SourceMock key={'mock1'} />])
+    expect(SingleCountryBox).toHaveBeenCalled()
     expect(ChildMock).toHaveBeenCalled()
     expect(Sources).toHaveBeenCalled()
   })

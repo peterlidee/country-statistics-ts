@@ -1,11 +1,11 @@
 import { screen, render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import BoxWrapper from '../../../general/BoxWrapper'
+import SingleCountryComponent from '../../SingleCountryComponent'
 import Placeholder from '../../../svgSnippets/Placeholder'
 import SingleCountryFlags from '../SingleCountryFlags'
 
-jest.mock('../../../general/BoxWrapper', () => {
+jest.mock('../../SingleCountryComponent', () => {
   return jest.fn((props) => <>{props.children}</>)
 })
 jest.mock('../../../svgSnippets/Placeholder')
@@ -13,9 +13,9 @@ jest.mock('../../../svgSnippets/Placeholder')
 describe('components/single/sections/SingleCountryFlags', () => {
   test('It renders placeholder when no flag', () => {
     render(<SingleCountryFlags countryName='Algeria' flag='' coatOfArms='' />)
-    expect(BoxWrapper).toHaveBeenCalledWith(
+    expect(SingleCountryComponent).toHaveBeenCalledWith(
       expect.objectContaining({
-        name: 'placeholder',
+        extraClass: 'placeholder',
       }),
       expect.anything(),
     )
@@ -26,9 +26,9 @@ describe('components/single/sections/SingleCountryFlags', () => {
     render(
       <SingleCountryFlags countryName='Algeria' flag='flag' coatOfArms='' />,
     )
-    expect(BoxWrapper).toHaveBeenCalledWith(
+    expect(SingleCountryComponent).toHaveBeenCalledWith(
       expect.objectContaining({
-        name: 'flags',
+        extraClass: 'flags',
       }),
       expect.anything(),
     )
@@ -46,9 +46,9 @@ describe('components/single/sections/SingleCountryFlags', () => {
         flag='flag'
       />,
     )
-    expect(BoxWrapper).toHaveBeenCalledWith(
+    expect(SingleCountryComponent).toHaveBeenCalledWith(
       expect.objectContaining({
-        name: 'flags',
+        extraClass: 'flags',
       }),
       expect.anything(),
     )

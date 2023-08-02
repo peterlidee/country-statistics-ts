@@ -3,7 +3,6 @@
  * @param singleCountry - SingleCountry type
  */
 
-import BoxWrapper from '../../general/BoxWrapper'
 import SingleCountryComponent from '../SingleCountryComponent'
 import FetchRegionCountries from '../map/FetchRegionCountries'
 import MapWidget from '../map/MapWidget'

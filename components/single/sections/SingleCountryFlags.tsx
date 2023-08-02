@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import BoxWrapper from '../../general/BoxWrapper'
 import Placeholder from '../../svgSnippets/Placeholder'
 
@@ -19,6 +19,10 @@ type Props = {
 
 function SingleCountryFlags({ countryName, flag, coatOfArms }: Props) {
   const [active, setActive] = useState('flag')
+  useEffect(() => {
+    setActive('flag')
+    return () => setActive('flag')
+  }, [countryName])
 
   if (flag === '') {
     return (

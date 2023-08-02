@@ -2,7 +2,7 @@ import Sources from '../sources/Sources'
 
 type Props = {
   extraClass?: string
-  children: JSX.Element
+  children: React.ReactNode
   sources?: JSX.Element[]
 }
 

@@ -1,9 +1,12 @@
 import { render } from '@testing-library/react'
 
 import SingleCountryRegion from '../SingleCountryRegion'
+import SingleCountryBox from '../../../general/SingleCountryBox'
 import RenderLabelValue from '../../region/RenderLabelValue'
 import NeighbouringCountries from '../../neighbours/NeighbouringCountries'
 
+jest.mock('../../../general/SingleCountryBox')
+SingleCountryBox.mockImplementation((props) => props.children)
 jest.mock('../../region/RenderLabelValue')
 jest.mock('../../neighbours/NeighbouringCountries')
 
@@ -29,6 +32,7 @@ describe('components/single/sections/SingleCountryRegion', () => {
         neighboursEndpoint='neighbourEndpoint'
       />,
     )
+    expect(SingleCountryBox).toHaveBeenCalled()
     expect(RenderLabelValue.mock.calls).toHaveLength(3)
     expect(RenderLabelValue.mock.calls[0][0]).toMatchObject({
       value: 'Region',
@@ -74,6 +78,7 @@ describe('components/single/sections/SingleCountryRegion', () => {
         singleCountry={data[1]}
       />,
     )
+    expect(SingleCountryBox).toHaveBeenCalledTimes(2)
     expect(RenderLabelValue.mock.calls[3][0]).toMatchObject({
       value: 'Region2',
     })

@@ -4,13 +4,7 @@
 
 import extractPopulationData from './extractPopulationData'
 
-type PopulationData = {
-  femaleTotal: number[]
-  maleTotal: number[]
-  combinedTotal: number[]
-  years: number[]
-}
-const populationData: PopulationData = {
+const populationData = {
   femaleTotal: [],
   maleTotal: [],
   combinedTotal: [],
@@ -59,7 +53,7 @@ export default function compilePopulationData(data: unknown, isError: boolean) {
   }
 
   // 3. there should be data now, extract it in the format we need
-  const extractedPopulationData: PopulationData = extractPopulationData(data[1])
+  const extractedPopulationData = extractPopulationData(data[1])
 
   // 4. return data and extraError
   return {

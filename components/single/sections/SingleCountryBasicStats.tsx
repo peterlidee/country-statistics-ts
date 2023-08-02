@@ -1,18 +1,13 @@
 import formatNumber from '../../../lib/helpers/formatNumber'
 import roundNumber from '../../../lib/helpers/roundNumber'
-import BoxWrapper from '../../general/BoxWrapper'
+import SingleCountryComponent from '../SingleCountryComponent'
 
 type Props = {
   population: number
   area: number
 }
 
-/**
- * Displays formatted population, area and density
- * @param props.population
- * @param props.area
- * @returns ReactNode
- */
+// Displays formatted population, area and density
 
 function SingleCountryBasisStats({ population, area }: Props) {
   const populationPrettyFormat = formatNumber(roundNumber(population))
@@ -22,7 +17,7 @@ function SingleCountryBasisStats({ population, area }: Props) {
   )
 
   return (
-    <BoxWrapper name='basic-stats'>
+    <SingleCountryComponent extraClass='basic-stats'>
       <div className='single-country__label'>Total population</div>
       <div className='single-country__value'>{populationPrettyFormat}</div>
       <div className='single-country__label'>Size</div>
@@ -35,7 +30,7 @@ function SingleCountryBasisStats({ population, area }: Props) {
           </div>
         </>
       )}
-    </BoxWrapper>
+    </SingleCountryComponent>
   )
 }
 

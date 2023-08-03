@@ -4,6 +4,13 @@ import { compileSingleCountry } from '@/lib/single/compileSingleCountry'
 import compileNeighbouringCountries from '@/lib/single/compileNeighbouringCountries'
 import { Neighbour } from '@/types/neighbour'
 import { SingleCountryType } from '@/types/singleCountry'
+import extractCoords from '@/lib/single/extractCoords'
+import { Coordinates } from '@/types/coordinates'
+
+export type RegionCoordinates = {
+  coordinates: Coordinates[]
+  endpoint: string
+}
 
 type Props = {
   countryCode: string
@@ -11,6 +18,10 @@ type Props = {
   singleCountry: SingleCountryType
   neighboursEndpoint: string
   neighbours: Neighbour[]
+  coordinates: {
+    region: RegionCoordinates
+    subregion: RegionCoordinates
+  }
 }
 
 const Country: NextPage<Props> = ({
@@ -19,6 +30,7 @@ const Country: NextPage<Props> = ({
   singleCountry,
   neighboursEndpoint,
   neighbours,
+  coordinates,
 }) => (
   <SingleCountry
     countryCode={countryCode}
@@ -26,6 +38,7 @@ const Country: NextPage<Props> = ({
     singleCountry={singleCountry}
     neighboursEndpoint={neighboursEndpoint}
     neighbours={neighbours}
+    coordinates={coordinates}
   />
 )
 
@@ -42,7 +55,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false, // see notes on top
+    fallback: false, // any path not returned by getStaticPaths will lead to 404
   }
 }
 
@@ -50,6 +63,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   // we make 2 fetches
   // 1. singleCountry
   // 2. neighbours
+  // 3. all country latlngs for the region (subregion is not garanteed)
 
   // 1. fetch singleCountry
   // get url param out of context
@@ -99,6 +113,35 @@ export const getStaticProps: GetStaticProps = async (context) => {
     neighbours = compileNeighbouringCountries(rawNeighbours)
   }
 
+  // 3. fetch all countries in regions and subregions
+
+  const regionEndpoint = `https://restcountries.com/v3.1/region/${encodeURIComponent(
+    singleCountry.region,
+  )}?fields=latlng`
+  const subregionEndpoint = `https://restcountries.com/v3.1/region/${encodeURIComponent(
+    singleCountry.subregion,
+  )}?fields=latlng`
+
+  // 3.1 get regionCoordinates
+  const rawRegionData: unknown = await fetch(regionEndpoint).then((res) =>
+    res.json(),
+  )
+  const regionCoordinates = extractCoords(rawRegionData)
+
+  // 3.2 get subregionCoordinates
+  // carefull, there are countries with no subregions,
+  // so we wrap it inside a conditional
+  let subregionCoordinates: Coordinates[] = []
+
+  // prettier-ignore
+  if (singleCountry.subregion !== '') {
+    const rawSubregionData: unknown = await fetch(subregionEndpoint)
+      .then((res) => res.json()
+      .catch((error) => console.log('Error fetching data', error.message))
+    )
+    subregionCoordinates = extractCoords(rawSubregionData)
+  }
+
   // return props
   return {
     props: {
@@ -107,6 +150,16 @@ export const getStaticProps: GetStaticProps = async (context) => {
       singleCountry,
       neighboursEndpoint,
       neighbours,
+      coordinates: {
+        region: {
+          coordinates: regionCoordinates,
+          endpoint: regionEndpoint,
+        },
+        subregion: {
+          coordinates: subregionCoordinates,
+          endpoint: subregionEndpoint,
+        },
+      },
     },
   }
 }

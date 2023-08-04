@@ -1,54 +1,18 @@
-/**
- * validates prop and renders MapWidget with region and optionally subregion
- * @param singleCountry - SingleCountry type
- */
-
-import SingleCountryComponent from '../SingleCountryComponent'
-import FetchRegionCountries from '../map/FetchRegionCountries'
 import MapWidget from '../map/MapWidget'
-import Placeholder from '../../svgSnippets/Placeholder'
 import { SingleCountryType } from '@/types/singleCountry'
+import { CoordinatesData } from '@/types/coordinates'
 
 type Props = {
   singleCountry: SingleCountryType
+  coordinatesData: CoordinatesData
 }
 
-function SingleCountryMap({ singleCountry }: Props) {
-  // wait for the parent query in SingleCountry to load
-  if (!singleCountry)
-    return (
-      <SingleCountryComponent extraClass='map'>
-        <Placeholder />
-      </SingleCountryComponent>
-    )
-
-  if (singleCountry.subregion === '') {
-    return (
-      <FetchRegionCountries type='region' label={singleCountry.region}>
-        {(regionCountries) => (
-          <MapWidget
-            singleCountry={singleCountry}
-            regionCountries={regionCountries}
-          />
-        )}
-      </FetchRegionCountries>
-    )
-  }
-
+function SingleCountryMap({ singleCountry, coordinatesData }: Props) {
   return (
-    <FetchRegionCountries type='region' label={singleCountry.region}>
-      {(regionCountries) => (
-        <FetchRegionCountries type='subregion' label={singleCountry.subregion}>
-          {(subregionCountries) => (
-            <MapWidget
-              singleCountry={singleCountry}
-              regionCountries={regionCountries}
-              subregionCountries={subregionCountries}
-            />
-          )}
-        </FetchRegionCountries>
-      )}
-    </FetchRegionCountries>
+    <MapWidget
+      singleCountry={singleCountry}
+      coordinatesData={coordinatesData}
+    />
   )
 }
 

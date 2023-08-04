@@ -2,15 +2,11 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import SingleCountry from '../../components/single/SingleCountry'
 import { compileSingleCountry } from '@/lib/single/compileSingleCountry'
 import compileNeighbouringCountries from '@/lib/single/compileNeighbouringCountries'
+import extractCoords from '@/lib/single/extractCoords'
+
 import { Neighbour } from '@/types/neighbour'
 import { SingleCountryType } from '@/types/singleCountry'
-import extractCoords from '@/lib/single/extractCoords'
-import { Coordinates } from '@/types/coordinates'
-
-export type RegionCoordinates = {
-  coordinates: Coordinates[]
-  endpoint: string
-}
+import { Coordinates, CoordinatesData } from '@/types/coordinates'
 
 type Props = {
   countryCode: string
@@ -18,10 +14,7 @@ type Props = {
   singleCountry: SingleCountryType
   neighboursEndpoint: string
   neighbours: Neighbour[]
-  coordinates: {
-    region: RegionCoordinates
-    subregion: RegionCoordinates
-  }
+  coordinatesData: CoordinatesData
 }
 
 const Country: NextPage<Props> = ({
@@ -30,7 +23,7 @@ const Country: NextPage<Props> = ({
   singleCountry,
   neighboursEndpoint,
   neighbours,
-  coordinates,
+  coordinatesData,
 }) => (
   <SingleCountry
     countryCode={countryCode}
@@ -38,7 +31,7 @@ const Country: NextPage<Props> = ({
     singleCountry={singleCountry}
     neighboursEndpoint={neighboursEndpoint}
     neighbours={neighbours}
-    coordinates={coordinates}
+    coordinatesData={coordinatesData}
   />
 )
 
@@ -150,7 +143,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       singleCountry,
       neighboursEndpoint,
       neighbours,
-      coordinates: {
+      coordinatesData: {
         region: {
           coordinates: regionCoordinates,
           endpoint: regionEndpoint,

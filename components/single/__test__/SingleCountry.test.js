@@ -45,6 +45,7 @@ describe('components/single/SingleCountry', () => {
         singleCountry={singleCountryMocks[0]}
         neighboursEndpoint='neighboursEndpoint'
         neighbours='neighbours'
+        coordinatesData='coordinatesData'
       />,
     )
     expect(Header).toHaveBeenCalled()
@@ -97,7 +98,12 @@ describe('components/single/SingleCountry', () => {
       }),
       expect.anything(),
     )
-    expect(SingleCountryMap).toHaveBeenCalled()
+    expect(SingleCountryMap).toHaveBeenCalledWith(
+      expect.objectContaining({
+        coordinatesData: 'coordinatesData',
+      }),
+      expect.anything(),
+    )
     expect(SingleCountryRegion).toHaveBeenCalledWith(
       expect.objectContaining({
         singleCountry: expect.anything(),

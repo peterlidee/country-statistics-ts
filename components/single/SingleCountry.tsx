@@ -5,6 +5,8 @@ import Source from '../sources/Source'
 import BreadCrumb from './BreadCrumb'
 
 import { SingleCountryType } from '@/types/singleCountry'
+import { Neighbour } from '@/types/neighbour'
+import { CoordinatesData } from '@/types/coordinates'
 
 import SingleCountryHeader from './sections/SingleCountryHeader'
 import SingleCountryStatus from './sections/SingleCountryStatus'
@@ -14,7 +16,6 @@ import SingleCountryWeather2 from './sections/SingleCountryWeather2'
 import SingleCountryMap from './sections/SingleCountryMap'
 import SingleCountryRegion from './sections/SingleCountryRegion'
 import SingleCountryPopulationChart from './sections/SingleCountryPopulationChart'
-import { Neighbour } from '@/types/neighbour'
 
 type Props = {
   countryCode: string
@@ -22,6 +23,7 @@ type Props = {
   singleCountry: SingleCountryType
   neighboursEndpoint: string
   neighbours: Neighbour[]
+  coordinatesData: CoordinatesData
 }
 
 function SingleCountry({
@@ -30,6 +32,7 @@ function SingleCountry({
   singleCountry,
   neighboursEndpoint,
   neighbours,
+  coordinatesData,
 }: Props) {
   return (
     <>
@@ -79,7 +82,10 @@ function SingleCountry({
           capitalName={singleCountry.capital}
         />
 
-        <SingleCountryMap singleCountry={singleCountry} />
+        <SingleCountryMap
+          singleCountry={singleCountry}
+          coordinatesData={coordinatesData}
+        />
 
         <SingleCountryRegion
           singleCountry={singleCountry}

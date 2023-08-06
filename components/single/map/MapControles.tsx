@@ -3,7 +3,7 @@ import MapCapitalButton from './MapCapitalButton'
 import MapRegionButton from './MapRegionButton'
 import IconPan from '../../svgSnippets/IconPan'
 import { SingleCountryType } from '@/types/singleCountry'
-import { RegionOrSubregionCountries } from '@/types/regionOrSubregionCountries'
+import { CoordinatesData } from '@/types/coordinates'
 
 export type Active = 'country' | 'capital' | 'region' | 'subregion'
 type Props = {
@@ -16,9 +16,10 @@ type Props = {
   ) => void
   setGeoCodeLoading: React.Dispatch<React.SetStateAction<boolean>>
   setGeoCodeError: React.Dispatch<React.SetStateAction<Error | undefined>>
-  regionCountries: RegionOrSubregionCountries
-  subregionCountries: RegionOrSubregionCountries | undefined
+  coordinatesData: CoordinatesData
 }
+
+// renders out 3 or 4 buttons to controle the map zoom and bounds
 
 function MapControles({
   singleCountry,
@@ -26,8 +27,7 @@ function MapControles({
   setCountryOnMap,
   setGeoCodeLoading,
   setGeoCodeError,
-  regionCountries,
-  subregionCountries,
+  coordinatesData,
 }: Props) {
   // controles which state is active
   const [active, setActive] = useState<Active>('country')
@@ -75,7 +75,7 @@ function MapControles({
           map={map}
           active={active}
           setActive={setActive}
-          countries={subregionCountries!}
+          coordinates={coordinatesData.subregion.coordinates}
         />
       )}
       {singleCountry.region && (
@@ -85,7 +85,7 @@ function MapControles({
           map={map}
           active={active}
           setActive={setActive}
-          countries={regionCountries}
+          coordinates={coordinatesData.region.coordinates}
         />
       )}
     </div>

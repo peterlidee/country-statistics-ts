@@ -11,29 +11,34 @@ jest.mock('../MapCapitalButton')
 jest.mock('../MapRegionButton')
 jest.mock('../../../svgSnippets/IconPan')
 
-const regionCountries = {
-  isLoading: false,
-  error: undefined,
-  data: [],
-  endpoint: 'regionCountriesEndpoint',
+const coordinatesData = {
+  region: {
+    endpoint: 'regionEndpoint',
+    coordinates: [
+      [1, 2],
+      [3, 4],
+    ],
+  },
+  subregion: {
+    endpoint: 'subregionEndpoint',
+    coordinates: [
+      [5, 6],
+      [7, 8],
+    ],
+  },
 }
-const subregionCountries = {
-  ...regionCountries,
-  endpoint: 'subregionCountriesEndpoint',
-}
-const map = {}
+
 const setCountryOnMap = jest.fn()
 
 function setup(singleCountry) {
   render(
     <MapControles
       singleCountry={singleCountry}
-      map={map}
+      map={{}}
       setCountryOnMap={setCountryOnMap}
       setGeoCodeLoading={() => {}}
       setGeoCodeError={() => {}}
-      regionCountries={regionCountries}
-      subregionCountries={subregionCountries}
+      coordinatesData={coordinatesData}
     />,
   )
 }
@@ -51,21 +56,47 @@ describe('components/single/map/MapControles', () => {
     expect(MapRegionButton).toHaveBeenCalledTimes(2)
   })
 
-  test('It calls MapCapitalButton mock correctly', () => {
-    setup(singleCountryMocks[0])
-    expect(MapCapitalButton).toHaveBeenCalled()
-    expect(MapCapitalButton).toHaveBeenCalledWith(
-      expect.objectContaining({
-        singleCountry: expect.objectContaining({
-          countryName: 'Algeria',
-          capital: 'Algiers',
-          subregion: 'Northern Africa',
+  describe('MapCapitalButton', () => {
+    test('It calls MapCapitalButton mock correctly', () => {
+      setup(singleCountryMocks[0])
+      expect(MapCapitalButton).toHaveBeenCalled()
+      expect(MapCapitalButton).toHaveBeenCalledWith(
+        expect.objectContaining({
+          singleCountry: expect.objectContaining({
+            countryName: 'Algeria',
+            capital: 'Algiers',
+            subregion: 'Northern Africa',
+          }),
+          active: 'country',
         }),
-        active: 'country',
-      }),
-      expect.anything(),
-    )
+        expect.anything(),
+      )
+    })
+
+    test('It does not call MapCapitalButton mock when singleCountry.capital is empty string', () => {
+      setup(singleCountryMocks[2])
+      expect(MapCapitalButton).not.toHaveBeenCalled()
+    })
   })
+
+  describe('map country button', () => {
+    test('It renders the button', () => {
+      setup(singleCountryMocks[0])
+      expect(IconPan).toHaveBeenCalled()
+      expect(
+        screen.getByRole('button', { name: 'Algeria' }),
+      ).toBeInTheDocument()
+    })
+    test('It calls setActive and setCountryOnMap mocks when button is clicked', async () => {
+      const user = userEvent.setup()
+      setup(singleCountryMocks[0])
+      const button = screen.getByRole('button', { name: /algeria/i })
+      await user.click(button)
+      expect(setCountryOnMap).toHaveBeenCalledWith({}, 'Algeria', '.dz')
+    })
+  })
+
+  describe('MapRegionButton', () => {})
 
   test('It calls MapRegionButton mocks correctly', () => {
     setup(singleCountryMocks[0])
@@ -77,12 +108,10 @@ describe('components/single/map/MapControles', () => {
         type: 'subregion',
         label: 'Northern Africa',
         active: 'country',
-        countries: expect.objectContaining({
-          isLoading: false,
-          error: undefined,
-          data: [],
-          endpoint: 'subregionCountriesEndpoint',
-        }),
+        coordinates: [
+          [5, 6],
+          [7, 8],
+        ],
       }),
       expect.anything(),
     )
@@ -92,20 +121,13 @@ describe('components/single/map/MapControles', () => {
         type: 'region',
         label: 'Africa',
         active: 'country',
-        countries: expect.objectContaining({
-          isLoading: false,
-          error: undefined,
-          data: [],
-          endpoint: 'regionCountriesEndpoint',
-        }),
+        coordinates: [
+          [1, 2],
+          [3, 4],
+        ],
       }),
       expect.anything(),
     )
-  })
-
-  test('It does not call MapCapitalButton mock when singleCountry.capital is empty string', () => {
-    setup(singleCountryMocks[2])
-    expect(MapCapitalButton).not.toHaveBeenCalled()
   })
 
   test('It does not call MapRegionButton mock with type subregion when singleCountry.subregion is empty string', () => {
@@ -117,13 +139,5 @@ describe('components/single/map/MapControles', () => {
       }),
       expect.anything(),
     )
-  })
-
-  test('It calls setActive and setCountryOnMap mocks when button is clicked', async () => {
-    const user = userEvent.setup()
-    setup(singleCountryMocks[0])
-    const button = screen.getByRole('button', { name: /algeria/i })
-    await user.click(button)
-    expect(setCountryOnMap).toHaveBeenCalledWith({}, 'Algeria', '.dz')
   })
 })

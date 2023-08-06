@@ -1,24 +1,16 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react'
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api'
 import MapControles from './MapControles'
-import Sources from '../../sources/Sources'
 import Source from '../../sources/Source'
+import SingleCountryComponent from '../SingleCountryComponent'
 import Placeholder from '../../svgSnippets/Placeholder'
-import { SingleCountryType } from '@/types/singleCountry'
-import { RegionOrSubregionCountries } from '@/types/regionOrSubregionCountries'
 
-/**
- * load map and call it, render MapControles and Sources
- * @param singleCountry - SingleCountryType
- * @param regionCountries - all countries in region type RegionOrSubregionCountries
- * @param subregionCountries - all countries in subregion type RegionOrSubregionCountries
- * @return JSX.Element
- */
+import { SingleCountryType } from '@/types/singleCountry'
+import { CoordinatesData } from '@/types/coordinates'
 
 type Props = {
   singleCountry: SingleCountryType
-  regionCountries: RegionOrSubregionCountries
-  subregionCountries?: RegionOrSubregionCountries
+  coordinatesData: CoordinatesData
 }
 
 const containerStyle = {
@@ -26,11 +18,9 @@ const containerStyle = {
   height: '450px',
 }
 
-function MapWidget({
-  singleCountry,
-  regionCountries,
-  subregionCountries,
-}: Props) {
+// load map and call it, render MapControles and Sources
+
+function MapWidget({ singleCountry, coordinatesData }: Props) {
   const singleCountryName = singleCountry.countryName
   const singleCountryCode =
     singleCountry.tld === '' ? singleCountry.region : singleCountry.tld
@@ -118,11 +108,46 @@ function MapWidget({
     mapRef.current = null
   }
 
+  // const sources
+  const sources = [
+    <Source
+      key='mapSource1'
+      label='Google Maps API'
+      loading={!isLoaded}
+      error={loadError}
+    />,
+    <Source
+      key='mapSource2'
+      label='Google GeoCode API'
+      loading={geoCodeLoading}
+      error={geoCodeError}
+    />,
+    <Source
+      key='mapSource3'
+      label='restcountries.com/{region}'
+      endpoint={coordinatesData.region.endpoint}
+      loading={false}
+      error={undefined}
+    />,
+  ]
+
+  if (coordinatesData.subregion.coordinates.length > 0) {
+    sources.push(
+      <Source
+        key='mapSource4'
+        label='restcountries.com/{subregion}'
+        endpoint={coordinatesData.subregion.endpoint}
+        loading={false}
+        error={undefined}
+      />,
+    )
+  }
+
   return (
-    <div className='single-country__map'>
+    <SingleCountryComponent sources={sources} extraClass='map'>
       {(!isLoaded || loadError) && <Placeholder />}
       {isLoaded && !loadError && (
-        <div className='single-country__box'>
+        <>
           <GoogleMap
             mapContainerStyle={containerStyle}
             onLoad={onLoad}
@@ -135,35 +160,12 @@ function MapWidget({
               setCountryOnMap={setCountryOnMap}
               setGeoCodeLoading={setGeoCodeLoading}
               setGeoCodeError={setGeoCodeError}
-              regionCountries={regionCountries}
-              subregionCountries={subregionCountries}
+              coordinatesData={coordinatesData}
             />
           )}
-        </div>
+        </>
       )}
-      <Sources>
-        <Source label='Google Maps API' loading={!isLoaded} error={loadError} />
-        <Source
-          label='Google GeoCode API'
-          loading={geoCodeLoading}
-          error={geoCodeError}
-        />
-        <Source
-          label='restcountries.com/{region}'
-          endpoint={regionCountries.endpoint}
-          loading={regionCountries.isLoading}
-          error={regionCountries.error}
-        />
-        {subregionCountries && (
-          <Source
-            label='restcountries.com/{subregion}'
-            endpoint={subregionCountries.endpoint}
-            loading={subregionCountries.isLoading}
-            error={subregionCountries.error}
-          />
-        )}
-      </Sources>
-    </div>
+    </SingleCountryComponent>
   )
 }
 

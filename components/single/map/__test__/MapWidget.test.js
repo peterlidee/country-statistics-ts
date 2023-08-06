@@ -1,18 +1,21 @@
-import { screen, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
 
 import singleCountriesMock from '../../../../__mock__/data/singleCountryMocks'
+import SingleCountryComponent from '../../SingleCountryComponent'
 import MapControles from '../MapControles'
-import Sources from '../../../sources/Sources'
 import Source from '../../../sources/Source'
 import Placeholder from '../../../svgSnippets/Placeholder'
 import MapWidget from '../MapWidget'
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api'
-import { initialize } from '@googlemaps/jest-mocks'
 
 jest.mock('../MapControles')
-jest.mock('../../../sources/Sources', () => {
-  return jest.fn((props) => <>{props.children}</>)
-})
+jest.mock('../../SingleCountryComponent')
+SingleCountryComponent.mockImplementation((props) => (
+  <>
+    {props.children}
+    {props.sources}
+  </>
+))
 jest.mock('../../../sources/Source')
 jest.mock('../../../svgSnippets/Placeholder')
 jest.mock('@react-google-maps/api', () => {
@@ -24,10 +27,6 @@ jest.mock('@react-google-maps/api', () => {
       loadError: undefined,
     })),
   }
-})
-
-beforeEach(() => {
-  initialize()
 })
 
 const regionCountries = {
@@ -43,21 +42,60 @@ const subregionCountries = {
   endpoint: 'subregionCountriesEndpoint',
 }
 
+const coordinatesData = {
+  region: {
+    endpoint: 'regionurl',
+    coordinates: [
+      [1, 2],
+      [3, 4],
+    ],
+  },
+  subregion: {
+    endpoint: 'subregionurl',
+    coordinates: [
+      [5, 6],
+      [7, 8],
+    ],
+  },
+}
+
 describe('components/single/map/MapWidget', () => {
-  test('It renders Sources', () => {
+  test('It loads useJSApiLoader', () => {
     render(
       <MapWidget
         singleCountry={singleCountriesMock[0]}
-        regionCountries={regionCountries}
-        subregionCountries={subregionCountries}
+        coordinatesData={coordinatesData}
       />,
     )
     expect(useJsApiLoader).toHaveBeenCalled()
-    expect(Sources).toHaveBeenCalled()
+  })
+  test('It behaves correctly when isLoaded is false', () => {
+    render(
+      <MapWidget
+        singleCountry={singleCountriesMock[0]}
+        coordinatesData={coordinatesData}
+      />,
+    )
+    expect(useJsApiLoader).toHaveBeenCalled()
+    expect(Placeholder).toHaveBeenCalled()
+    expect(GoogleMap).not.toHaveBeenCalled()
+    expect(MapControles).not.toHaveBeenCalled()
+    expect(Source).toHaveBeenCalledTimes(4)
+  })
+  test('It renders Sources correctly', () => {
+    render(
+      <MapWidget
+        singleCountry={singleCountriesMock[0]}
+        coordinatesData={coordinatesData}
+      />,
+    )
+    expect(Source).toHaveBeenCalledTimes(4)
     expect(Source).toHaveBeenNthCalledWith(
       1,
       expect.objectContaining({
         label: 'Google Maps API',
+        loading: true,
+        error: undefined,
       }),
       expect.anything(),
     )
@@ -65,40 +103,48 @@ describe('components/single/map/MapWidget', () => {
       2,
       expect.objectContaining({
         label: 'Google GeoCode API',
+        loading: true,
+        error: undefined,
       }),
       expect.anything(),
     )
     expect(Source).toHaveBeenNthCalledWith(
       3,
       expect.objectContaining({
-        endpoint: 'regionCountriesEndpoint',
+        endpoint: 'regionurl',
+        loading: false,
+        error: undefined,
       }),
       expect.anything(),
     )
     expect(Source).toHaveBeenNthCalledWith(
       4,
       expect.objectContaining({
-        endpoint: 'subregionCountriesEndpoint',
+        endpoint: 'subregionurl',
+        loading: false,
+        error: undefined,
       }),
       expect.anything(),
     )
   })
 
-  test('It renders with isLoaded false', () => {
+  test('It renders only 3 sources when coordinatesData does not have subregion coordinates', () => {
     render(
       <MapWidget
         singleCountry={singleCountriesMock[0]}
-        regionCountries={regionCountries}
-        subregionCountries={subregionCountries}
+        coordinatesData={{
+          ...coordinatesData,
+          subregion: { coordinates: [], endpoint: 'subregionurl' },
+        }}
       />,
     )
-    expect(Placeholder).toHaveBeenCalled()
-    expect(GoogleMap).not.toHaveBeenCalled()
-    expect(MapControles).not.toHaveBeenCalled()
+    expect(Source).toHaveBeenCalledTimes(3)
+    expect(Source.mock.calls[0][0].label).toBe('Google Maps API')
+    expect(Source.mock.calls[1][0].label).toBe('Google GeoCode API')
+    expect(Source.mock.calls[2][0].label).toBe('restcountries.com/{region}')
   })
 
   test('It renders with isLoaded true and loadError', () => {
-    useJsApiLoader.mockReset()
     useJsApiLoader.mockReturnValue({
       isLoaded: true,
       loadError: new Error('Foobar'),
@@ -106,12 +152,32 @@ describe('components/single/map/MapWidget', () => {
     render(
       <MapWidget
         singleCountry={singleCountriesMock[0]}
-        regionCountries={regionCountries}
-        subregionCountries={subregionCountries}
+        coordinatesData={coordinatesData}
       />,
     )
+    expect(SingleCountryComponent).toHaveBeenCalled()
     expect(Placeholder).toHaveBeenCalled()
     expect(GoogleMap).not.toHaveBeenCalled()
     expect(MapControles).not.toHaveBeenCalled()
+  })
+
+  test('It renders with isLoaded and no loadError', () => {
+    useJsApiLoader.mockReturnValue({
+      isLoaded: true,
+      loadError: undefined,
+    })
+    render(
+      <MapWidget
+        singleCountry={singleCountriesMock[0]}
+        coordinatesData={coordinatesData}
+      />,
+    )
+    expect(SingleCountryComponent).toHaveBeenCalled()
+    expect(Placeholder).not.toHaveBeenCalled()
+    expect(GoogleMap).toHaveBeenCalled()
+    // we mocked GoogleMap so the onLoad event don't work
+    // hence MapControles will not be called
+    expect(MapControles).not.toHaveBeenCalled()
+    expect(Source).toHaveBeenCalledTimes(4)
   })
 })

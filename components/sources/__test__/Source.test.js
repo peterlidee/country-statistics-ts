@@ -5,13 +5,14 @@ import { screen, render } from '@testing-library/react'
 
 import Source from '../Source'
 
-const setupRender = (loading, error, label, endpoint) => {
+const setupRender = (loading, error, label, endpoint, type) => {
   const { container } = render(
     <Source
       loading={loading}
       error={error}
       label={label}
       endpoint={endpoint}
+      type={type}
     />,
   )
   return {
@@ -25,21 +26,22 @@ const setupRender = (loading, error, label, endpoint) => {
 
 describe('components/sources/Source renders', () => {
   test('It renders', () => {
-    const { icon } = setupRender(false, undefined, 'label', 'endpoint')
+    const { icon } = setupRender(false, undefined, 'label', 'endpoint', 'SSG')
     expect(icon).toBeInTheDocument()
     expect(screen.getByText(/loaded/)).toBeInTheDocument()
+    expect(screen.getByText(/SSG/)).toBeInTheDocument()
     expect(screen.getByText(/label/)).toBeInTheDocument()
   })
 
   describe('Icon and status elements', () => {
     test('Are correct when loading = false', () => {
-      const { icon } = setupRender(false, undefined, 'label', undefined)
+      const { icon } = setupRender(false, undefined, 'label', undefined, 'SSG')
       expect(icon).toHaveClass('source__icon--loaded')
       expect(screen.getByText(/loaded/)).toBeInTheDocument()
     })
 
     test('Are correct when loading = true', () => {
-      const { icon } = setupRender(true, undefined, 'label', undefined)
+      const { icon } = setupRender(true, undefined, 'label', undefined, 'SSG')
       expect(icon).toHaveClass('source__icon--loading')
       expect(screen.getByText(/loading/)).toBeInTheDocument()
     })
@@ -50,6 +52,7 @@ describe('components/sources/Source renders', () => {
         new Error('Error'),
         'label',
         undefined,
+        'SSG',
       )
       expect(icon).toHaveClass('source__icon--error')
       expect(screen.getByText(/error/)).toBeInTheDocument()
@@ -63,6 +66,7 @@ describe('components/sources/Source renders', () => {
         undefined,
         'label',
         undefined,
+        'SSG',
       )
       expect(link).toBeNull()
       const label = screen.getByText(/label/)
@@ -77,6 +81,7 @@ describe('components/sources/Source renders', () => {
         undefined,
         'label',
         'url',
+        'SSG',
       )
       expect(nolink).toBeNull()
       const link = screen.getByRole('link')
@@ -90,19 +95,42 @@ describe('components/sources/Source renders', () => {
   describe('errors', () => {
     test('It shows an error when error.message and nothing else', () => {
       const error = new Error('Error test')
-      setupRender(false, error, 'label', undefined)
+      setupRender(false, error, 'label', undefined, 'SSG')
       expect(screen.getByText(/Error test/)).toBeInTheDocument()
     })
 
     test('It does not show error when error but no error.message', () => {
       const error = new Error()
-      const { errorMessage } = setupRender(false, error, 'label', undefined)
+      const { errorMessage } = setupRender(
+        false,
+        error,
+        'label',
+        undefined,
+        'SSG',
+      )
       expect(errorMessage).toBeNull()
     })
 
     test('It shows no error when there is no error', () => {
-      const { errorMessage } = setupRender(false, undefined, 'label', undefined)
+      const { errorMessage } = setupRender(
+        false,
+        undefined,
+        'label',
+        undefined,
+        'SSG',
+      )
       expect(errorMessage).toBeNull()
+    })
+  })
+
+  describe('It shows the type', () => {
+    test('It renders type SSG', () => {
+      setupRender(false, undefined, 'label', undefined, 'SSG')
+      expect(screen.getByText(/SSG/)).toBeInTheDocument()
+    })
+    test('It renders type API', () => {
+      setupRender(false, undefined, 'label', undefined, 'API')
+      expect(screen.getByText(/API/)).toBeInTheDocument()
     })
   })
 })

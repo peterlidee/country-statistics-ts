@@ -41,6 +41,9 @@
     // width: 4em;
     flex: 0 0 4em;
   }
+  &__type {
+    @extend %small-lower-light;
+  }
   &__link {
     color: var(--cs-black);
     overflow-wrap: anywhere;

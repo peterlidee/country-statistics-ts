@@ -10,35 +10,7 @@ beforeEach(() => {
   initialize()
 })
 
-const subregionCountries = {
-  isLoading: false,
-  error: undefined,
-  data: [],
-  endpoint: 'subregionCountriesEndpoint',
-}
-
-const subregionCountriesLoading = {
-  isLoading: true,
-  error: undefined,
-  data: [],
-  endpoint: 'subregionCountriesEndpoint',
-}
-
-const subregionCountriesNoData = {
-  isLoading: false,
-  error: undefined,
-  data: undefined,
-  endpoint: 'subregionCountriesEndpoint',
-}
-
-const subregionCountriesError = {
-  isLoading: false,
-  error: new Error('Foobar'),
-  data: undefined,
-  endpoint: 'subregionCountriesEndpoint',
-}
-
-function setup(type, label, map, setActive, countries) {
+function setup(type, label, map, setActive) {
   render(
     <MapRegionButton
       type={type}
@@ -46,11 +18,11 @@ function setup(type, label, map, setActive, countries) {
       map={map}
       active='country'
       setActive={setActive}
-      countries={countries}
+      coordinates={[[1, 2]]}
     />,
   )
 }
-function setupForClick(type, label, map, setActive, countries) {
+function setupForClick(type, label) {
   const setActiveMock = jest.fn()
   const mapMock = {
     setCenter: jest.fn(),
@@ -58,52 +30,31 @@ function setupForClick(type, label, map, setActive, countries) {
     fitBounds: jest.fn(),
     panToBounds: jest.fn(),
   }
-  setup(type, label, mapMock, setActiveMock, countries)
+  setup(type, label, mapMock, setActiveMock)
   return { mapMock, setActiveMock }
 }
 
 describe('components/single/map/MapControles', () => {
   describe('It renders', () => {
     test('It renders null with no label', () => {
-      setup('subregion', '', {}, () => {}, subregionCountries)
-      expect(IconPan).not.toHaveBeenCalled()
-      expect(screen.queryByRole('button')).not.toBeInTheDocument()
-    })
-    test('It renders null with a country error', () => {
-      setup('subregion', 'label', {}, () => {}, subregionCountriesError)
-      expect(IconPan).not.toHaveBeenCalled()
-      expect(screen.queryByRole('button')).not.toBeInTheDocument()
-    })
-    test('It renders null with !loading and no countries.data', () => {
-      setup('subregion', 'label', {}, () => {}, subregionCountriesNoData)
+      setup('subregion', '', {}, () => {})
       expect(IconPan).not.toHaveBeenCalled()
       expect(screen.queryByRole('button')).not.toBeInTheDocument()
     })
     test('It renders', () => {
-      setup('subregion', 'label', {}, () => {}, subregionCountries)
+      setup('subregion', 'label', {}, () => {})
       expect(IconPan).toHaveBeenCalledWith(
         expect.objectContaining({ active: false }),
         expect.anything(),
       )
       expect(screen.getByRole('button', { name: 'label' })).toBeInTheDocument()
-      expect(screen.getByRole('button', { name: 'label' })).toBeEnabled()
-    })
-    test('It renders with loading', () => {
-      setup('subregion', 'label', {}, () => {}, subregionCountriesLoading)
-      expect(screen.getByRole('button', { name: 'label' })).toBeDisabled()
     })
   })
 
   describe('Testing button press', () => {
     test('It calls mapMock and setActiveMock correctly on click', async () => {
       const user = userEvent.setup()
-      const { mapMock, setActiveMock } = setupForClick(
-        'subregion',
-        'label',
-        false,
-        false,
-        subregionCountries,
-      )
+      const { mapMock, setActiveMock } = setupForClick('subregion', 'label')
       const button = screen.getByRole('button', { name: /label/i })
       await user.click(button)
       expect(setActiveMock).toHaveBeenCalledWith('subregion')
@@ -113,13 +64,7 @@ describe('components/single/map/MapControles', () => {
   })
   test('It correctly calls the exception Antarctic', async () => {
     const user = userEvent.setup()
-    const { mapMock, setActiveMock } = setupForClick(
-      'region',
-      'Antarctic',
-      false,
-      false,
-      subregionCountries,
-    )
+    const { mapMock, setActiveMock } = setupForClick('region', 'Antarctic')
     const button = screen.getByRole('button', { name: /Antarctic/i })
     await user.click(button)
     expect(setActiveMock).toHaveBeenCalledWith('region')

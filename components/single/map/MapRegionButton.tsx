@@ -1,22 +1,13 @@
-import IconPan from '../../svgSnippets/IconPan'
+import { Coordinates } from '@/types/coordinates'
 import { Active } from './MapControles'
-import {
-  CountryLatLng,
-  RegionOrSubregionCountries,
-} from '@/types/regionOrSubregionCountries'
 
-/**
- * Render button for region and subregion
- * calculate coords on button click + pan and zoom map
- * set state to current type active
- * @param props.type - region or subregion
- * @param props.label - button label
- * @param props.map - ref of google.maps.Map
- * @param props.active - current active pan button, state, inherited MapControles
- * @param props.setActive - setActive @param props.active
- * @param props.countries - type RegionOrSubregionCountries
- * @returns JSX.Element
- */
+import IconPan from '../../svgSnippets/IconPan'
+
+/*
+Render button for region and subregion zoom
+calculate coords on button click + pan and zoom map
+set state to current type active
+*/
 
 type Props = {
   type: 'region' | 'subregion'
@@ -24,14 +15,14 @@ type Props = {
   map: google.maps.Map
   active: Active
   setActive: React.Dispatch<React.SetStateAction<Active>>
-  countries: RegionOrSubregionCountries
+  coordinates: Coordinates[]
 }
 
 // convert data to latlng and feed them into google latlngbounds
-const calculateBounds = (data: CountryLatLng[]) => {
+const calculateBounds = (coordinates: Coordinates[]) => {
   const bounds = new google.maps.LatLngBounds()
-  for (let i = 0; i < data.length; i++) {
-    bounds.extend(new google.maps.LatLng(data[i].latlng[0], data[i].latlng[1]))
+  for (let i = 0; i < coordinates.length; i++) {
+    bounds.extend(new google.maps.LatLng(coordinates[i][0], coordinates[i][1]))
   }
   // return to use
   return bounds
@@ -43,13 +34,13 @@ function MapRegionButton({
   map,
   active,
   setActive,
-  countries,
+  coordinates,
 }: Props) {
   // is there region? is there subregion?
   if (label === '') return null
 
-  // catch errors and no data
-  if (countries.error || (!countries.isLoading && !countries.data)) return null
+  // catch no data
+  if (coordinates.length === 0) return null
 
   // button handler, on click, make the bounds calculations and set map to them
   const setMap = () => {
@@ -64,7 +55,7 @@ function MapRegionButton({
       map.setZoom(2)
     } else {
       // calculate
-      const bounds = calculateBounds(countries.data)
+      const bounds = calculateBounds(coordinates)
       // set map to bounds
       map.fitBounds(bounds) // # auto-zoom
       map.panToBounds(bounds) // # auto-center
@@ -74,11 +65,7 @@ function MapRegionButton({
   return (
     <div className='map-controles__button-container'>
       <IconPan active={active === type} />
-      <button
-        onClick={setMap}
-        className='map-controles__button'
-        disabled={countries.isLoading}
-      >
+      <button onClick={setMap} className='map-controles__button'>
         {label}
       </button>
     </div>

@@ -10,8 +10,7 @@ type Props = {
 
 export default function ChartComponent({ countryCode }: Props) {
   const endpoint = `https://api.worldbank.org/v2/country/${countryCode.toLowerCase()}/indicator/SP.POP.TOTL.FE.IN;SP.POP.TOTL.MA.IN?format=json&source=2&date=2002:2021&per_page=100`
-  const label =
-    'api.worldbank.org/{country} Health Nutrition and Population Statistics'
+  const label = 'api.worldbank.org/{country}'
 
   // make fetch
   const { data, isLoading, error, isError } = useData(

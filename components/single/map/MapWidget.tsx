@@ -115,12 +115,14 @@ function MapWidget({ singleCountry, coordinatesData }: Props) {
       label='Google Maps API'
       loading={!isLoaded}
       error={loadError}
+      type='API'
     />,
     <Source
       key='mapSource2'
       label='Google GeoCode API'
       loading={geoCodeLoading}
       error={geoCodeError}
+      type='API'
     />,
     <Source
       key='mapSource3'
@@ -128,6 +130,7 @@ function MapWidget({ singleCountry, coordinatesData }: Props) {
       endpoint={coordinatesData.region.endpoint}
       loading={false}
       error={undefined}
+      type='SSG'
     />,
   ]
 
@@ -139,6 +142,7 @@ function MapWidget({ singleCountry, coordinatesData }: Props) {
         endpoint={coordinatesData.subregion.endpoint}
         loading={false}
         error={undefined}
+        type='SSG'
       />,
     )
   }

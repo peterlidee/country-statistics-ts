@@ -29,19 +29,6 @@ jest.mock('@react-google-maps/api', () => {
   }
 })
 
-const regionCountries = {
-  isLoading: false,
-  error: undefined,
-  data: [],
-  endpoint: 'regionCountriesEndpoint',
-}
-const subregionCountries = {
-  isLoading: false,
-  error: undefined,
-  data: [],
-  endpoint: 'subregionCountriesEndpoint',
-}
-
 const coordinatesData = {
   region: {
     endpoint: 'regionurl',
@@ -96,6 +83,7 @@ describe('components/single/map/MapWidget', () => {
         label: 'Google Maps API',
         loading: true,
         error: undefined,
+        type: 'API',
       }),
       expect.anything(),
     )
@@ -105,6 +93,7 @@ describe('components/single/map/MapWidget', () => {
         label: 'Google GeoCode API',
         loading: true,
         error: undefined,
+        type: 'API',
       }),
       expect.anything(),
     )
@@ -114,6 +103,7 @@ describe('components/single/map/MapWidget', () => {
         endpoint: 'regionurl',
         loading: false,
         error: undefined,
+        type: 'SSG',
       }),
       expect.anything(),
     )
@@ -123,6 +113,7 @@ describe('components/single/map/MapWidget', () => {
         endpoint: 'subregionurl',
         loading: false,
         error: undefined,
+        type: 'SSG',
       }),
       expect.anything(),
     )

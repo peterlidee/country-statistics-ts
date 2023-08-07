@@ -38,6 +38,7 @@ describe('component/single/neighbours/NeighbouringCountries', () => {
       expect.objectContaining({
         endpoint: 'endpoint',
         label: 'restcountries.com/{codes}',
+        type: 'SSG',
       }),
       expect.anything(),
     )

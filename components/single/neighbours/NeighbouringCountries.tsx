@@ -23,6 +23,7 @@ function NeighbouringCountries({ neighboursEndpoint, neighbours }: Props) {
       label={'restcountries.com/{codes}'}
       loading={false}
       error={undefined}
+      type='SSG'
     />
   )
   // construct the neighbours

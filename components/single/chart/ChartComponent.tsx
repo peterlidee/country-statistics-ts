@@ -37,6 +37,7 @@ export default function ChartComponent({ countryCode }: Props) {
       loading={isLoading}
       endpoint={endpoint}
       label={label}
+      type='CSR'
     />,
   ]
 

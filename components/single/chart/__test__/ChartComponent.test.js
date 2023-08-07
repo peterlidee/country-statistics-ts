@@ -65,8 +65,9 @@ describe('components/single/chart/ChartComponent', () => {
         loading: false,
         endpoint:
           'https://api.worldbank.org/v2/country/aaa/indicator/SP.POP.TOTL.FE.IN;SP.POP.TOTL.MA.IN?format=json&source=2&date=2002:2021&per_page=100',
-        label:
-          'api.worldbank.org/{country} Health Nutrition and Population Statistics',
+        label: 'api.worldbank.org/{country}',
+
+        type: 'CSR',
       }),
       expect.anything(),
     )

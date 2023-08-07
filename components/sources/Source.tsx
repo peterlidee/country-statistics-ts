@@ -36,10 +36,10 @@ function Source({
             {label}
           </a>
         )}
-        {error && error.message && (
-          <div className='source__errormessage'>{`[${error.message}]`}</div>
-        )}
       </div>
+      {error && error.message && (
+        <div className='source__errormessage'>{`[${error.message}]`}</div>
+      )}
     </div>
   )
 }

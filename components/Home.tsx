@@ -25,6 +25,7 @@ function Home({ countries, filterData, endpoint }: HomeProps) {
             loading={false}
             endpoint={endpoint}
             label='restcountries.com/{all}'
+            type='SSG'
           />
         </Sources>
       </div>

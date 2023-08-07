@@ -32,6 +32,7 @@ describe('components/Home', () => {
         loading: false,
         endpoint: 'endpoint',
         label: 'restcountries.com/{all}',
+        type: 'SSG',
       },
       expect.anything(),
     )

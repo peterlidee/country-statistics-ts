@@ -71,6 +71,7 @@ describe('components/single/weather/WeatherComponent', () => {
         loading: false,
         endpoint:
           'https://api.openweathermap.org/data/2.5/weather?q=BBBbbb,aaa&APPID=undefined&units=metric',
+        type: 'CSR',
       }),
       expect.anything(),
     )

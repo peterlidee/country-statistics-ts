@@ -23,6 +23,7 @@ export default function WeatherComponent({ cca2, capitalName }: Props) {
       endpoint={endpoint}
       label={label}
       key='source1'
+      type='CSR'
     />,
   ]
 

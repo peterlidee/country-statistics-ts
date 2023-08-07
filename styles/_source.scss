@@ -43,7 +43,8 @@
   }
   &__type {
     @extend %small-lower;
-    color: var(--cs-blue);
+    flex: 0 0 2.5em;
+    color: #4270c8;
   }
   &__link {
     color: var(--cs-black);

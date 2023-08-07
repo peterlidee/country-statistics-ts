@@ -6,6 +6,7 @@
   ],
   "settings": {
     "files.exclude": {
+      ".vercel": true,
       ".next": true,
       "node_modules": true,
       ".swc": true

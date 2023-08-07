@@ -61,6 +61,7 @@ function SingleCountry({
                 endpoint={singleEndpoint}
                 error={undefined}
                 loading={false}
+                type='SSG'
               />
             </Sources>
           </SingleCountryStatus>

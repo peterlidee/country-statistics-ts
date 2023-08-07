@@ -73,6 +73,7 @@ describe('components/single/SingleCountry', () => {
         endpoint: 'singleEndpoint',
         error: undefined,
         loading: false,
+        type: 'SSG',
       }),
       expect.anything(),
     )

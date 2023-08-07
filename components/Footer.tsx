@@ -42,11 +42,11 @@ const Footer = () => (
       <Wrapper base='footer__section' modifier='packages'>
         <h4 className='footer__subtitle'>extra packages</h4>
         <a href='https://www.npmjs.com/package/@react-google-maps/api'>
-          @react-google-maps/api
+          Google Maps API
         </a>
-        <a href='https://www.npmjs.com/package/react-chartjs-2'>
-          react-chartjs-2
-        </a>
+        <a href='https://www.npmjs.com/package/react-chartjs-2'>Chart.js</a>
+        <a href='https://tanstack.com/query/latest'>TanStack Query</a>
+        <a href='https://axios-http.com/docs/intro'>Axios</a>
         <a href='https://www.npmjs.com/package/react-range'>react-range</a>
         <a href='https://github.com/peterlidee/country-statistics-ts/blob/main/package.json'>
           details in package.json
@@ -55,7 +55,8 @@ const Footer = () => (
 
       <Wrapper base='footer__section' modifier='framework'>
         <h4 className='footer__subtitle'>framework</h4>
-        <a href='https://nextjs.org/'>next.js</a>
+        <a href='https://nextjs.org/'>Next.js</a>
+        <a href='https://www.typescriptlang.org/'>TypeScript</a>
       </Wrapper>
 
       <Wrapper base='footer__section' modifier='deployment'>
@@ -65,12 +66,11 @@ const Footer = () => (
 
       <Wrapper base='footer__section' modifier='testing'>
         <h4 className='footer__subtitle'>testing</h4>
-        <a href='https://www.typescriptlang.org/'>typescript</a>
-        <a href='https://jestjs.io/'>jest</a>
+        <a href='https://jestjs.io/'>Jest</a>
         <a href='https://testing-library.com/docs/react-testing-library/intro/'>
-          react testing library
+          React Testing Library
         </a>
-        <a href='https://eslint.org/'>eslint</a>
+        <a href='https://eslint.org/'>Eslint</a>
       </Wrapper>
 
       <Wrapper base='footer__section' modifier='sourcecode'>

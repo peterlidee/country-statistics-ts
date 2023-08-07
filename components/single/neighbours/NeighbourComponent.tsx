@@ -1,3 +1,4 @@
+import SingleCountryBox from '@/components/general/SingleCountryBox'
 import Sources from '../../sources/Sources'
 
 type Props = {
@@ -5,19 +6,14 @@ type Props = {
   source?: React.ReactNode
 }
 
-/**
- * renders children and optionally Source inside Sources
- * @param props.children
- * @param props.source - Source component
- * @returns ReactNode
- */
+// renders children and optionally Source inside Sources
 
 const NeighbourComponent = ({ children, source }: Props) => (
   <>
-    <div className='single-country__box'>
+    <SingleCountryBox>
       <div className='single-country__label'>neighbouring countries</div>
       <div className='single-country__value'>{children}</div>
-    </div>
+    </SingleCountryBox>
     {source && <Sources>{source}</Sources>}
   </>
 )

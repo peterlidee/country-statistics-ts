@@ -1,7 +1,9 @@
+import PropTypes from 'prop-types'
+
 // a source can have 3 states: error, loading and loaded
 // a source can have a link or just a label
 // if there's an error, there will also be an error message
-// a source can have a type (SSG or CSR)
+// a source can have a type (SSG or CSR or API)
 
 type SourceProps = {
   loading: boolean
@@ -42,6 +44,14 @@ function Source({
       )}
     </div>
   )
+}
+
+Source.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.object,
+  endpoint: PropTypes.string,
+  label: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
 }
 
 export default Source

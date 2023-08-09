@@ -4,7 +4,7 @@ import CountryListLegend from '../CountryListLegend'
 import Wrapper from '../../general/Wrapper'
 
 jest.mock('../../general/Wrapper', () => {
-  return jest.fn((props) => <>{props.children}</>)
+  return jest.fn((props) => props.children)
 })
 
 describe('components/countrylist/CountryListLegend.js', () => {
@@ -12,12 +12,22 @@ describe('components/countrylist/CountryListLegend.js', () => {
     render(
       <CountryListLegend
         field={{
+          sortAscDefault: false,
           slug: 'field',
           legend: 'legend',
+          label: 'label',
+          displayToggle: false,
+          sortType: 'text',
         }}
       />,
     )
-    expect(Wrapper).toHaveBeenCalled()
+    expect(Wrapper).toHaveBeenCalledWith(
+      expect.objectContaining({
+        base: 'country-list-legend',
+        modifier: 'field',
+      }),
+      expect.anything(),
+    )
     expect(screen.getByText('legend')).toBeInTheDocument()
   })
 })

@@ -48,7 +48,7 @@ function CountryRow({ country, index, activeHidden }: Props) {
 CountryRow.propTypes = {
   country: countryPropTypes.isRequired,
   index: PropTypes.number.isRequired,
-  activeHidden: PropTypes.arrayOf(PropTypes.number).isRequired,
+  activeHidden: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 
 export default CountryRow

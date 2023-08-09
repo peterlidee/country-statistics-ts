@@ -11,6 +11,6 @@ const countryPropTypes = PropTypes.exact({
   populationPrettyFormat: PropTypes.string.isRequired,
   density: PropTypes.number.isRequired,
   densityPrettyFormat: PropTypes.string.isRequired,
-}).isRequired
+})
 
 export { countryPropTypes }

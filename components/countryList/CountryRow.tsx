@@ -1,17 +1,12 @@
-/**
- * displays body row with all fields for CountryList
- * @param props.country - Country, a single country object
- * @param props.index - loop index
- * @param props.activeHidden - NumberFieldSlug[], hidden fields
- * @returns JSX.Element: a full row of non hidden country fields
- */
-
 import Link from 'next/link'
 import Wrapper from '../general/Wrapper'
-import { Country } from '@/types/country'
-import { NumberFieldSlug } from '@/types/fields'
 import fields from '../fields/fields'
+import { NumberFieldSlug } from '@/types/fields'
+import { Country } from '@/types/country'
 import { isNumberField } from '@/types/fieldsPredicates'
+
+import PropTypes from 'prop-types'
+import { countryPropTypes } from '@/propTypes/countryPropTypes'
 
 type Props = {
   country: Country
@@ -19,6 +14,7 @@ type Props = {
   activeHidden: NumberFieldSlug[]
 }
 
+// displays body row with all fields for CountryList
 function CountryRow({ country, index, activeHidden }: Props) {
   // retrieve numberFieldsData so TS knows what keys are allowed
   // country[numberFieldsData[number].key] will fill on NumberFieldData | TextFieldData
@@ -47,6 +43,12 @@ function CountryRow({ country, index, activeHidden }: Props) {
       })}
     </>
   )
+}
+
+CountryRow.propTypes = {
+  country: countryPropTypes.isRequired,
+  index: PropTypes.number.isRequired,
+  activeHidden: PropTypes.arrayOf(PropTypes.number).isRequired,
 }
 
 export default CountryRow

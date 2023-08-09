@@ -1,11 +1,3 @@
-/**
- * displays header row with all (non hidden) fields for CountryList
- * @param props.activeHidden - list of hidden fields (NumberField)
- * @param props.sortBy - NumberFieldSlug| TextFieldSlug
- * @param props.sortAsc - boolean
- * @returns JSX.Element (all the fields that will form a row)
- */
-
 import fields from '../fields/fields'
 import {
   NumberField,
@@ -17,12 +9,15 @@ import Wrapper from '../general/Wrapper'
 import CountryListHeader from './CountryListHeader'
 import CountryListLegend from './CountryListLegend'
 
+import PropTypes from 'prop-types'
+
 type Props = {
   activeHidden: NumberFieldSlug[]
   sortBy: NumberFieldSlug | TextFieldSlug
   sortAsc: boolean
 }
 
+// displays header row with all (non hidden) fields for CountryList
 function CountryListHeaders({ activeHidden, sortBy, sortAsc }: Props) {
   return (
     <>
@@ -62,6 +57,12 @@ function CountryListHeaders({ activeHidden, sortBy, sortAsc }: Props) {
       })}
     </>
   )
+}
+
+CountryListHeaders.propTypes = {
+  activeHidden: PropTypes.arrayOf(PropTypes.string).isRequired,
+  sortBy: PropTypes.string.isRequired,
+  sortAsc: PropTypes.bool.isRequired,
 }
 
 export default CountryListHeaders

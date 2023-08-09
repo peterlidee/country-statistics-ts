@@ -1,11 +1,3 @@
-/**
- * Renders the titles of the CountryListHeader as (sorting) links
- * @param props.field - a fieldsData field
- * @param props.sortBy - NumberFieldSlug | TextFieldSlug
- * @param props.sortAsc - boolean sort ascending or not
- * @returns JSX.Element
- */
-
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Wrapper from '../general/Wrapper'
@@ -17,13 +9,16 @@ import {
   TextFieldSlug,
 } from '@/types/fields'
 
+import PropTypes from 'prop-types'
+import { fieldPropTypes } from '@/propTypes/fieldPropTypes'
+
 type Props = {
   field: NumberField | TextField
   sortBy: NumberFieldSlug | TextFieldSlug
   sortAsc: boolean
 }
 
-// a single header field for countries list
+// Renders a single title of the CountryListHeader as (sorting) links
 function CountryListHeader({ field, sortBy, sortAsc }: Props) {
   const router = useRouter()
 
@@ -51,6 +46,12 @@ function CountryListHeader({ field, sortBy, sortAsc }: Props) {
       </Link>
     </Wrapper>
   )
+}
+
+CountryListHeader.propTypes = {
+  field: fieldPropTypes.isRequired,
+  sortBy: PropTypes.string.isRequired,
+  sortAsc: PropTypes.bool.isRequired,
 }
 
 export default CountryListHeader

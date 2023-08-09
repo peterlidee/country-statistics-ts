@@ -23,6 +23,8 @@ import CountryRow from './CountryRow'
 import { Country } from '@/types/country'
 import { FilterDataType } from '@/types/filterData'
 
+import PropTypes from 'prop-types'
+
 type Props = {
   countries: Country[]
   filterData: FilterDataType
@@ -118,5 +120,9 @@ function CountryList({ countries, filterData }: Props) {
     </div>
   )
 }
+
+// CountryList.propTypes = {
+
+// }
 
 export default CountryList

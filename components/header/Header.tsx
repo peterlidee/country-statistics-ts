@@ -3,6 +3,8 @@ import IconLogo from '../svgSnippets/IconLogo'
 import SettingsToggle from './SettingsToggle'
 import SettingsOptions from './SettingsOptions'
 
+import PropTypes from 'prop-types'
+
 function Header({ home = false }) {
   return (
     <header className='site__header'>
@@ -17,6 +19,10 @@ function Header({ home = false }) {
       )}
     </header>
   )
+}
+
+Header.propTypes = {
+  home: PropTypes.bool,
 }
 
 export default Header

@@ -1,14 +1,10 @@
-/**
- * displays input checkboxes for each fieldsData (population, arae, density) and controls visibility (toggle)
- * @returns list of NumberField toggles
- */
-
 import { useRouter } from 'next/router'
 import getAndValidateHiddenQuery from '../../lib/settings/getAndValidateHiddenQuery'
 import fields from '../fields/fields'
 import { NumberFieldSlug } from '@/types/fields'
 import { isNumberField } from '@/types/fieldsPredicates'
 
+// displays input checkboxes for each fieldsData (population, arae, density) and controls visibility (toggle)
 function FieldSettings() {
   // we won't wait for router.isReady because this component is inside settingsToggle and will be collapsed on first pageload
   const router = useRouter()

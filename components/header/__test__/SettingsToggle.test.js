@@ -46,4 +46,33 @@ describe('SettingsToggle', () => {
     await user.click(button)
     expect(collapse).toHaveStyle('display:none')
   })
+
+  describe('It renders node', () => {
+    test('It renders react element', () => {
+      render(
+        <SettingsToggle>
+          <ChildMock />
+        </SettingsToggle>,
+      )
+      expect(ChildMock).toHaveBeenCalled()
+    })
+    test('It renders react elements', () => {
+      render(
+        <SettingsToggle>
+          <ChildMock />
+          <ChildMock />
+          <ChildMock />
+        </SettingsToggle>,
+      )
+      expect(ChildMock).toHaveBeenCalledTimes(3)
+    })
+    test('It renders strings', () => {
+      render(<SettingsToggle>foobar</SettingsToggle>)
+      expect(screen.getByText(/foobar/)).toBeInTheDocument()
+    })
+    test('It renders numbers', () => {
+      render(<SettingsToggle>123456</SettingsToggle>)
+      expect(screen.getByText('123456')).toBeInTheDocument()
+    })
+  })
 })

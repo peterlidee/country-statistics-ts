@@ -1,16 +1,13 @@
 import { useState } from 'react'
 import IconSettings from '../svgSnippets/IconSettings'
 
+import PropTypes from 'prop-types'
+
 type FieldSettingsProps = {
   children: React.ReactNode
 }
 
-/**
- * wraps children in toggle component
- * @param props.children - takes component SettingsOptions
- * @returns - JSX.Element
- */
-
+// wraps children in toggle component
 function FieldSettings({ children }: FieldSettingsProps) {
   const [toggle, setToggle] = useState(false)
   return (
@@ -32,6 +29,10 @@ function FieldSettings({ children }: FieldSettingsProps) {
       </div>
     </div>
   )
+}
+
+FieldSettings.propTypes = {
+  children: PropTypes.node.isRequired,
 }
 
 export default FieldSettings

@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import Wrapper from '../general/Wrapper'
 
+import PropTypes from 'prop-types'
+
 type CollapseProps = {
   children: React.ReactNode
   boldLabel?: boolean
@@ -8,15 +10,7 @@ type CollapseProps = {
   extraClass?: string
 }
 
-/**
- * Wraps @children and button into container. Button toggles display none | block on children
- * @param props.children
- * @param props.label - string, button label
- * @param props.boldLabel - boolean, optional, default false, bold button label or not
- * @param props.extraClass - string, optional, default '', extra class for Wrapper component
- * @returns
- */
-
+// Wraps @children and button into container. Button toggles display none | block on children
 function Collapse({
   children,
   boldLabel = false,
@@ -39,6 +33,13 @@ function Collapse({
       </div>
     </Wrapper>
   )
+}
+
+Collapse.propTypes = {
+  children: PropTypes.node.isRequired,
+  boldLabel: PropTypes.bool,
+  label: PropTypes.string.isRequired,
+  extraClass: PropTypes.string,
 }
 
 export default Collapse

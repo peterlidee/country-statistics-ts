@@ -19,6 +19,9 @@ function setup(sortBy, sortAsc) {
         slug: 'country',
         label: 'Country',
         sortAscDefault: true,
+        legend: 'legend',
+        displayToggle: false,
+        sortType: 'sortType',
       }}
       sortBy={sortBy}
       sortAsc={sortAsc}

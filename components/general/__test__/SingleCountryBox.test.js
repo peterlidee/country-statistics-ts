@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import SingleCountryBox from '../SingleCountryBox'
 
 const ChildMock = jest.fn()
@@ -25,5 +25,9 @@ describe('components/general/SingleCountryBox', () => {
       </SingleCountryBox>,
     )
     expect(ChildMock).toHaveBeenCalledTimes(3)
+  })
+  test('It works with nodes', () => {
+    render(<SingleCountryBox>foobar</SingleCountryBox>)
+    expect(screen.getByText(/foobar/)).toBeInTheDocument()
   })
 })

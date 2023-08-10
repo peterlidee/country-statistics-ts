@@ -2,6 +2,8 @@ import Head from 'next/head'
 import Footer from './Footer'
 import React from 'react'
 
+import PropTypes from 'prop-types'
+
 type PageProps = {
   children: React.ReactNode
 }
@@ -21,6 +23,10 @@ function Page({ children }: PageProps) {
       <Footer />
     </>
   )
+}
+
+Page.propTypes = {
+  children: PropTypes.node,
 }
 
 export default Page

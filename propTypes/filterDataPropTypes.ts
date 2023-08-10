@@ -24,4 +24,12 @@ const filterDataPropTypes = PropTypes.exact({
   population: numberFilterDataPropTypes.isRequired,
 })
 
-export { filterDataPropTypes }
+const currentSelectionsPropTypes = PropTypes.objectOf(
+  PropTypes.arrayOf(PropTypes.number),
+)
+const activeNumbersPropTypes = PropTypes.exact({
+  activeNumberFilters: PropTypes.arrayOf(PropTypes.string).isRequired,
+  currentSelections: currentSelectionsPropTypes.isRequired,
+})
+
+export { filterDataPropTypes, activeNumbersPropTypes }

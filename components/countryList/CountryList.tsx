@@ -23,7 +23,10 @@ import CountryRow from './CountryRow'
 import { Country } from '@/types/country'
 import { FilterDataType } from '@/types/filterData'
 
+// propTypes
 import PropTypes from 'prop-types'
+import { filterDataPropTypes } from '@/propTypes/filterDataPropTypes'
+import { countryPropTypes } from '@/propTypes/countryPropTypes'
 
 type Props = {
   countries: Country[]
@@ -121,8 +124,9 @@ function CountryList({ countries, filterData }: Props) {
   )
 }
 
-// CountryList.propTypes = {
-
-// }
+CountryList.propTypes = {
+  countries: PropTypes.arrayOf(countryPropTypes).isRequired,
+  filterData: filterDataPropTypes.isRequired,
+}
 
 export default CountryList

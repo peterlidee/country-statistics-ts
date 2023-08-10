@@ -5,6 +5,10 @@ import getFilterData from '../lib/data/getFilterData'
 import { Country } from '@/types/country'
 import { FilterDataType } from '@/types/filterData'
 
+import PropTypes from 'prop-types'
+import { countryPropTypes } from '@/propTypes/countryPropTypes'
+import { filterDataPropTypes } from '@/propTypes/filterDataPropTypes'
+
 export type HomeProps = {
   countries: Country[]
   filterData: FilterDataType
@@ -14,6 +18,14 @@ export type HomeProps = {
 const HomePage: NextPage<HomeProps> = ({ countries, filterData, endpoint }) => (
   <Home countries={countries} endpoint={endpoint} filterData={filterData} />
 )
+
+HomePage.propTypes = {
+  // for some reason countries and filterData give an error
+  // could not find the solution
+  // countries: PropTypes.arrayOf(countryPropTypes).isRequired,
+  // filterData: filterDataPropTypes.isRequired,
+  endpoint: PropTypes.string.isRequired,
+}
 
 // all of this happens at build time
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {

@@ -29,7 +29,7 @@ describe('components/filters/Filters', () => {
         activeRegions={[]}
         activeNumbers={{
           activeNumberFilters: [],
-          currentSelection: {},
+          currentSelections: {},
         }}
         filterData={filterDataMock}
       />,
@@ -51,7 +51,7 @@ describe('components/filters/Filters', () => {
         activeRegions={[]}
         activeNumbers={{
           activeNumberFilters: [],
-          currentSelection: {},
+          currentSelections: {},
         }}
         filterData={filterDataMock}
       />,
@@ -71,7 +71,7 @@ describe('components/filters/Filters', () => {
         activeRegions={[]}
         activeNumbers={{
           activeNumberFilters: [],
-          currentSelection: {},
+          currentSelections: {},
         }}
         filterData={filterDataMock}
       />,
@@ -100,7 +100,7 @@ describe('components/filters/Filters', () => {
         activeRegions={[]}
         activeNumbers={{
           activeNumberFilters: [],
-          currentSelection: {},
+          currentSelections: {},
         }}
         filterData={filterDataMock}
       />,
@@ -116,7 +116,7 @@ describe('components/filters/Filters', () => {
         activeRegions={[]}
         activeNumbers={{
           activeNumberFilters: [],
-          currentSelection: {},
+          currentSelections: {},
         }}
         filterData={filterDataMock}
       />,
@@ -133,7 +133,7 @@ describe('components/filters/Filters', () => {
         activeRegions={[]}
         activeNumbers={{
           activeNumberFilters: [],
-          currentSelection: {},
+          currentSelections: {},
         }}
         filterData={filterDataMock}
       />,
@@ -156,7 +156,7 @@ describe('components/filters/Filters', () => {
         activeRegions={[]}
         activeNumbers={{
           activeNumberFilters: [],
-          currentSelection: {},
+          currentSelections: {},
         }}
         filterData={filterDataMock}
       />,

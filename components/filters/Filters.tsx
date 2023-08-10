@@ -6,10 +6,15 @@ import isFilterActive from '../../lib/filter/isFilterActive'
 import RegionFilter from './region/RegionFilter'
 import NumberFilter from './number/NumberFilter'
 
-import PropTypes from 'prop-types'
 import { ActiveNumbersType, FilterDataType } from '@/types/filterData'
 import { NumberFieldSlug } from '@/types/fields'
 import { isNumberFieldSlug } from '@/types/fieldsPredicates'
+
+import PropTypes from 'prop-types'
+import {
+  activeNumbersPropTypes,
+  filterDataPropTypes,
+} from '@/propTypes/filterDataPropTypes'
 
 type Props = {
   filterData: FilterDataType
@@ -18,15 +23,7 @@ type Props = {
   activeNumbers: ActiveNumbersType
 }
 
-/**
- * Loop over active non-hidden filters and wrap them in Collapse elements
- * @param props.filterData - FilterDataType
- * @param props.activeHidden - NumberFieldSlug[]
- * @param props.activeRegions - string[]
- * @param props.activeNumbers - { activeNumberFilters, currentSelections }
- * @returns JSX.Element Filters component
- */
-
+// Loop over active non-hidden filters and wrap them in Collapse elements
 function Filters({
   filterData,
   activeHidden,
@@ -83,10 +80,10 @@ function Filters({
 }
 
 Filters.propTypes = {
-  filterData: PropTypes.object.isRequired,
-  activeHidden: PropTypes.array.isRequired,
-  activeRegions: PropTypes.array.isRequired,
-  activeNumbers: PropTypes.object.isRequired,
+  filterData: filterDataPropTypes.isRequired,
+  activeHidden: PropTypes.arrayOf(PropTypes.string).isRequired,
+  activeRegions: PropTypes.arrayOf(PropTypes.string).isRequired,
+  activeNumbers: activeNumbersPropTypes.isRequired,
 }
 
 export default Filters

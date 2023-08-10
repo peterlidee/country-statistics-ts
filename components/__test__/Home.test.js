@@ -6,6 +6,8 @@ import Header from '../header/Header'
 import CountryList from '../countryList/CountryList'
 import Sources from '../sources/Sources'
 import Source from '../sources/Source'
+import { extraDataCountries } from '../../__mock__/data/countriesMock'
+import filterDataMock from '../../__mock__/data/filterDataMock'
 
 jest.mock('next/head')
 jest.mock('../header/Header')
@@ -17,12 +19,21 @@ jest.mock('../sources/Source')
 
 describe('components/Home', () => {
   test('It renders', () => {
-    render(<Home endpoint='endpoint' countries={[]} filterData={{}} />)
+    render(
+      <Home
+        endpoint='endpoint'
+        countries={extraDataCountries}
+        filterData={filterDataMock}
+      />,
+    )
 
     expect(Head).toHaveBeenCalled()
     expect(Header).toHaveBeenCalledWith({ home: true }, expect.anything())
     expect(CountryList).toHaveBeenCalledWith(
-      { countries: [], filterData: {} },
+      expect.objectContaining({
+        countries: expect.anything(),
+        filterData: expect.anything(),
+      }),
       expect.anything(),
     )
     expect(Sources).toHaveBeenCalled()

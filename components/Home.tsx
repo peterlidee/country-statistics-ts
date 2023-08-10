@@ -5,6 +5,11 @@ import Sources from './sources/Sources'
 import Source from './sources/Source'
 import { HomeProps } from '@/pages'
 
+// PropTypes
+import PropTypes from 'prop-types'
+import { countryPropTypes } from '@/propTypes/countryPropTypes'
+import { filterDataPropTypes } from '@/propTypes/filterDataPropTypes'
+
 function Home({ countries, filterData, endpoint }: HomeProps) {
   return (
     <>
@@ -31,6 +36,12 @@ function Home({ countries, filterData, endpoint }: HomeProps) {
       </div>
     </>
   )
+}
+
+Home.propTypes = {
+  countries: PropTypes.arrayOf(countryPropTypes).isRequired,
+  filterData: filterDataPropTypes.isRequired,
+  endpoint: PropTypes.string.isRequired,
 }
 
 export default Home

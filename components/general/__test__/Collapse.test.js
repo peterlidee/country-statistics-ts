@@ -5,7 +5,7 @@ import Collapse from '../Collapse'
 import Wrapper from '../Wrapper'
 
 jest.mock('../Wrapper', () => {
-  return jest.fn((props) => <>{props.children}</>)
+  return jest.fn((props) => props.children)
 })
 const ChildMock = jest.fn()
 
@@ -90,6 +90,35 @@ describe('components/general/Collapse', () => {
       await user.click(button)
       expect(button).toHaveTextContent(/\+/)
       expect(content).toHaveStyle('display: none')
+    })
+  })
+
+  describe('It renders children as nodes and elements', () => {
+    test('It renders children element', () => {
+      setupRender()
+      expect(ChildMock).toHaveBeenCalled()
+    })
+    test('It renders string', () => {
+      render(<Collapse label='label'>foobar</Collapse>)
+      expect(screen.getByText(/foobar/)).toBeInTheDocument()
+    })
+    test('It renders numbers', () => {
+      render(<Collapse label='label'>123456</Collapse>)
+      expect(screen.getByText('123456')).toBeInTheDocument()
+    })
+    test('It renders null', () => {
+      const { container } = render(<Collapse label='label'>{null}</Collapse>)
+      expect(
+        // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
+        container.querySelector('.collapse__content'),
+      ).toBeEmptyDOMElement()
+    })
+    test('It renders undefined', () => {
+      const { container } = render(<Collapse label='label' />)
+      expect(
+        // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
+        container.querySelector('.collapse__content'),
+      ).toBeEmptyDOMElement()
     })
   })
 })

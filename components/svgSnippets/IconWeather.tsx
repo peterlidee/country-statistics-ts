@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 // https://www.flaticon.com/free-icon/black-cloud_33486
 // https://www.flaticon.com/free-icon/snowflake_642000
 // https://www.flaticon.com/free-icon/flash_252851
@@ -240,5 +242,9 @@ const IconWeather = ({ type }: IconWeatherProps) => (
     )}
   </svg>
 )
+
+IconWeather.propTypes = {
+  type: PropTypes.string.isRequired,
+}
 
 export default IconWeather

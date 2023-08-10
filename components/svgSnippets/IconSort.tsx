@@ -1,3 +1,10 @@
+import PropTypes from 'prop-types'
+
+type IconSortProps = {
+  sortActive: boolean
+  sortAsc: boolean
+}
+
 export function calculateTriangleClass(
   triangle: 'upper' | 'lower',
   sortActive: IconSortProps['sortActive'],
@@ -12,11 +19,6 @@ export function calculateTriangleClass(
     }
   }
   return ''
-}
-
-type IconSortProps = {
-  sortActive: boolean
-  sortAsc: boolean
 }
 
 function IconSort({ sortActive, sortAsc }: IconSortProps) {
@@ -49,6 +51,11 @@ function IconSort({ sortActive, sortAsc }: IconSortProps) {
       />
     </svg>
   )
+}
+
+IconSort.propTypes = {
+  sortActive: PropTypes.bool.isRequired,
+  sortAsc: PropTypes.bool.isRequired,
 }
 
 export default IconSort

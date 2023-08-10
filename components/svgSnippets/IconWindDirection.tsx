@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 type IconWindDirectionProps = {
   deg: number
 }
@@ -20,5 +22,9 @@ const IconWindDirection = ({ deg }: IconWindDirectionProps) => (
     />
   </svg>
 )
+
+IconWindDirection.propTypes = {
+  deg: PropTypes.number.isRequired,
+}
 
 export default IconWindDirection

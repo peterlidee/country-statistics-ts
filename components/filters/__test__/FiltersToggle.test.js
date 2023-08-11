@@ -7,16 +7,48 @@ jest.mock('../../svgSnippets/IconFilters')
 const ChildMock = jest.fn()
 
 describe('components/filters/FiltersToggle', () => {
-  
   test('It renders', () => {
-    render(<FiltersToggle><ChildMock /></FiltersToggle>)
+    render(
+      <FiltersToggle>
+        <ChildMock />
+      </FiltersToggle>,
+    )
     expect(screen.getByRole('button')).toBeInTheDocument()
     expect(IconFilters).toHaveBeenCalled()
     expect(ChildMock).toHaveBeenCalled()
   })
 
+  describe('It renders nodes', () => {
+    test('It renders Child mock', () => {
+      render(
+        <FiltersToggle>
+          <ChildMock />
+        </FiltersToggle>,
+      )
+      expect(ChildMock).toHaveBeenCalled()
+    })
+    test('It renders multiple Child mocks', () => {
+      render(
+        <FiltersToggle>
+          <ChildMock />
+          <ChildMock />
+          <ChildMock />
+        </FiltersToggle>,
+      )
+      expect(ChildMock).toHaveBeenCalled()
+    })
+    test('It renders strings', () => {
+      render(<FiltersToggle>foobar</FiltersToggle>)
+      expect(screen.getByText(/foobar/)).toBeInTheDocument()
+    })
+  })
+
   test('It toggles', async () => {
-    const { container } = render(<FiltersToggle><ChildMock /></FiltersToggle>)
+    const { container } = render(
+      <FiltersToggle>
+        <ChildMock />
+      </FiltersToggle>,
+    )
     const User = userEvent.setup()
 
     // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
@@ -37,5 +69,4 @@ describe('components/filters/FiltersToggle', () => {
     expect(divEl).toHaveClass('filters--closed')
     expect(button).toHaveClass('filters__toggle-button')
   })
-
 })

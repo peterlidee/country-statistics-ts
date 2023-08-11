@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import IconFilters from '../svgSnippets/IconFilters'
 
+import PropTypes from 'prop-types'
+
 type Props = {
   children: React.ReactNode
 }
@@ -23,6 +25,10 @@ function FiltersToggle({ children }: Props): JSX.Element {
       <div className={toggleClass}>{children}</div>
     </>
   )
+}
+
+FiltersToggle.protoTypes = {
+  children: PropTypes.node.isRequired,
 }
 
 export default FiltersToggle

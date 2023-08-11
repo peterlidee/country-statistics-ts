@@ -32,4 +32,8 @@ const activeNumbersPropTypes = PropTypes.exact({
   currentSelections: currentSelectionsPropTypes.isRequired,
 })
 
-export { filterDataPropTypes, activeNumbersPropTypes }
+export {
+  filterDataPropTypes,
+  activeNumbersPropTypes,
+  numberFilterDataPropTypes,
+}

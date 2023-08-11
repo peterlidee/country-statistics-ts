@@ -4,9 +4,13 @@ import { useRouter } from 'next/router'
 import validateNumbersAgainstDefaults from '../../../lib/numberFilter/validateNumbersAgainstDefaults'
 import FilterRange from './FilterRange'
 
-import PropTypes from 'prop-types'
 import { NumberFieldSlug } from '@/types/fields'
 import { ActiveNumbersType, NumberFilterDataType } from '@/types/filterData'
+import PropTypes from 'prop-types'
+import {
+  activeNumbersPropTypes,
+  numberFilterDataPropTypes,
+} from '@/propTypes/filterDataPropTypes'
 
 type Props = {
   filter: NumberFieldSlug
@@ -157,8 +161,8 @@ function NumberFilter({ filter, currFilterData, activeNumbers }: Props) {
 
 NumberFilter.propTypes = {
   filter: PropTypes.string.isRequired,
-  currFilterData: PropTypes.object.isRequired,
-  activeNumbers: PropTypes.object.isRequired,
+  currFilterData: numberFilterDataPropTypes.isRequired,
+  activeNumbers: activeNumbersPropTypes.isRequired,
 }
 
 export default NumberFilter

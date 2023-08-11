@@ -109,9 +109,9 @@ FilterRange.propTypes = {
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
   steps: PropTypes.number.isRequired,
-  sliderSelection: PropTypes.array.isRequired,
+  sliderSelection: PropTypes.arrayOf(PropTypes.number).isRequired,
   handleSliderSelection: PropTypes.func.isRequired,
-  sliderFinalSelection: PropTypes.array.isRequired,
+  sliderFinalSelection: PropTypes.arrayOf(PropTypes.number).isRequired,
   handleSliderFinalSelection: PropTypes.func.isRequired,
 }
 

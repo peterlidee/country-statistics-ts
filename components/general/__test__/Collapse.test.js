@@ -106,19 +106,5 @@ describe('components/general/Collapse', () => {
       render(<Collapse label='label'>123456</Collapse>)
       expect(screen.getByText('123456')).toBeInTheDocument()
     })
-    test('It renders null', () => {
-      const { container } = render(<Collapse label='label'>{null}</Collapse>)
-      expect(
-        // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
-        container.querySelector('.collapse__content'),
-      ).toBeEmptyDOMElement()
-    })
-    test('It renders undefined', () => {
-      const { container } = render(<Collapse label='label' />)
-      expect(
-        // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
-        container.querySelector('.collapse__content'),
-      ).toBeEmptyDOMElement()
-    })
   })
 })

@@ -16,6 +16,7 @@ import SingleCountryRegion from '../sections/SingleCountryRegion'
 import SingleCountryPopulationChart from '../sections/SingleCountryPopulationChart'
 
 import singleCountryMocks from '../../../__mock__/data/singleCountryMocks'
+import { coordinatesDataMock } from '../../../__mock__/data/coordinatesDataMock'
 
 jest.mock('../../header/Header')
 jest.mock('../../sources/Sources', () => {
@@ -44,8 +45,8 @@ describe('components/single/SingleCountry', () => {
         singleEndpoint={'singleEndpoint'}
         singleCountry={singleCountryMocks[0]}
         neighboursEndpoint='neighboursEndpoint'
-        neighbours='neighbours'
-        coordinatesData='coordinatesData'
+        neighbours={[{ countryName: 'foobar', cca3: 'foo' }]}
+        coordinatesData={coordinatesDataMock}
       />,
     )
     expect(Header).toHaveBeenCalled()
@@ -101,7 +102,7 @@ describe('components/single/SingleCountry', () => {
     )
     expect(SingleCountryMap).toHaveBeenCalledWith(
       expect.objectContaining({
-        coordinatesData: 'coordinatesData',
+        coordinatesData: expect.anything(),
       }),
       expect.anything(),
     )
@@ -109,7 +110,7 @@ describe('components/single/SingleCountry', () => {
       expect.objectContaining({
         singleCountry: expect.anything(),
         neighboursEndpoint: 'neighboursEndpoint',
-        neighbours: 'neighbours',
+        neighbours: expect.anything(),
       }),
       expect.anything(),
     )

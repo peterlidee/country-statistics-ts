@@ -17,6 +17,11 @@ import SingleCountryMap from './sections/SingleCountryMap'
 import SingleCountryRegion from './sections/SingleCountryRegion'
 import SingleCountryPopulationChart from './sections/SingleCountryPopulationChart'
 
+import PropTypes from 'prop-types'
+import { neighbourPropTypes } from '@/propTypes/neighbourPropTypes'
+import { coordinatesDataPropTypes } from '@/propTypes/coordinatesPropTypes'
+import { singleCountryPropTypes } from '@/propTypes/singleCountryPropTypes'
+
 type Props = {
   countryCode: string
   singleEndpoint: string
@@ -98,6 +103,15 @@ function SingleCountry({
       </article>
     </>
   )
+}
+
+SingleCountry.propTypes = {
+  countryCode: PropTypes.string.isRequired,
+  singleEndpoint: PropTypes.string.isRequired,
+  singleCountry: singleCountryPropTypes.isRequired,
+  neighboursEndpoint: PropTypes.string.isRequired,
+  neighbours: PropTypes.arrayOf(neighbourPropTypes).isRequired,
+  coordinatesData: coordinatesDataPropTypes,
 }
 
 export default SingleCountry

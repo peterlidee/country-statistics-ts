@@ -1,6 +1,8 @@
 import SingleCountryBox from '../general/SingleCountryBox'
 import Sources from '../sources/Sources'
 
+import PropTypes from 'prop-types'
+
 type Props = {
   extraClass?: string
   children: React.ReactNode
@@ -20,4 +22,10 @@ export default function SingleCountryComponent({
       )}
     </div>
   )
+}
+
+SingleCountryComponent.propTypes = {
+  extraClass: PropTypes.string,
+  children: PropTypes.node.isRequired,
+  sources: PropTypes.arrayOf(PropTypes.element),
 }

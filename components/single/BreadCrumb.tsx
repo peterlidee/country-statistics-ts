@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import PropTypes from 'prop-types'
 
 type Props = {
   countryName: string
@@ -13,5 +14,9 @@ const BreadCrumb = ({ countryName }: Props) => (
     {countryName}
   </div>
 )
+
+BreadCrumb.propTypes = {
+  countryName: PropTypes.string.isRequired,
+}
 
 export default BreadCrumb

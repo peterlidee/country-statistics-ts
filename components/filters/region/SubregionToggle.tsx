@@ -1,6 +1,8 @@
 import { PropsWithChildren, useState } from 'react'
 import FilterRow from './FilterRow'
 
+import PropTypes from 'prop-types'
+
 // This function returns a filterblock for a region and optionally subregions
 // it contains a custom collapse if there are subregions
 // else if will just return a filterrow component
@@ -49,6 +51,12 @@ function SubregionToggle({
       )}
     </>
   )
+}
+
+SubregionToggle.propTypes = {
+  filterCheckbox: PropTypes.node.isRequired,
+  filterCheckboxCount: PropTypes.node.isRequired,
+  children: PropTypes.node,
 }
 
 export default SubregionToggle

@@ -3,6 +3,7 @@
 // the optional togglebutton gets passed as props.children
 
 import { PropsWithChildren } from 'react'
+import PropTypes from 'prop-types'
 
 type Props = {
   filterCheckbox: React.ReactNode
@@ -21,6 +22,12 @@ function FilterRow({
       {children}
     </div>
   )
+}
+
+FilterRow.propTypes = {
+  filterCheckbox: PropTypes.node.isRequired,
+  filterCheckboxCount: PropTypes.node.isRequired,
+  children: PropTypes.node,
 }
 
 export default FilterRow

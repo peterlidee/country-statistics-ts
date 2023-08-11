@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import FilterRow from '../../region/FilterRow'
 
 const FilterCheckboxMock = jest.fn()
@@ -6,12 +6,12 @@ const FilterCheckboxCountMock = jest.fn()
 const ChildMock = jest.fn()
 
 describe('components/filters/region/FilterRow', () => {
-
   test('It renders', () => {
     render(
-      <FilterRow 
+      <FilterRow
         filterCheckbox={<FilterCheckboxMock />}
-        filterCheckboxCount={<FilterCheckboxCountMock />} />
+        filterCheckboxCount={<FilterCheckboxCountMock />}
+      />,
     )
     expect(FilterCheckboxMock).toHaveBeenCalled()
     expect(FilterCheckboxCountMock).toHaveBeenCalled()
@@ -19,14 +19,50 @@ describe('components/filters/region/FilterRow', () => {
 
   test('it renders the child', () => {
     render(
-      <FilterRow 
+      <FilterRow
         filterCheckbox={<FilterCheckboxMock />}
         filterCheckboxCount={<FilterCheckboxCountMock />}
       >
         <ChildMock />
-      </FilterRow>
+      </FilterRow>,
     )
     expect(ChildMock).toHaveBeenCalledTimes(1)
   })
 
+  test('It renders the multiple children', () => {
+    render(
+      <FilterRow
+        filterCheckbox={<FilterCheckboxMock />}
+        filterCheckboxCount={<FilterCheckboxCountMock />}
+      >
+        <ChildMock />
+        <ChildMock />
+        <ChildMock />
+      </FilterRow>,
+    )
+    expect(ChildMock).toHaveBeenCalledTimes(3)
+  })
+
+  test('It renders no Child', () => {
+    render(
+      <FilterRow
+        filterCheckbox={<FilterCheckboxMock />}
+        filterCheckboxCount={<FilterCheckboxCountMock />}
+      />,
+    )
+    expect(FilterCheckboxMock).toHaveBeenCalled()
+    expect(FilterCheckboxCountMock).toHaveBeenCalled()
+  })
+
+  test('It renders string', () => {
+    render(
+      <FilterRow
+        filterCheckbox={<FilterCheckboxMock />}
+        filterCheckboxCount={<FilterCheckboxCountMock />}
+      >
+        foobar
+      </FilterRow>,
+    )
+    expect(screen.getByText(/foobar/)).toBeInTheDocument()
+  })
 })

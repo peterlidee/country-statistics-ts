@@ -10,6 +10,12 @@ import {
   RegionIndexesType,
 } from '../../../types/filterData'
 
+import PropTypes from 'prop-types'
+import {
+  defaultRegionStatePropTypes,
+  regionIndexesPropTypes,
+} from '@/propTypes/filterDataPropTypes'
+
 type Props = {
   regionsAndSubregions: DefaultRegionStateType
   regionsAndSubregionsIndexes: RegionIndexesType
@@ -97,6 +103,12 @@ function RegionFilter({
       </button>
     </div>
   )
+}
+
+RegionFilter.propTypes = {
+  regionsAndSubregions: defaultRegionStatePropTypes.isRequired,
+  regionsAndSubregionsIndexes: regionIndexesPropTypes.isRequired,
+  activeRegions: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 
 export default RegionFilter

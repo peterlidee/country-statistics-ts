@@ -2,6 +2,8 @@ import { useRouter } from 'next/router'
 import updateRegionsQuery from '../../../lib/regionFilter/updateRegionsQuery'
 
 import { DefaultRegionStateType } from '@/types/filterData'
+import PropTypes from 'prop-types'
+import { defaultRegionStatePropTypes } from '@/propTypes/filterDataPropTypes'
 
 type Props = {
   name: string
@@ -104,6 +106,13 @@ function FilterCheckbox({
       {name}
     </label>
   )
+}
+
+FilterCheckbox.propTypes = {
+  name: PropTypes.string.isRequired,
+  region: PropTypes.string,
+  activeRegions: PropTypes.arrayOf(PropTypes.string),
+  regionsAndSubregions: defaultRegionStatePropTypes.isRequired,
 }
 
 export default FilterCheckbox

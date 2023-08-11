@@ -36,4 +36,6 @@ export {
   filterDataPropTypes,
   activeNumbersPropTypes,
   numberFilterDataPropTypes,
+  defaultRegionStatePropTypes,
+  regionIndexesPropTypes,
 }

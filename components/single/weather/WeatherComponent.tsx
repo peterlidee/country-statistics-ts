@@ -3,6 +3,9 @@ import Source from '@/components/sources/Source'
 import WeatherWidget from './WeatherWidget'
 import { useData } from '@/hooks/useData'
 
+import PropTypes from 'prop-types'
+import { neighbourPropTypes } from '@/propTypes/neighbourPropTypes'
+
 type Props = {
   cca2: string
   capitalName: string
@@ -32,4 +35,9 @@ export default function WeatherComponent({ cca2, capitalName }: Props) {
       <WeatherWidget data={data?.data} code={cca2} />
     </SingleCountryComponent>
   )
+}
+
+WeatherComponent.propTypes = {
+  cca2: PropTypes.string.isRequired,
+  capitalName: PropTypes.string.isRequired,
 }

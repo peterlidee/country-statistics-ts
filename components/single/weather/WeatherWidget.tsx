@@ -2,6 +2,8 @@ import IconWindDirection from '../../svgSnippets/IconWindDirection'
 import IconWeather from '../../svgSnippets/IconWeather'
 import compileWeatherData from '@/lib/single/compileWeatherData'
 
+import PropTypes from 'prop-types'
+
 type Props = {
   data: unknown
   code: string
@@ -58,6 +60,12 @@ const WeatherWidget = ({ data, code }: Props) => {
       </div>
     </div>
   )
+}
+
+WeatherWidget.propTypes = {
+  // might be empty or loading
+  data: PropTypes.object,
+  code: PropTypes.string.isRequired,
 }
 
 export default WeatherWidget

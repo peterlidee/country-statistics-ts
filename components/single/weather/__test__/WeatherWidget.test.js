@@ -16,7 +16,7 @@ jest.mock('../../../../lib/single/compileWeatherData')
 describe('components/single/weather/WeatherWidget', () => {
   test('It renders all fixed text', () => {
     compileWeatherData.mockReturnValue(validForecast)
-    render(<WeatherWidget data={{}} countryCode='ABC' />)
+    render(<WeatherWidget data={{}} code='ABC' />)
     expect(screen.getByText(/weather in/i)).toBeInTheDocument()
     expect(screen.getByText(/temp/i)).toBeInTheDocument()
     expect(screen.getByText(/°C/i)).toBeInTheDocument()
@@ -26,7 +26,7 @@ describe('components/single/weather/WeatherWidget', () => {
 
   test('It renders the data', () => {
     compileWeatherData.mockReturnValue(validForecast)
-    render(<WeatherWidget data={{}} countryCode='ABC' />)
+    render(<WeatherWidget data={{}} code='ABC' />)
     expect(compileWeatherData).toHaveBeenCalled()
     expect(screen.getByText(/brussels/i)).toBeInTheDocument()
     expect(screen.getByText(16)).toBeInTheDocument()
@@ -37,7 +37,7 @@ describe('components/single/weather/WeatherWidget', () => {
 
   test('It renders the icons', () => {
     compileWeatherData.mockReturnValue(validForecast)
-    render(<WeatherWidget data={{}} countryCode='ABC' />)
+    render(<WeatherWidget data={{}} code='ABC' />)
     expect(IconWeather).toHaveBeenCalledWith(
       { type: 'broken' },
       expect.anything(),
@@ -50,7 +50,7 @@ describe('components/single/weather/WeatherWidget', () => {
 
   test('It renders the correct classes', () => {
     compileWeatherData.mockReturnValue(validForecast)
-    const { container } = render(<WeatherWidget data={{}} countryCode='ABC' />)
+    const { container } = render(<WeatherWidget data={{}} code='ABC' />)
 
     // eslint-disable-next-line testing-library/no-container, testing-library/no-node-access
     expect(container.querySelector('.day')).toBeInTheDocument()
@@ -62,7 +62,7 @@ describe('components/single/weather/WeatherWidget', () => {
 
   test('It renders with invalid data', () => {
     compileWeatherData.mockReturnValue(invalidForecast)
-    render(<WeatherWidget data={{}} countryCode='ABC' />)
+    render(<WeatherWidget data={{}} code='ABC' />)
     expect(screen.getByText(/ABC/i)).toBeInTheDocument()
     expect(screen.getByText(/city not found/i)).toBeInTheDocument()
     expect(screen.getAllByText('__')).toHaveLength(3)

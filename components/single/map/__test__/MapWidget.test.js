@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 
-import singleCountriesMock from '../../../../__mock__/data/singleCountryMock'
+import { singleCountryMock } from '../../../../__mock__/data/singleCountryMock'
 import SingleCountryComponent from '../../SingleCountryComponent'
 import MapControles from '../MapControles'
 import Source from '../../../sources/Source'
@@ -50,7 +50,7 @@ describe('components/single/map/MapWidget', () => {
   test('It loads useJSApiLoader', () => {
     render(
       <MapWidget
-        singleCountry={singleCountriesMock[0]}
+        singleCountry={singleCountryMock[0]}
         coordinatesData={coordinatesData}
       />,
     )
@@ -59,7 +59,7 @@ describe('components/single/map/MapWidget', () => {
   test('It behaves correctly when isLoaded is false', () => {
     render(
       <MapWidget
-        singleCountry={singleCountriesMock[0]}
+        singleCountry={singleCountryMock[0]}
         coordinatesData={coordinatesData}
       />,
     )
@@ -72,7 +72,7 @@ describe('components/single/map/MapWidget', () => {
   test('It renders Sources correctly', () => {
     render(
       <MapWidget
-        singleCountry={singleCountriesMock[0]}
+        singleCountry={singleCountryMock[0]}
         coordinatesData={coordinatesData}
       />,
     )
@@ -122,7 +122,7 @@ describe('components/single/map/MapWidget', () => {
   test('It renders only 3 sources when coordinatesData does not have subregion coordinates', () => {
     render(
       <MapWidget
-        singleCountry={singleCountriesMock[0]}
+        singleCountry={singleCountryMock[0]}
         coordinatesData={{
           ...coordinatesData,
           subregion: { coordinates: [], endpoint: 'subregionurl' },
@@ -142,7 +142,7 @@ describe('components/single/map/MapWidget', () => {
     })
     render(
       <MapWidget
-        singleCountry={singleCountriesMock[0]}
+        singleCountry={singleCountryMock[0]}
         coordinatesData={coordinatesData}
       />,
     )
@@ -159,7 +159,7 @@ describe('components/single/map/MapWidget', () => {
     })
     render(
       <MapWidget
-        singleCountry={singleCountriesMock[0]}
+        singleCountry={singleCountryMock[0]}
         coordinatesData={coordinatesData}
       />,
     )

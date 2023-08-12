@@ -77,4 +77,4 @@ const populationDataMock = [
   ],
 ]
 
-export default populationDataMock
+export { populationDataMock }

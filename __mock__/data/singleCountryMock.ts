@@ -62,4 +62,4 @@ const singleCountryMock: SingleCountryType[] = [
   },
 ]
 
-export default singleCountryMock
+export { singleCountryMock }

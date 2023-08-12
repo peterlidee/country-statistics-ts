@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import filterDataMock from '../../../../__mock__/data/filterDataMock'
+import { filterDataMock } from '../../../../__mock__/data/filterDataMock'
 import { useRouter } from 'next/router'
 
 import RegionFilter from '../RegionFilter'

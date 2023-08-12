@@ -2,7 +2,7 @@ import { render } from '@testing-library/react'
 
 import SingleCountryMap from '../SingleCountryMap'
 import MapWidget from '../../map/MapWidget'
-import singleCountryMock from '../../../../__mock__/data/singleCountryMock'
+import { singleCountryMock } from '../../../../__mock__/data/singleCountryMock'
 import { coordinatesDataMock } from '../../../../__mock__/data/coordinatesDataMock'
 
 jest.mock('../../map/MapWidget')

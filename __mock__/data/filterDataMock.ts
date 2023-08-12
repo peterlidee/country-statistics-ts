@@ -69,4 +69,4 @@ const filterDataMock: FilterDataType = {
   density,
 }
 
-export default filterDataMock
+export { filterDataMock }

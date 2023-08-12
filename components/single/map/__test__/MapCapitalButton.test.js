@@ -2,7 +2,7 @@ import { screen, render } from '@testing-library/react'
 
 import MapCapitalButton from '../MapCapitalButton'
 import IconPan from '../../../svgSnippets/IconPan'
-import singleCountryMock from '../../../../__mock__/data/singleCountryMock'
+import { singleCountryMock } from '../../../../__mock__/data/singleCountryMock'
 
 jest.mock('../../../svgSnippets/IconPan')
 

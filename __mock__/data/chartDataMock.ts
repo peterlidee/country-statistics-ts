@@ -5,4 +5,4 @@ const chartDataMock = {
   combinedTotal: [2001, 2012, 2023, 2034, 2045],
 }
 
-export default chartDataMock
+export { chartDataMock }

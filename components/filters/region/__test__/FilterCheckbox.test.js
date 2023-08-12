@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event'
 import { useRouter } from 'next/router'
 import FilterCheckBox from '../../region/FilterCheckbox'
 import updateRegionsQuery from '../../../../lib/regionFilter/updateRegionsQuery'
-import filterDataMock from '../../../../__mock__/data/filterDataMock'
+import { filterDataMock } from '../../../../__mock__/data/filterDataMock'
 
 jest.mock('next/router', () => ({
   useRouter: jest.fn(),

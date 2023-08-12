@@ -7,7 +7,7 @@ import CountryList from '../countryList/CountryList'
 import Sources from '../sources/Sources'
 import Source from '../sources/Source'
 import { extraDataCountries } from '../../__mock__/data/countriesMock'
-import filterDataMock from '../../__mock__/data/filterDataMock'
+import { filterDataMock } from '../../__mock__/data/filterDataMock'
 
 jest.mock('next/head')
 jest.mock('../header/Header')

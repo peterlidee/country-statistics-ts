@@ -19,7 +19,7 @@ import CountryListHeaders from '../CountryListHeaders'
 import CountryRow from '../CountryRow'
 
 import { extraDataCountries } from '../../../__mock__/data/countriesMock'
-import filterDataMock from '../../../__mock__/data/filterDataMock'
+import { filterDataMock } from '../../../__mock__/data/filterDataMock'
 
 // mocking
 jest.mock('next/router', () => ({

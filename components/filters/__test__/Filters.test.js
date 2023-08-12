@@ -8,7 +8,7 @@ import isFilterActive from '../../../lib/filter/isFilterActive'
 import RegionFilter from '../region/RegionFilter'
 import NumberFilter from '../number/NumberFilter'
 
-import filterDataMock from '../../../__mock__/data/filterDataMock'
+import { filterDataMock } from '../../../__mock__/data/filterDataMock'
 
 jest.mock('../../svgSnippets/IconFilters')
 jest.mock('../FiltersToggle', () => {

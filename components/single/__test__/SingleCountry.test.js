@@ -15,7 +15,7 @@ import SingleCountryMap from '../sections/SingleCountryMap'
 import SingleCountryRegion from '../sections/SingleCountryRegion'
 import SingleCountryPopulationChart from '../sections/SingleCountryPopulationChart'
 
-import singleCountryMock from '../../../__mock__/data/singleCountryMock'
+import { singleCountryMock } from '../../../__mock__/data/singleCountryMock'
 import { coordinatesDataMock } from '../../../__mock__/data/coordinatesDataMock'
 
 jest.mock('../../header/Header')

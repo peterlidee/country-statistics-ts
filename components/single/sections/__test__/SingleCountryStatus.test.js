@@ -1,6 +1,6 @@
 import { screen, render } from '@testing-library/react'
 import SingleCountryStatus from '../SingleCountryStatus'
-import singleCountryMock from '../../../../__mock__/data/singleCountryMock'
+import { singleCountryMock } from '../../../../__mock__/data/singleCountryMock'
 
 const ChildMock = jest.fn()
 

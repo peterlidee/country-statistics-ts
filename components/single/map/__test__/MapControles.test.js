@@ -1,6 +1,6 @@
 import { screen, render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import singleCountryMock from '../../../../__mock__/data/singleCountryMock'
+import { singleCountryMock } from '../../../../__mock__/data/singleCountryMock'
 
 import MapControles from '../MapControles'
 import MapCapitalButton from '../MapCapitalButton'

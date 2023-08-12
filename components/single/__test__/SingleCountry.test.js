@@ -62,7 +62,7 @@ describe('components/single/SingleCountry', () => {
     expect(SingleCountryStatus).toHaveBeenCalledWith(
       expect.objectContaining({
         loading: false,
-        error: false,
+        isError: false,
         countryCode: 'DZA',
       }),
       expect.anything(),

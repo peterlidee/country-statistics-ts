@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import SingleCountryComponent from '../SingleCountryComponent'
 import Placeholder from '../../svgSnippets/Placeholder'
 
+import PropTypes from 'prop-types'
+
 type Props = {
   countryName: string
   flag: string
@@ -72,6 +74,12 @@ function SingleCountryFlags({ countryName, flag, coatOfArms }: Props) {
       )}
     </SingleCountryComponent>
   )
+}
+
+SingleCountryFlags.propTypes = {
+  countryName: PropTypes.string.isRequired,
+  flag: PropTypes.string.isRequired,
+  coatOfArms: PropTypes.string.isRequired,
 }
 
 export default SingleCountryFlags

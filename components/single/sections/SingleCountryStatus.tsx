@@ -5,28 +5,22 @@
 import { SingleCountryType } from '@/types/singleCountry'
 import React from 'react'
 
+import PropTypes from 'prop-types'
+import { singleCountryPropTypes } from '@/propTypes/singleCountryPropTypes'
+
 type Props = {
   countryCode: string
   loading: boolean
-  error: boolean
-  data: SingleCountryType
+  isError: boolean
+  data?: SingleCountryType
   children: React.ReactNode
 }
 
-/**
- * Checks for error or returns child
- * @param props.countryCode - string
- * @param props.loading
- * @param props.error - update to Error is needed, now boolean
- * @param props.data - SingleCountryType
- * @param props.children
- * @returns ReactNode
- */
-
+// Checks for error or returns child
 function SingleCountryStatus({
   countryCode,
   loading,
-  error,
+  isError,
   data,
   children,
 }: Props) {
@@ -37,11 +31,19 @@ function SingleCountryStatus({
   )
   return (
     <div className='single-country__status'>
-      {error && noData}
-      {!loading && !error && !data && noData}
+      {isError && noData}
+      {!loading && !isError && !data && noData}
       {children}
     </div>
   )
+}
+
+SingleCountryStatus.propTypes = {
+  countryCode: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
+  isError: PropTypes.bool.isRequired,
+  data: singleCountryPropTypes,
+  children: PropTypes.node.isRequired,
 }
 
 export default SingleCountryStatus

@@ -55,7 +55,7 @@ function SingleCountry({
         <SingleCountryHeader countryName={singleCountry.countryName}>
           <SingleCountryStatus
             loading={false}
-            error={false}
+            isError={false}
             data={singleCountry}
             countryCode={countryCode}
           >

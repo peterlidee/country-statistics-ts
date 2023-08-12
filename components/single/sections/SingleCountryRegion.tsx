@@ -4,6 +4,10 @@ import { SingleCountryType } from '@/types/singleCountry'
 import { Neighbour } from '@/types/neighbour'
 import SingleCountryBox from '@/components/general/SingleCountryBox'
 
+import PropTypes from 'prop-types'
+import { singleCountryPropTypes } from '@/propTypes/singleCountryPropTypes'
+import { neighbourPropTypes } from '@/propTypes/neighbourPropTypes'
+
 // display 2 boxes: region and neighbours
 type Props = {
   singleCountry: SingleCountryType
@@ -28,5 +32,11 @@ const SingleCountryRegion = ({
     />
   </div>
 )
+
+SingleCountryRegion.protoTypes = {
+  singleCountry: singleCountryPropTypes.isRequired,
+  neighboursEndpoint: PropTypes.string.isRequired,
+  neighbours: PropTypes.arrayOf(neighbourPropTypes).isRequired,
+}
 
 export default SingleCountryRegion

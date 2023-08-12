@@ -2,6 +2,8 @@ import formatNumber from '../../../lib/helpers/formatNumber'
 import roundNumber from '../../../lib/helpers/roundNumber'
 import SingleCountryComponent from '../SingleCountryComponent'
 
+import PropTypes from 'prop-types'
+
 type Props = {
   population: number
   area: number
@@ -32,6 +34,11 @@ function SingleCountryBasisStats({ population, area }: Props) {
       )}
     </SingleCountryComponent>
   )
+}
+
+SingleCountryBasisStats.propTypes = {
+  population: PropTypes.number.isRequired,
+  area: PropTypes.number.isRequired,
 }
 
 export default SingleCountryBasisStats

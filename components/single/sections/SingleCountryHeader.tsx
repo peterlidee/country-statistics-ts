@@ -1,8 +1,6 @@
-/**
- * display countryName title inside section wrapper
- * @param props.countryName - string
- * @param props.children - ReactNode
- */
+// display countryName title inside section wrapper
+
+import PropTypes from 'prop-types'
 
 type Props = {
   countryName: string
@@ -15,5 +13,10 @@ const SingleCountryHeader = ({ countryName, children }: Props) => (
     {children}
   </div>
 )
+
+SingleCountryHeader.propTypes = {
+  countryName: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+}
 
 export default SingleCountryHeader

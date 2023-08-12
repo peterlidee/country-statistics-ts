@@ -10,7 +10,7 @@ function SingleCountryPopulationChart({ countryCode }: Props) {
 }
 
 SingleCountryPopulationChart.propTypes = {
-  countryCode: PropTypes.string,
+  countryCode: PropTypes.string.isRequired,
 }
 
 export default SingleCountryPopulationChart

@@ -20,7 +20,7 @@
 [Google Maps API](https://www.npmjs.com/package/@react-google-maps/api)  
 [Chart.js](https://www.npmjs.com/package/react-chartjs-2)  
 [TanStack Query](https://tanstack.com/query/latest)
-[Axios](https://axios-http.com/docs/intro)
+[Axios](https://axios-http.com/docs/intro)  
 [react-range](https://www.npmjs.com/package/react-range)
 
 ## Testing

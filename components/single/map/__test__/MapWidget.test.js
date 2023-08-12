@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 
-import singleCountriesMock from '../../../../__mock__/data/singleCountryMocks'
+import singleCountriesMock from '../../../../__mock__/data/singleCountryMock'
 import SingleCountryComponent from '../../SingleCountryComponent'
 import MapControles from '../MapControles'
 import Source from '../../../sources/Source'

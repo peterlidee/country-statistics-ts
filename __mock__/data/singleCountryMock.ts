@@ -1,4 +1,6 @@
-const singleCountryMocks = [
+import { SingleCountryType } from '@/types/singleCountry'
+
+const singleCountryMock: SingleCountryType[] = [
   {
     countryName: 'Algeria',
     tld: '.dz',
@@ -45,32 +47,19 @@ const singleCountryMocks = [
   },
   // different country
   {
-    countryName: 'Fantasia',
+    countryName: 'Belgium',
+    capital: 'Brussels',
     cca2: 'BE',
     cca3: 'BEL',
     tld: '.be',
-    capital: ['Brussels'],
     region: 'Europe',
     subregion: 'Western Europe',
-    latlng: [50.83333333, 4],
     borders: ['FRA', 'DEU', 'NLD', 'LUX'],
     area: 30528,
     population: 11555997,
     flag: 'https://flagcdn.com/be.svg',
     coatOfArms: 'https://mainfacts.com/media/images/coats_of_arms/be.svg',
-    countryName: 'Algeria',
-    tld: '.dz',
-    cca2: 'DZ',
-    cca3: 'DZA',
-    capital: 'Algiers',
-    region: 'Africa',
-    subregion: 'Northern Africa',
-    borders: ['TUN', 'LBY', 'NER', 'ESH', 'MRT', 'MLI', 'MAR'],
-    area: 2381741,
-    population: 44700000,
-    flag: 'https://flagcdn.com/dz.svg',
-    coatOfArms: 'https://mainfacts.com/media/images/coats_of_arms/dz.svg',
   },
 ]
 
-export default singleCountryMocks
+export default singleCountryMock

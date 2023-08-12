@@ -1,3 +1,5 @@
+import { Forecast } from '@/types/forecast'
+
 const validWeatherMock = {
   coord: { lon: 4.3488, lat: 50.8504 },
   weather: [
@@ -31,7 +33,7 @@ const validWeatherMock = {
 
 const invalidWeatherMock = { cod: '404', message: 'city not found' }
 
-const invalidForecast = {
+const invalidForecast: Forecast = {
   capitalName: 'abc',
   description: 'city not found',
   dayNight: 'day',
@@ -42,7 +44,7 @@ const invalidForecast = {
   windSpeed: '__',
 }
 
-const validForecast = {
+const validForecast: Forecast = {
   capitalName: 'Brussels',
   description: 'broken clouds',
   dayNight: 'day',

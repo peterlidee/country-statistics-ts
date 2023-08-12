@@ -1,6 +1,6 @@
 import { screen, render } from '@testing-library/react'
 import SingleCountryStatus from '../SingleCountryStatus'
-import singleCountryMocks from '../../../../__mock__/data/singleCountryMocks'
+import singleCountryMock from '../../../../__mock__/data/singleCountryMock'
 
 const ChildMock = jest.fn()
 
@@ -10,7 +10,7 @@ describe('components/single/sections/SingleCountryStatus', () => {
       <SingleCountryStatus
         loading={false}
         isError={true}
-        data={singleCountryMocks[0]}
+        data={singleCountryMock[0]}
         countryCode={'aaa'}
       >
         <ChildMock />
@@ -40,7 +40,7 @@ describe('components/single/sections/SingleCountryStatus', () => {
       <SingleCountryStatus
         loading={false}
         isError={false}
-        data={singleCountryMocks[0]}
+        data={singleCountryMock[0]}
         countryCode={'aaa'}
       >
         <ChildMock />
@@ -56,7 +56,7 @@ describe('components/single/sections/SingleCountryStatus', () => {
         <SingleCountryStatus
           loading={false}
           isError={false}
-          data={singleCountryMocks[0]}
+          data={singleCountryMock[0]}
           countryCode={'aaa'}
         >
           <ChildMock />
@@ -69,7 +69,7 @@ describe('components/single/sections/SingleCountryStatus', () => {
         <SingleCountryStatus
           loading={false}
           isError={false}
-          data={singleCountryMocks[0]}
+          data={singleCountryMock[0]}
           countryCode={'aaa'}
         >
           <ChildMock />
@@ -84,7 +84,7 @@ describe('components/single/sections/SingleCountryStatus', () => {
         <SingleCountryStatus
           loading={false}
           isError={false}
-          data={singleCountryMocks[0]}
+          data={singleCountryMock[0]}
           countryCode={'aaa'}
         >
           foobar

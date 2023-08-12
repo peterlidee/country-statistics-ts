@@ -2,7 +2,7 @@ import { render } from '@testing-library/react'
 
 import SingleCountryMap from '../SingleCountryMap'
 import MapWidget from '../../map/MapWidget'
-import singleCountryMocks from '../../../../__mock__/data/singleCountryMocks'
+import singleCountryMock from '../../../../__mock__/data/singleCountryMock'
 import { coordinatesDataMock } from '../../../../__mock__/data/coordinatesDataMock'
 
 jest.mock('../../map/MapWidget')
@@ -11,7 +11,7 @@ describe('components/single/sections/SingleCountryMap', () => {
   test('It renders', () => {
     render(
       <SingleCountryMap
-        singleCountry={singleCountryMocks[0]}
+        singleCountry={singleCountryMock[0]}
         coordinatesData={coordinatesDataMock}
       />,
     )

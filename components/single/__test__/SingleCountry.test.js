@@ -15,7 +15,7 @@ import SingleCountryMap from '../sections/SingleCountryMap'
 import SingleCountryRegion from '../sections/SingleCountryRegion'
 import SingleCountryPopulationChart from '../sections/SingleCountryPopulationChart'
 
-import singleCountryMocks from '../../../__mock__/data/singleCountryMocks'
+import singleCountryMock from '../../../__mock__/data/singleCountryMock'
 import { coordinatesDataMock } from '../../../__mock__/data/coordinatesDataMock'
 
 jest.mock('../../header/Header')
@@ -43,7 +43,7 @@ describe('components/single/SingleCountry', () => {
       <SingleCountry
         countryCode={'DZA'}
         singleEndpoint={'singleEndpoint'}
-        singleCountry={singleCountryMocks[0]}
+        singleCountry={singleCountryMock[0]}
         neighboursEndpoint='neighboursEndpoint'
         neighbours={[{ countryName: 'foobar', cca3: 'foo' }]}
         coordinatesData={coordinatesDataMock}

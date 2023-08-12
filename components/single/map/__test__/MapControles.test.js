@@ -1,6 +1,6 @@
 import { screen, render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import singleCountryMocks from '../../../../__mock__/data/singleCountryMocks'
+import singleCountryMock from '../../../../__mock__/data/singleCountryMock'
 
 import MapControles from '../MapControles'
 import MapCapitalButton from '../MapCapitalButton'
@@ -45,7 +45,7 @@ function setup(singleCountry) {
 
 describe('components/single/map/MapControles', () => {
   test('It renders', () => {
-    setup(singleCountryMocks[0])
+    setup(singleCountryMock[0])
     expect(screen.getByText(/pan to/i)).toBeInTheDocument()
     expect(MapCapitalButton).toHaveBeenCalled()
     expect(IconPan).toHaveBeenCalledWith(
@@ -58,7 +58,7 @@ describe('components/single/map/MapControles', () => {
 
   describe('MapCapitalButton', () => {
     test('It calls MapCapitalButton mock correctly', () => {
-      setup(singleCountryMocks[0])
+      setup(singleCountryMock[0])
       expect(MapCapitalButton).toHaveBeenCalled()
       expect(MapCapitalButton).toHaveBeenCalledWith(
         expect.objectContaining({
@@ -74,14 +74,14 @@ describe('components/single/map/MapControles', () => {
     })
 
     test('It does not call MapCapitalButton mock when singleCountry.capital is empty string', () => {
-      setup(singleCountryMocks[2])
+      setup(singleCountryMock[2])
       expect(MapCapitalButton).not.toHaveBeenCalled()
     })
   })
 
   describe('map country button', () => {
     test('It renders the button', () => {
-      setup(singleCountryMocks[0])
+      setup(singleCountryMock[0])
       expect(IconPan).toHaveBeenCalled()
       expect(
         screen.getByRole('button', { name: 'Algeria' }),
@@ -89,7 +89,7 @@ describe('components/single/map/MapControles', () => {
     })
     test('It calls setActive and setCountryOnMap mocks when button is clicked', async () => {
       const user = userEvent.setup()
-      setup(singleCountryMocks[0])
+      setup(singleCountryMock[0])
       const button = screen.getByRole('button', { name: /algeria/i })
       await user.click(button)
       expect(setCountryOnMap).toHaveBeenCalledWith({}, 'Algeria', '.dz')
@@ -99,7 +99,7 @@ describe('components/single/map/MapControles', () => {
   describe('MapRegionButton', () => {})
 
   test('It calls MapRegionButton mocks correctly', () => {
-    setup(singleCountryMocks[0])
+    setup(singleCountryMock[0])
     expect(screen.getByRole('button', { name: 'Algeria' })).toBeInTheDocument()
     expect(MapRegionButton).toHaveBeenCalledTimes(2)
     expect(MapRegionButton).toHaveBeenNthCalledWith(
@@ -131,7 +131,7 @@ describe('components/single/map/MapControles', () => {
   })
 
   test('It does not call MapRegionButton mock with type subregion when singleCountry.subregion is empty string', () => {
-    setup(singleCountryMocks[1])
+    setup(singleCountryMock[1])
     expect(MapRegionButton).toHaveBeenCalledTimes(1)
     expect(MapRegionButton).toHaveBeenCalledWith(
       expect.objectContaining({

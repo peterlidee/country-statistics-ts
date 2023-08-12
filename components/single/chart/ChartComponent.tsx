@@ -4,6 +4,8 @@ import Source from '@/components/sources/Source'
 import SingleCountryComponent from '../SingleCountryComponent'
 import PopulationChartWidget from './PopulationChartWidget'
 
+import PropTypes from 'prop-types'
+
 type Props = {
   countryCode: string
 }
@@ -51,4 +53,8 @@ export default function ChartComponent({ countryCode }: Props) {
       />
     </SingleCountryComponent>
   )
+}
+
+ChartComponent.propTypes = {
+  countryCode: PropTypes.string.isRequired,
 }

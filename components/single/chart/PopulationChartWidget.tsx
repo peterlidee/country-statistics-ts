@@ -126,9 +126,9 @@ function PopulationChartWidget({
 }
 
 PopulationChartWidget.propTypes = {
-  years: PropTypes.array.isRequired,
-  femaleTotal: PropTypes.array.isRequired,
-  maleTotal: PropTypes.array.isRequired,
-  combinedTotal: PropTypes.array.isRequired,
+  years: PropTypes.arrayOf(PropTypes.number).isRequired,
+  femaleTotal: PropTypes.arrayOf(PropTypes.number).isRequired,
+  maleTotal: PropTypes.arrayOf(PropTypes.number).isRequired,
+  combinedTotal: PropTypes.arrayOf(PropTypes.number).isRequired,
 }
 export default PopulationChartWidget

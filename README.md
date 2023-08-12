@@ -13,18 +13,20 @@
 ## Framework
 
 [next.js](https://nextjs.org/)
+[TypeScript](https://www.typescriptlang.org/)
 
 ## Extra Packages
 
-[@react-google-maps/api](https://www.npmjs.com/package/@react-google-maps/api)  
-[react-chartjs-2](https://www.npmjs.com/package/react-chartjs-2)  
+[Google Maps API](https://www.npmjs.com/package/@react-google-maps/api)  
+[Chart.js](https://www.npmjs.com/package/react-chartjs-2)  
+[TanStack Query](https://tanstack.com/query/latest)
+[Axios](https://axios-http.com/docs/intro)
 [react-range](https://www.npmjs.com/package/react-range)
 
 ## Testing
 
 [jest](https://jestjs.io/)  
 [react testing library](https://testing-library.com/docs/react-testing-library/intro/)  
-[typescript](https://www.typescriptlang.org/)  
 [eslint](https://eslint.org/')
 
 ## Deployment

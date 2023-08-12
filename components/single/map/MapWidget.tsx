@@ -8,6 +8,10 @@ import Placeholder from '../../svgSnippets/Placeholder'
 import { SingleCountryType } from '@/types/singleCountry'
 import { CoordinatesData } from '@/types/coordinates'
 
+import PropTypes from 'prop-types'
+import { singleCountryPropTypes } from '@/propTypes/singleCountryPropTypes'
+import { coordinatesDataPropTypes } from '@/propTypes/coordinatesPropTypes'
+
 type Props = {
   singleCountry: SingleCountryType
   coordinatesData: CoordinatesData
@@ -171,6 +175,11 @@ function MapWidget({ singleCountry, coordinatesData }: Props) {
       )}
     </SingleCountryComponent>
   )
+}
+
+MapWidget.propTypes = {
+  singleCountry: singleCountryPropTypes.isRequired,
+  coordinatesData: coordinatesDataPropTypes.isRequired,
 }
 
 export default React.memo(MapWidget)

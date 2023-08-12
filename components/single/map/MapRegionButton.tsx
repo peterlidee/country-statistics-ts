@@ -2,6 +2,8 @@ import { Coordinates } from '@/types/coordinates'
 import { Active } from './MapControles'
 
 import IconPan from '../../svgSnippets/IconPan'
+import PropTypes from 'prop-types'
+import { coordinatesPropTypes } from '@/propTypes/coordinatesPropTypes'
 
 /*
 Render button for region and subregion zoom
@@ -70,6 +72,15 @@ function MapRegionButton({
       </button>
     </div>
   )
+}
+
+MapRegionButton.propTypes = {
+  type: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  map: PropTypes.object.isRequired,
+  active: PropTypes.string.isRequired,
+  setActive: PropTypes.func.isRequired,
+  coordinates: PropTypes.arrayOf(coordinatesPropTypes).isRequired,
 }
 
 export default MapRegionButton

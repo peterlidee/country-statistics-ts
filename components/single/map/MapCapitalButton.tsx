@@ -1,16 +1,11 @@
+import { singleCountryPropTypes } from '@/propTypes/singleCountryPropTypes'
 import IconPan from '../../svgSnippets/IconPan'
 import { Active } from './MapControles'
 import { SingleCountryType } from '@/types/singleCountry'
 
-/**
- * render button for capital, on click, make geocode request, zooms and centers map on capital bounds
- * @param props.singleCountry
- * @param props.active - what is map currently zoomed in on, state in MapControles
- * @param props.setActive - setState active
- * @param props.setGeoCodeLoading - MapWidget state, set loading state
- * @param props.setGeoCodeError - MapWidget state, set error state
- * @returns JSX.Elememt
- */
+import PropTypes from 'prop-types'
+
+// render button for capital, on click, make geocode request, zooms and centers map on capital bounds
 
 type Props = {
   singleCountry: SingleCountryType
@@ -88,6 +83,15 @@ function MapCapitalButton({
       </button>
     </div>
   )
+}
+
+MapCapitalButton.propTypes = {
+  singleCountry: singleCountryPropTypes.isRequired,
+  active: PropTypes.string.isRequired,
+  setActive: PropTypes.func.isRequired,
+  map: PropTypes.object.isRequired,
+  setGeoCodeLoading: PropTypes.func.isRequired,
+  setGeoCodeError: PropTypes.func.isRequired,
 }
 
 export default MapCapitalButton

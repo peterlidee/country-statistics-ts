@@ -5,6 +5,10 @@ import IconPan from '../../svgSnippets/IconPan'
 import { SingleCountryType } from '@/types/singleCountry'
 import { CoordinatesData } from '@/types/coordinates'
 
+import PropTypes from 'prop-types'
+import { singleCountryPropTypes } from '@/propTypes/singleCountryPropTypes'
+import { coordinatesDataPropTypes } from '@/propTypes/coordinatesPropTypes'
+
 export type Active = 'country' | 'capital' | 'region' | 'subregion'
 type Props = {
   singleCountry: SingleCountryType
@@ -90,6 +94,15 @@ function MapControles({
       )}
     </div>
   )
+}
+
+MapControles.propTypes = {
+  singleCountry: singleCountryPropTypes,
+  map: PropTypes.object.isRequired,
+  setCountryOnMap: PropTypes.func.isRequired,
+  setGeoCodeLoading: PropTypes.func.isRequired,
+  setGeoCodeError: PropTypes.func.isRequired,
+  coordinatesData: coordinatesDataPropTypes,
 }
 
 export default MapControles

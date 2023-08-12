@@ -3,6 +3,9 @@ import Source from '@/components/sources/Source'
 import Link from 'next/link'
 import { Neighbour } from '@/types/neighbour'
 
+import PropTypes from 'prop-types'
+import { neighbourPropTypes } from '@/propTypes/neighbourPropTypes'
+
 type Props = {
   neighboursEndpoint: string
   neighbours: Neighbour[]
@@ -44,6 +47,11 @@ function NeighbouringCountries({ neighboursEndpoint, neighbours }: Props) {
   return (
     <NeighbourComponent source={source}>{allNeighbours}</NeighbourComponent>
   )
+}
+
+NeighbouringCountries.propTypes = {
+  neighboursEndpoint: PropTypes.string.isRequired,
+  neighbours: PropTypes.arrayOf(neighbourPropTypes).isRequired,
 }
 
 export default NeighbouringCountries

@@ -1,6 +1,8 @@
 import SingleCountryBox from '@/components/general/SingleCountryBox'
 import Sources from '../../sources/Sources'
 
+import PropTypes from 'prop-types'
+
 type Props = {
   children: React.ReactNode
   source?: React.ReactNode
@@ -17,5 +19,10 @@ const NeighbourComponent = ({ children, source }: Props) => (
     {source && <Sources>{source}</Sources>}
   </>
 )
+
+NeighbourComponent.propTypes = {
+  children: PropTypes.node.isRequired,
+  source: PropTypes.node,
+}
 
 export default NeighbourComponent

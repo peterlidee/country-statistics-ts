@@ -16,7 +16,6 @@
     }
   }
   &__title {
-    @extend %mono-font;
     color: var(--cs-white);
     font-size: 1.15em;
     font-weight: 700;

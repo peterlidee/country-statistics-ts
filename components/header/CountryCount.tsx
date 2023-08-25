@@ -1,3 +1,4 @@
+import { inconsolata } from '@/fonts/Fonts'
 import PropTypes from 'prop-types'
 
 type CountryCountProps = {
@@ -8,7 +9,10 @@ type CountryCountProps = {
 function CountryCount({ count }: CountryCountProps) {
   return (
     <div className='country-count'>
-      displaying <span className='country-count__number'>{count}</span>{' '}
+      displaying{' '}
+      <span className={`country-count__number ${inconsolata.className}`}>
+        {count}
+      </span>{' '}
       {count == 1 ? 'country' : 'countries'}
     </div>
   )

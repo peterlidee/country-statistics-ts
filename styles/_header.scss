@@ -12,7 +12,6 @@
     text-decoration: none;
   }
   &__title {
-    @extend %mono-font;
     font-size: 1.25em;
     font-weight: 700;
     text-transform: capitalize;
@@ -75,7 +74,9 @@
 // settings icon
 .icon__settings {
   fill: var(--cs-lightGrey);
-  transition: fill ease-in 0.125s, transform ease-in 0.25s;
+  transition:
+    fill ease-in 0.125s,
+    transform ease-in 0.25s;
   .settings__button:hover & {
     fill: var(--cs-black);
   }
@@ -96,7 +97,6 @@
 .country-count {
   margin-bottom: 1em;
   &__number {
-    @extend %mono-font;
     background: var(--cs-blue);
     color: #fff;
     padding: 0.1em 0.25em;

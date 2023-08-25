@@ -16,16 +16,14 @@
 
 // data cells
 .country-cell {
-  &--index {
-    @extend %mono-font;
-    text-align: right;
-    margin-right: 0.5em;
-  }
+  &--index,
   &--population,
   &--area,
   &--density {
-    @extend %mono-font;
     text-align: right;
+  }
+  &--index {
+    margin-right: 0.5em;
   }
 }
 

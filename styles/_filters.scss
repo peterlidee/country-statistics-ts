@@ -132,7 +132,6 @@
     }
     &__input {
       width: 100%;
-      @extend %mono-font;
       font-size: 16px;
       border: 1px solid var(--cs-lightGrey);
       border-radius: 3px;
@@ -150,9 +149,6 @@
     font-size: 14px;
     margin-left: 0.5em;
     color: var(--cs-lightText);
-    &-inner {
-      @extend %mono-font;
-    }
   }
 }
 

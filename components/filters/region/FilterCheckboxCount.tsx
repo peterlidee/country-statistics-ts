@@ -1,13 +1,14 @@
 type Props = {
   count: number
 }
+import { inconsolata } from '@/fonts/Fonts'
 import PropTypes from 'prop-types'
 
 // print count
 function FilterCheckboxCount({ count }: Props) {
   return (
     <span className='filtercheckbox__count'>
-      (<span className='filtercheckbox__count-inner'>{count}</span>)
+      (<span className={inconsolata.className}>{count}</span>)
     </span>
   )
 }

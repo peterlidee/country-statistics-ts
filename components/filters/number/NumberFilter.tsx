@@ -11,6 +11,7 @@ import {
   activeNumbersPropTypes,
   numberFilterDataPropTypes,
 } from '@/propTypes/filterDataPropTypes'
+import { inconsolata } from '@/fonts/Fonts'
 
 type Props = {
   filter: NumberFieldSlug
@@ -114,7 +115,7 @@ function NumberFilter({ filter, currFilterData, activeNumbers }: Props) {
               from
             </label>
             <input
-              className='number-filter__input'
+              className={`number-filter__input ${inconsolata.className}`}
               type='number'
               id={`numberfilter-${filter}-from`}
               min={currFilterData.sliderStart}
@@ -133,7 +134,7 @@ function NumberFilter({ filter, currFilterData, activeNumbers }: Props) {
               to
             </label>
             <input
-              className='number-filter__input'
+              className={`number-filter__input ${inconsolata.className}`}
               type='number'
               id={`numberfilter-${filter}-to`}
               min={currFilterData.sliderStart}

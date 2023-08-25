@@ -7,6 +7,7 @@ import { isNumberField } from '@/types/fieldsPredicates'
 
 import PropTypes from 'prop-types'
 import { countryPropTypes } from '@/propTypes/countryPropTypes'
+import { inconsolata } from '@/fonts/Fonts'
 
 type Props = {
   country: Country
@@ -22,8 +23,8 @@ function CountryRow({ country, index, activeHidden }: Props) {
 
   return (
     <>
-      <Wrapper base={'country-cell'} modifier='index'>
-        {index + 1}
+      <Wrapper base={`country-cell`} modifier='index'>
+        <span className={`${inconsolata.className}`}>{index + 1}</span>
       </Wrapper>
       <Wrapper base={'country-cell'} modifier={fields[0].slug}>
         <Link href={`/country/${country.cca3}`}>{country[fields[0].slug]}</Link>
@@ -36,7 +37,9 @@ function CountryRow({ country, index, activeHidden }: Props) {
               base={'country-cell'}
               modifier={numberField.slug}
             >
-              {country[`${numberField.slug}PrettyFormat`]}
+              <span className={`${inconsolata.className}`}>
+                {country[`${numberField.slug}PrettyFormat`]}
+              </span>
             </Wrapper>
           )
         )

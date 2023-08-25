@@ -2,7 +2,7 @@
  * hardcoded footer
  */
 
-import { quicksand } from '@/fonts/Fonts'
+import { inconsolata, quicksand } from '@/fonts/Fonts'
 import Wrapper from './general/Wrapper'
 import IconLogo from './svgSnippets/IconLogo'
 
@@ -12,7 +12,9 @@ const Footer = () => (
       <div className='footer__header'>
         <h3 className='footer__logo'>
           <IconLogo />
-          <div className='footer__title'>Country Statistics TS</div>
+          <div className={`footer__title ${inconsolata.className}`}>
+            Country Statistics TS
+          </div>
         </h3>
       </div>
 

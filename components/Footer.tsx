@@ -2,11 +2,12 @@
  * hardcoded footer
  */
 
+import { quicksand } from '@/fonts/Fonts'
 import Wrapper from './general/Wrapper'
 import IconLogo from './svgSnippets/IconLogo'
 
 const Footer = () => (
-  <footer className='site__footer'>
+  <footer className={`site__footer ${quicksand.className}`}>
     <div className='footer__inner'>
       <div className='footer__header'>
         <h3 className='footer__logo'>

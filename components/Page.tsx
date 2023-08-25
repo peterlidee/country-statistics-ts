@@ -3,6 +3,7 @@ import Footer from './Footer'
 import React from 'react'
 
 import PropTypes from 'prop-types'
+import { quicksand } from '@/fonts/Fonts'
 
 type PageProps = {
   children: React.ReactNode
@@ -19,7 +20,7 @@ function Page({ children }: PageProps) {
         />
         <link rel='icon' href='/favicon.png' />
       </Head>
-      <div className='site__container'>{children}</div>
+      <div className={`site__container ${quicksand.className}`}>{children}</div>
       <Footer />
     </>
   )
